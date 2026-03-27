@@ -2,6 +2,7 @@ import { createFileRoute, Outlet, redirect } from '@tanstack/react-router';
 
 import { NavigationProgress } from '@/core/components/navigation-progress';
 import { SidebarInset, SidebarProvider } from '@/core/components/ui/sidebar';
+import { NotFoundComponent } from '@/layout/components/not-found-component';
 import { PageHeader } from '@/layout/components/page-header';
 import { SidebarPrimary } from '@/layout/components/sidebar-primary';
 
@@ -19,7 +20,7 @@ export const Route = createFileRoute('/app')({
     }
   },
   component: AppLayout,
-  notFoundComponent: () => <p>No encontrado</p>,
+  notFoundComponent: NotFoundComponent,
   errorComponent: () => <p>Ocurrió un error</p>,
 });
 
