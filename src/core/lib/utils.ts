@@ -33,6 +33,10 @@ export function snakeToCamelCase(str: string) {
     );
 }
 
+export function isStringValid(value: string | undefined): boolean {
+  return value !== undefined && value.trim() !== '';
+}
+
 /**
  * Get the value of a nested object property
  * @author Aleksei Tsikov <@atsikov>
