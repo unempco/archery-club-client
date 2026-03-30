@@ -1,10 +1,10 @@
 import { DateFormat } from '@/core/constants/dates';
 
 export default {
-  name: 'Social Events Planner',
+  name: 'React admin',
   version: 'v1.0.0',
   brand: {
-    name: 'Sevilla Social Hall',
+    name: 'Paul2g.dev',
     logoSrc: '/logo.svg',
   },
   time: {
