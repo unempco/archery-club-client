@@ -1,4 +1,6 @@
 import { CaretDownIcon, SignOutIcon } from '@phosphor-icons/react';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useRouter } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 
 import {
@@ -20,12 +22,26 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from '@/core/components/ui/sidebar';
+import {
+  logoutMutationOptions,
+  sessionQueryOptions,
+} from '@/modules/auth/api/query-options';
 import { useAuth } from '@/modules/auth/hooks/use-auth';
 
 export function SidebarUser() {
   const { t } = useTranslation();
   const { isMobile } = useSidebar();
   const { user } = useAuth();
+  const router = useRouter();
+  const queryClient = useQueryClient();
+
+  const logoutMutation = useMutation({
+    ...logoutMutationOptions,
+    onSuccess: async () => {
+      queryClient.setQueryData(sessionQueryOptions.queryKey, null);
+      await router.invalidate();
+    },
+  });
 
   return (
     <SidebarMenu>
@@ -59,7 +75,9 @@ export function SidebarUser() {
               <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                 <Avatar className="h-8 w-8 rounded-lg">
                   <AvatarImage alt={user?.username} />
-                  <AvatarFallback className="rounded-lg">CN</AvatarFallback>
+                  <AvatarFallback className="rounded-lg">
+                    {user?.username[0].toUpperCase()}
+                  </AvatarFallback>
                 </Avatar>
                 <div className="grid flex-1 text-left text-sm leading-tight">
                   <span className="truncate font-medium">{user?.username}</span>
@@ -68,10 +86,14 @@ export function SidebarUser() {
               </div>
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
-              {/* TODO: Check signout implementation */}
+            <DropdownMenuItem
+              onClick={() => logoutMutation.mutate()}
+              disabled={logoutMutation.isPending}
+            >
               <SignOutIcon />
-              {t('auth:actions.signOut')}
+              {logoutMutation.isPending
+                ? t('common:actions.loading')
+                : t('auth:actions.signOut')}
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

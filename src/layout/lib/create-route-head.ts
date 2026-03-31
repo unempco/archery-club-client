@@ -30,6 +30,15 @@ export function createRouteHead(props: createRouteHeadFunctionProps): HeadFn {
           meta: [{ title: `${title} | ${suffix}` }],
         };
       };
+    case 'generic':
+    default:
+      return ({ match }) => ({
+        meta: [
+          {
+            title: `${match.context.i18n.t(props.titleI18nKey)} | ${suffix}`,
+          },
+        ],
+      });
   }
 }
 
@@ -38,5 +47,6 @@ type HeadFn = (args: { match: AnyRouteMatch }) => HeadResult;
 
 export type createRouteHeadFunctionProps =
   | { type: 'root' }
+  | { type: 'generic'; titleI18nKey: string }
   | { type: 'index'; titleI18nKey: string }
   | { type: 'item'; titleAccessorKey: string };

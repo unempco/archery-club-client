@@ -2,6 +2,7 @@ import { useMutation } from '@tanstack/react-query';
 import { createFileRoute, redirect, useRouter } from '@tanstack/react-router';
 import { z } from 'zod';
 
+import { createRouteHead } from '@/layout/lib/create-route-head';
 import { sessionQueryOptions } from '@/modules/auth/api/query-options';
 import { LoginForm } from '@/modules/auth/components/forms/login-form';
 import { useAuth } from '@/modules/auth/hooks/use-auth';
@@ -19,6 +20,10 @@ export const Route = createFileRoute('/login')({
       throw redirect({ to: search.redirect || fallback });
     }
   },
+  head: createRouteHead({
+    type: 'generic',
+    titleI18nKey: 'auth:actions.login',
+  }),
   component: LoginComponent,
 });
 
