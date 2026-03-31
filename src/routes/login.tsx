@@ -1,7 +1,13 @@
+import { InfoIcon } from '@phosphor-icons/react';
 import { useMutation } from '@tanstack/react-query';
 import { createFileRoute, redirect, useRouter } from '@tanstack/react-router';
 import { z } from 'zod';
 
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from '@/core/components/ui/alert';
 import { createRouteHead } from '@/layout/lib/create-route-head';
 import { sessionQueryOptions } from '@/modules/auth/api/query-options';
 import { LoginForm } from '@/modules/auth/components/forms/login-form';
@@ -43,7 +49,15 @@ function LoginComponent() {
   });
 
   return (
-    <main className="bg-muted h-screen w-screen flex justify-center items-center">
+    <main className="bg-muted h-screen w-screen flex flex-col justify-center items-center">
+      <Alert className="max-w-[24rem] mb-3 bg-blue-950/50 border-blue-500 text-blue-100 animate-in fade-in duration-1000">
+        <InfoIcon />
+        <AlertTitle>Example credentials:</AlertTitle>
+        <AlertDescription>
+          <b>User:</b> admin@example.com <br />
+          <b>Password:</b> adminadmin
+        </AlertDescription>
+      </Alert>
       <LoginForm
         className="w-full max-w-[24rem] animate-in fade-in duration-1000"
         onSubmit={(data) => loginMutation.mutate(data)}
