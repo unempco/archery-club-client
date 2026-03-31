@@ -16,6 +16,7 @@ import {
   getUserLocalePreference,
   setLocaleInDocument,
 } from '@/layout/lib/locales';
+import { sessionQueryOptions } from '@/modules/auth/api/query-options';
 
 type RootRouteContext = {
   queryClient: QueryClient;
@@ -24,6 +25,8 @@ type RootRouteContext = {
 };
 
 export const Route = createRootRouteWithContext<RootRouteContext>()({
+  loader: ({ context: { queryClient } }) =>
+    queryClient.ensureQueryData(sessionQueryOptions), // 👈 runs before any beforeLoad
   head: createRouteHead({ type: 'root' }),
   component: RootLayout,
 });

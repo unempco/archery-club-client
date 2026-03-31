@@ -6,17 +6,16 @@ import { NotFoundComponent } from '@/layout/components/not-found-component';
 import { PageHeader } from '@/layout/components/page-header';
 import { SidebarPrimary } from '@/layout/components/sidebar-primary';
 import { createRouteHead } from '@/layout/lib/create-route-head';
+import { sessionQueryOptions } from '@/modules/auth/api/query-options';
 
 export const Route = createFileRoute('/app')({
   beforeLoad: async ({ context, location }) => {
-    const user = await context.auth.verifySession();
+    const user = await context.queryClient.ensureQueryData(sessionQueryOptions);
 
     if (!user) {
       throw redirect({
         to: '/login',
-        search: {
-          redirect: location.href,
-        },
+        search: { redirect: location.href },
       });
     }
   },
