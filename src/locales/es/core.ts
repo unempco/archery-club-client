@@ -22,6 +22,7 @@ export const core = {
   actions: {
     // Items actions
     save: 'Guardar',
+    cancel: 'Cancelar',
     add: 'Añadir',
     remove: 'Remover',
     delete: 'Eliminar',
