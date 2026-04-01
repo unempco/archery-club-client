@@ -1,22 +1,19 @@
-import type { Language } from '@/layout/constants/locales';
-
 import dayjs from 'dayjs';
+
+import { defaultProjectLocale, localeData } from '@/layout/constants/locales';
 
 import 'dayjs/locale/es';
 
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 
-import { DateFormat } from '@/core/constants/dates';
+import projectConfig from '@/project.config';
 
 dayjs.extend(customParseFormat);
 
-const DEFAULT_DATE_FORMAT = DateFormat.EUR_LATAM;
-const DEFAULT_DATE_LANGUAGE: Language = 'en' as const;
-
 export function formatDate(
   d?: Date | string,
-  dateFormat: DateFormat = DEFAULT_DATE_FORMAT,
-  language: Language = DEFAULT_DATE_LANGUAGE,
+  dateFormat: string = projectConfig.time.dateFormat,
+  language: string = localeData[defaultProjectLocale].langKey,
 ): string {
   if (typeof d === 'string')
     return dayjs(new Date(d)).locale(language).format(dateFormat);

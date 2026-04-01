@@ -1,6 +1,7 @@
 import type { CellContext } from '@tanstack/react-table';
 
 import { ArrowSquareOutIcon, EnvelopeIcon } from '@phosphor-icons/react';
+import { useTranslation } from 'react-i18next';
 
 import { BadgeList } from '@/core/components/badge-list';
 import { CheckMark } from '@/core/components/check-mark';
@@ -9,11 +10,14 @@ import { StatusBadge } from '@/core/components/status-badge';
 import { Button } from '@/core/components/ui/button';
 import { DataTableColumnType } from '@/core/constants/data-table';
 import { formatDate } from '@/core/lib/dates';
+import projectConfig from '@/project.config';
 
 export function DataTableCell<TData>({
   cell,
   column,
 }: DataTableCellProps<TData>) {
+  const { i18n } = useTranslation();
+
   const type = column.columnDef.meta?.columnType || DataTableColumnType.TEXT;
   const value = cell.getValue();
 
@@ -38,8 +42,26 @@ export function DataTableCell<TData>({
           className="!aspect-[2] !h-auto !w-full max-w-[200px] rounded-lg object-cover object-top shadow-sm"
         />
       );
+    case DataTableColumnType.DATE:
+      return (
+        <span>
+          {formatDate(
+            value as string,
+            projectConfig.time.dateFormat,
+            i18n.language,
+          )}
+        </span>
+      );
     case DataTableColumnType.DATETIME:
-      return <span>{formatDate(value as string)}</span>;
+      return (
+        <span>
+          {formatDate(
+            value as string,
+            projectConfig.time.dateTimeFormat,
+            i18n.language,
+          )}
+        </span>
+      );
     case DataTableColumnType.URL:
       return (
         <a href={value as string} target="_blank" rel="noopener noreferrer">

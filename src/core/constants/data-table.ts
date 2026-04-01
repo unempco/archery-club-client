@@ -7,6 +7,7 @@ export const DataTableColumnType = {
   TEXT: 'text',
   BOOLEAN: 'boolean',
   PARAGRAPH: 'paragraph',
+  DATE: 'date',
   DATETIME: 'datetime',
   IMAGE: 'image',
   BADGES: 'badges',

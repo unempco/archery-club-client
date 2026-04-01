@@ -9,8 +9,8 @@ export default {
   },
   time: {
     timeZone: 'America/Tijuana',
-    dateTimeFormat: `${DateFormat.EUR_LATAM} hh:mm A`,
-    dateFormat: DateFormat.EUR_LATAM,
+    dateTimeFormat: `${DateFormat.INT_ABBR} hh:mm A`,
+    dateFormat: DateFormat.INT_ABBR,
   },
   baseApi: {
     url: import.meta.env?.VITE_BASE_API_URL,
