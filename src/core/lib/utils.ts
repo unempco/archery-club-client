@@ -24,6 +24,10 @@ export function parseBoolean(value: unknown, defaultValue: unknown = false) {
   return Boolean(value);
 }
 
+export function toSentenceCase(str: string) {
+  return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+}
+
 /** Converts string form SNAKE_CASE into camelCase */
 export function snakeToCamelCase(str: string) {
   return str
