@@ -1,4 +1,5 @@
 import {
+  createBrowserHistory,
   createHashHistory,
   createRouter,
   RouterProvider,
@@ -19,11 +20,14 @@ import { useAuth } from '@/modules/auth/hooks/use-auth';
 import { routeTree } from './routeTree.gen';
 
 const queryClient = new QueryClient();
-const hashHistory = createHashHistory();
+const history =
+  import.meta.env.VITE_BROWSER_HISTORY === 'true'
+    ? createBrowserHistory()
+    : createHashHistory();
 
 // Set up a Router instance
 const router = createRouter({
-  history: hashHistory,
+  history: history,
   routeTree,
   context: {
     queryClient,
