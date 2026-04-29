@@ -46,7 +46,7 @@ export function SidebarNavMain({ groups, ...props }: SidebarNavMainProps) {
     .filter((group) => group.items.length);
 
   return filteredGroups.map((group) => (
-    <SidebarGroup {...props}>
+    <SidebarGroup key={group.label} {...props}>
       <SidebarGroupLabel>{group.label}</SidebarGroupLabel>
       <SidebarMenu>
         {group.items.map((item) => {
