@@ -29,7 +29,8 @@ export function DeleteConfirmationDialog({
             {t('dialogs.requiredConfirmation')}
           </AlertDialogTitle>
           <AlertDialogDescription>
-            {`${t('core:dialogs.areYouSureDelete')} (${name})`}
+            <span>{t('core:dialogs.areYouSureDelete')}</span>
+            {name && <span className="font-bold">: {name}</span>}
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
