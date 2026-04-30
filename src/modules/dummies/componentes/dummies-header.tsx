@@ -1,27 +1,34 @@
-// modules/dummies/components/dummies-header.tsx
-import { useState } from 'react';
-import { PlusIcon } from '@phosphor-icons/react';
+import { FolderPlusIcon, PlusIcon } from '@phosphor-icons/react';
 import { useTranslation } from 'react-i18next';
+import { toast } from 'sonner';
 
 import { Button } from '@/core/components/ui/button';
-import { Typography } from '@/core/components/ui/typography';
-import { CreateDummyDialog } from '@/modules/dummies/componentes/dialogs/create-dummy-dialog';
+import { CreateDummyDialogTrigger } from '@/modules/dummies/componentes/dialogs/create-dummy-dialog-trigger';
+import { PageHeader } from '@/modules/shared/components/page-header';
 
-export function DummiesHeader() {
+export function DummiesHeader({ selectedItems }: DummiesHeaderProps) {
   const { t } = useTranslation();
-  const [open, setOpen] = useState(false);
 
   return (
-    <div className="flex justify-between">
-      <Typography variant="h1">{t('layout:navItems.dummies')}</Typography>
-      <div className="flex gap-2">
-        <Button onClick={() => setOpen(true)}>
+    <PageHeader title={t('layout:navItems.dummies')}>
+      <CreateDummyDialogTrigger>
+        <Button>
           <PlusIcon />
           {t('dummies:actions.addNew')}
         </Button>
-      </div>
-
-      <CreateDummyDialog open={open} onOpenChange={setOpen} />
-    </div>
+      </CreateDummyDialogTrigger>
+      <Button
+        variant="secondary"
+        size="icon"
+        disabled={!selectedItems?.length}
+        onClick={() => toast.info(JSON.stringify(selectedItems))}
+      >
+        <FolderPlusIcon />
+      </Button>
+    </PageHeader>
   );
 }
+
+export type DummiesHeaderProps = {
+  selectedItems: string[];
+};

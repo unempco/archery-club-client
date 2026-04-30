@@ -29,19 +29,35 @@ export function AuthProvider({ children }: AuthProviderProps) {
     },
   });
 
-  const checkPermissions = (permissions: string[] | string) =>
-    Boolean(
-      typeof permissions === 'string'
-        ? user?.permissions.includes(permissions)
-        : user?.permissions.some((p) => permissions.includes(p)),
-    );
+  const checkPermissions: ValidatorFunction = (permissions, logic = 'or') => {
+    if (!permissions) return true;
 
-  const checkRoles = (roles: string[] | string) =>
-    Boolean(
-      typeof roles === 'string'
-        ? user?.roles.includes(roles)
-        : user?.roles.some((p) => roles.includes(p)),
-    );
+    if (typeof permissions === 'string')
+      return Boolean(user?.permissions.includes(permissions));
+
+    if (logic === 'or')
+      return Boolean(user?.permissions.some((p) => permissions.includes(p)));
+
+    if (logic === 'and')
+      return permissions.every((p) => user?.permissions.includes(p));
+
+    return false;
+  };
+
+  const checkRoles: ValidatorFunction = (roles, logic = 'or') => {
+    if (!roles) return true;
+
+    if (typeof roles === 'string')
+      return Boolean(user?.permissions.includes(roles));
+
+    if (logic === 'or')
+      return Boolean(user?.permissions.some((p) => roles.includes(p)));
+
+    if (logic === 'and')
+      return roles.every((p) => user?.permissions.includes(p));
+
+    return false;
+  };
 
   return (
     <AuthContext.Provider
@@ -59,13 +75,18 @@ export function AuthProvider({ children }: AuthProviderProps) {
   );
 }
 
+type ValidatorFunction = (
+  requirements?: string[] | string,
+  logic?: 'or' | 'and',
+) => boolean;
+
 export type AuthContextValue = {
   isAuthenticated: boolean;
   user: User | null;
   login: (data: LoginData) => Promise<User>;
   logout: () => Promise<void>;
-  p: (permissions: string[] | string) => boolean;
-  r: (roles: string[] | string) => boolean;
+  p: ValidatorFunction;
+  r: ValidatorFunction;
 };
 
 export type AuthProviderProps = {

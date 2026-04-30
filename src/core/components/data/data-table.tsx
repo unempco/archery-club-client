@@ -1,5 +1,10 @@
-import type { DataTableColumnVisibilityState } from '@/core/types/data-table';
-import type { ColumnDef } from '@tanstack/react-table';
+import type {
+  ColumnDef,
+  OnChangeFn,
+  Row,
+  RowSelectionState,
+  VisibilityState,
+} from '@tanstack/react-table';
 
 import {
   flexRender,
@@ -8,7 +13,7 @@ import {
 } from '@tanstack/react-table';
 import { useTranslation } from 'react-i18next';
 
-import { DataTableColumnSelector } from '@/core/components/date-table/data-table-column-selector';
+import { DataTableColumnSelector } from '@/core/components/data/data-table-column-selector';
 import {
   Table,
   TableBody,
@@ -22,29 +27,38 @@ export function DataTable<TData>({
   data,
   columns,
   columnVisibility,
+  rowSelection = {},
   setColumnVisibility,
-  children,
+  setRowSelection,
+  // @ts-expect-error - idx is only used as fallback, so it will never be used if row has no id
+  getRowId = (row, idx) => String(row?.id ?? idx),
+  getRowCanSelect,
+  headerSlot,
 }: DataTableProps<TData>) {
   const { t } = useTranslation();
 
   const table = useReactTable({
     data,
     columns,
+    enableRowSelection:
+      getRowCanSelect ?? Boolean(setRowSelection && rowSelection),
+    getRowId,
     getCoreRowModel: getCoreRowModel(),
-    // @ts-expect-error It works as documentation says
     onColumnVisibilityChange: setColumnVisibility,
+    onRowSelectionChange: setRowSelection,
     state: {
       columnVisibility,
+      rowSelection,
     },
   });
 
   return (
     <>
       <div className="flex gap-2">
-        {children}
+        {headerSlot}
         <DataTableColumnSelector table={table} className="ml-auto" />
       </div>
-      <div className="overflow-hidden rounded-md border">
+      <div className="overflow-hidden rounded-md border animate-in fade-in duration-300">
         <Table>
           <TableHeader className="bg-muted sticky top-0">
             {table.getHeaderGroups().map((headerGroup) => (
@@ -101,9 +115,11 @@ export function DataTable<TData>({
 export type DataTableProps<TData> = {
   data: TData[];
   columns: ColumnDef<TData>[];
-  columnVisibility: DataTableColumnVisibilityState<TData>;
-  setColumnVisibility: (
-    visibilityState: DataTableColumnVisibilityState<TData>,
-  ) => void;
-  children?: React.ReactNode;
+  columnVisibility: VisibilityState;
+  rowSelection?: RowSelectionState;
+  setColumnVisibility: OnChangeFn<VisibilityState>;
+  setRowSelection?: OnChangeFn<RowSelectionState>;
+  getRowId?: (row: TData, idx: number) => string;
+  getRowCanSelect?: (row: Row<TData>) => boolean;
+  headerSlot?: React.ReactNode;
 };
