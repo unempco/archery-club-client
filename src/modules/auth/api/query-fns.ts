@@ -7,12 +7,14 @@ export async function login(data: LoginData): Promise<User> {
 
   if (data.email === 'admin@example.com' && data.password === 'adminadmin') {
     return {
-      token: 'mock-jwt-token',
       id: 'skKjd78a-#',
       username: 'admin',
+      fullName: 'Admin Root',
       email: 'admin@example.com',
       roles: ['admin'],
       permissions: ['dashboard.read', 'dummies.read'],
+      accessToken: 'mock-jwt-token',
+      refreshToken: 'mock-jwt-refresh',
     };
   }
 
@@ -30,12 +32,14 @@ export async function verifySession(token: string): Promise<User> {
 
   if (token === 'mock-jwt-token') {
     return {
-      token: 'mock-jwt-token',
       id: 'skKjd78a-#',
       username: 'admin',
+      fullName: 'Admin Root',
       email: 'admin@example.com',
       roles: ['admin'],
       permissions: ['dashboard.read', 'dummies.read'],
+      accessToken: 'mock-jwt-token',
+      refreshToken: 'mock-jwt-refresh',
     };
   }
 
