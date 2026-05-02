@@ -1,12 +1,3 @@
-export type JSONValue =
-  | string
-  | number
-  | boolean
-  | { [x: string]: JSONValue }
-  | Array<JSONValue>;
-
-export type CommonDataRecord = Record<string, JSONValue | Date>;
-
 /**
  * Specifies the type for the fetch request body for getAllItems request.
  */

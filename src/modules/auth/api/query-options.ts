@@ -3,21 +3,13 @@ import type { LoginData } from '@/modules/auth/types';
 import { mutationOptions, queryOptions } from '@tanstack/react-query';
 
 import { login, logout, verifySession } from '@/modules/auth/api/query-fns';
-import {
-  getUserToken,
-  removeUserToken,
-  setUserToken,
-} from '@/modules/auth/lib/token';
 
 export const sessionQueryOptions = queryOptions({
-  queryKey: ['auth', 'session'],
+  queryKey: ['users', 'me'],
   queryFn: async () => {
-    const token = getUserToken();
-    if (!token) return null;
     try {
-      return await verifySession(token);
+      return await verifySession();
     } catch {
-      removeUserToken();
       return null;
     }
   },
@@ -26,16 +18,11 @@ export const sessionQueryOptions = queryOptions({
 });
 
 export const loginMutationOptions = mutationOptions({
-  mutationFn: async (loginData: LoginData) => {
-    const user = await login(loginData);
-    setUserToken(user.token);
-    return user;
-  },
+  mutationKey: ['auth', 'login'],
+  mutationFn: (loginData: LoginData) => login(loginData),
 });
 
 export const logoutMutationOptions = mutationOptions({
-  mutationFn: async () => {
-    await logout();
-    removeUserToken();
-  },
+  mutationKey: ['auth', 'logout'],
+  mutationFn: () => logout(),
 });

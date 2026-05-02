@@ -1,169 +1,106 @@
-import { fetchToApi } from '@/core/api/fetch';
-import {
-  FetchMethod,
-  FetchRequestContentType,
-  FetchResponseType,
-  ServiceApi,
-} from '@/core/constants/api';
-import { MissingIdError } from '@/core/errors';
-import {
-  type CommonDataRecord,
-  type JSONValue,
-  type PaginatedResponse,
-} from '@/core/types/api';
+import type { GetOptions, MutationOptions } from '@/core/types/request';
+import type { PaginatedResponse } from '@/core/types/response';
 
-/** Retrieves all items from the specified API endpoint. */
-export function getAllItems<TData>(
-  config: Pick<
-    BaseApiFunctionConfig,
-    'moduleApiPath' | 'serviceApi' | 'params'
-  >,
-) {
-  const { moduleApiPath, serviceApi, params } = config;
+import { request } from '@/core/api/request';
+import { assertValidId } from '@/core/lib/request';
 
-  return fetchToApi<TData>({ serviceApi, path: moduleApiPath, params });
+// -------------------------------------------------------------------------
+// Generic methods
+// -------------------------------------------------------------------------
+
+function get<TData>(path: string, options?: GetOptions): Promise<TData> {
+  return request<TData>('GET', path, options);
 }
 
-/** Retrieves a list of items filtered by query params from the specified API endpoint. */
-export async function getItemsList<TData>(
-  config: Pick<
-    BaseApiFunctionConfig,
-    'serviceApi' | 'moduleApiPath' | 'params'
-  >,
-) {
-  const { moduleApiPath, serviceApi, params } = config;
-
-  return await fetchToApi<PaginatedResponse<TData>>({
-    serviceApi,
-    path: `${moduleApiPath}`,
-    params,
-  });
+function post<TData>(path: string, options?: MutationOptions): Promise<TData> {
+  return request<TData>('POST', path, options);
 }
 
-/** Retrieves a specific item by its ID from the specified API endpoint. */
-export function getItemById<TData>(
-  config: Pick<BaseApiFunctionConfig, 'serviceApi' | 'moduleApiPath' | 'id'>,
-) {
-  const { moduleApiPath, serviceApi, id } = config;
-
-  if (!id) throw new MissingIdError('Item ID is not provided');
-  return fetchToApi<TData>({ serviceApi, path: `${moduleApiPath}/${id}` });
+function put<TData>(path: string, options?: MutationOptions): Promise<TData> {
+  return request<TData>('PUT', path, options);
 }
 
-/** Saves an item sending a FormData object to the specified API endpoint. */
-export function postRichItem<TData>(
-  config: Pick<
-    BaseApiFunctionConfig,
-    'moduleApiPath' | 'serviceApi' | 'formData'
-  >,
-) {
-  const { moduleApiPath, serviceApi, formData } = config;
-
-  return fetchToApi<TData>({
-    serviceApi,
-    path: `${moduleApiPath}`,
-    method: FetchMethod.POST,
-    contentType: FetchRequestContentType.FORM_DATA,
-    body: formData,
-  });
+function patch<TData>(path: string, options?: MutationOptions): Promise<TData> {
+  return request<TData>('PATCH', path, options);
 }
 
-/** Send data object to create a new item at the specified API endpoint. */
-export function postItem<TData>(
-  config: Pick<BaseApiFunctionConfig, 'moduleApiPath' | 'serviceApi' | 'data'>,
-) {
-  const { moduleApiPath, serviceApi, data } = config;
-
-  return fetchToApi<TData>({
-    serviceApi,
-    path: `${moduleApiPath}`,
-    method: FetchMethod.POST,
-    body: JSON.stringify(data),
-  });
+function deleteRequest<TData>(
+  path: string,
+  options?: GetOptions,
+): Promise<TData> {
+  return request<TData>('DELETE', path, options);
 }
 
-/** Send data object to replace an item at the specified API endpoint. */
-export function putItem<TData>(
-  config: Pick<
-    BaseApiFunctionConfig,
-    'moduleApiPath' | 'serviceApi' | 'id' | 'data'
-  >,
-) {
-  const { moduleApiPath, serviceApi, id, data } = config;
+// -------------------------------------------------------------------------
+// List (paginated)
+// -------------------------------------------------------------------------
 
-  if (!id) throw new MissingIdError('Item ID is not provided');
-  return fetchToApi<TData>({
-    serviceApi,
-    path: `${moduleApiPath}/${id}`,
-    method: FetchMethod.PUT,
-    body: JSON.stringify(data),
-  });
+function getList<TData>(
+  path: string,
+  options?: GetOptions,
+): Promise<PaginatedResponse<TData>> {
+  return request<PaginatedResponse<TData>>('GET', path, options);
 }
 
-/** Sends a PATCH request to update a specific item identified by its ID in the API endpoint. */
-export function patchItem<TData>(
-  config: Pick<
-    BaseApiFunctionConfig,
-    'serviceApi' | 'moduleApiPath' | 'id' | 'data'
-  >,
-) {
-  const { moduleApiPath, serviceApi, id, data } = config;
+// -------------------------------------------------------------------------
+// ById methods
+// -------------------------------------------------------------------------
 
-  if (!id) throw new MissingIdError('Item ID is not provided');
-  return fetchToApi<TData>({
-    serviceApi,
-    path: `${moduleApiPath}/${id}`,
-    body: JSON.stringify(data),
-    method: FetchMethod.PATCH,
-  });
+function getById<TData>(
+  path: string,
+  id: string | number | undefined,
+  options?: GetOptions,
+): Promise<TData> {
+  assertValidId(id, path);
+  return get<TData>(`${path}/${id}`, options);
 }
 
-/** Deletes an item with the specified ID from the API endpoint. */
-export function deleteItem<TData>(
-  config: Pick<
-    BaseApiFunctionConfig,
-    'moduleApiPath' | 'serviceApi' | 'id' | 'params'
-  >,
-) {
-  const { moduleApiPath, serviceApi, id, params } = config;
-
-  if (!id) throw new MissingIdError('Item ID is not provided');
-  return fetchToApi<TData>({
-    serviceApi,
-    path: `${moduleApiPath}/${id}`,
-    method: FetchMethod.DELETE,
-    params,
-  });
+function postById<TData>(
+  path: string,
+  id: string | number | undefined,
+  options?: MutationOptions,
+): Promise<TData> {
+  assertValidId(id, path);
+  return post<TData>(`${path}/${id}`, options);
 }
 
-/** Downloads a report containing items from the specified API endpoint.*/
-export function downloadItemsReport(
-  config: Pick<
-    BaseApiFunctionConfig,
-    'moduleApiPath' | 'serviceApi' | 'params'
-  >,
-) {
-  const { moduleApiPath, serviceApi, params } = config;
-
-  return fetchToApi<Blob>({
-    serviceApi,
-    responseType: FetchResponseType.BLOB,
-    path: `${moduleApiPath}/report`,
-    params,
-  });
+function putById<TData>(
+  path: string,
+  id: string | number | undefined,
+  options?: MutationOptions,
+): Promise<TData> {
+  assertValidId(id, path);
+  return put<TData>(`${path}/${id}`, options);
 }
 
-export type BaseApiFunctionConfig = {
-  /** The path to the API module. */
-  moduleApiPath: string;
-  /** The version of the API to use. */
-  serviceApi?: ServiceApi;
-  /** The ID of the item to get, update or delete. */
-  id: string | number;
-  /** The required data for the API request action passed through body */
-  data?: JSONValue;
-  /** The data of the item to save or update.*/
-  formData: FormData;
-  /** Additional parameters to modify delete behaviour. */
-  params?: CommonDataRecord;
+function patchById<TData>(
+  path: string,
+  id: string | number | undefined,
+  options?: MutationOptions,
+): Promise<TData> {
+  assertValidId(id, path);
+  return patch<TData>(`${path}/${id}`, options);
+}
+
+function deleteById<TData>(
+  path: string,
+  id: string | number | undefined,
+  options?: GetOptions,
+): Promise<TData> {
+  assertValidId(id, path);
+  return deleteRequest<TData>(`${path}/${id}`, options);
+}
+
+export default {
+  get,
+  post,
+  put,
+  patch,
+  delete: deleteRequest,
+  getList,
+  getById,
+  postById,
+  putById,
+  patchById,
+  deleteById,
 };
