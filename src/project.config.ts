@@ -14,5 +14,6 @@ export default {
   },
   baseApi: {
     url: import.meta.env?.VITE_BASE_API_URL,
+    path: '/api',
   },
 } as const;

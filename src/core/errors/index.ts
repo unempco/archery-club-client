@@ -1,8 +1,8 @@
-import type { ProblemDetails } from '@/core/types/api';
+import type { ProblemDetails } from '@/core/types/response';
 
 export class MissingIdError extends Error {
-  constructor(message: string) {
-    super(message);
+  constructor(path: string) {
+    super(`Missing required id for request to "${path}"`);
     this.name = 'MissingIdError';
   }
 }

@@ -1,6 +1,6 @@
 /* Example api functions for dummies module. These functions simulate API calls using localStorage and timeouts. */
 
-import type { PaginatedResponse } from '@/core/types/api';
+import type { PaginatedResponse } from '@/core/types/response';
 import type {
   DummiesSearchParams,
   Dummy,

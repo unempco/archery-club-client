@@ -7,8 +7,10 @@ export type LoginData = z.infer<typeof loginSchema>;
 export type User = {
   id: string;
   username: string;
+  fullName: string;
   email: string;
   roles: string[];
   permissions: string[];
-  token: string;
+  accessToken: string;
+  refreshToken: string;
 };

@@ -1,15 +1,28 @@
 import Cookies from 'js-cookie';
 
-const USER_TOKEN_COOKIE_KEY = 'vite.user-token';
+const ACCESS_TOKEN_COOKIE_KEY = 'vite.access-token';
+const REFRESH_TOKEN_COOKIE_KEY = 'vite.refresh-token';
 
-export function getUserToken() {
-  return Cookies.get(USER_TOKEN_COOKIE_KEY);
+export function getAccessToken() {
+  return Cookies.get(ACCESS_TOKEN_COOKIE_KEY);
 }
 
-export function setUserToken(token: string) {
-  return Cookies.set(USER_TOKEN_COOKIE_KEY, token, { expires: 7 * 2 });
+export function setAccessToken(token: string) {
+  return Cookies.set(ACCESS_TOKEN_COOKIE_KEY, token, { expires: 7 * 2 });
 }
 
-export function removeUserToken() {
-  return Cookies.remove(USER_TOKEN_COOKIE_KEY);
+export function removeAccessToken() {
+  return Cookies.remove(ACCESS_TOKEN_COOKIE_KEY);
+}
+
+export function getRefreshToken() {
+  return Cookies.get(REFRESH_TOKEN_COOKIE_KEY);
+}
+
+export function setRefreshToken(token: string) {
+  return Cookies.set(REFRESH_TOKEN_COOKIE_KEY, token, { expires: 7 * 2 });
+}
+
+export function removeRefreshToken() {
+  return Cookies.remove(REFRESH_TOKEN_COOKIE_KEY);
 }
