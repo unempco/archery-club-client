@@ -11,20 +11,26 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/core/components/ui/dropdown-menu';
+import { useAuth } from '@/modules/auth/hooks/use-auth';
 import { UpdateBranchDialog } from '@/modules/branches/componentes/dialogs/update-branch-dialog';
 import { useDeleteBranch } from '@/modules/branches/hooks/branch-actions';
+import { ApiPermissions } from '@/modules/shared/constants/permissions';
 
 export function BranchActions({ row }: DataActionsProps) {
   const { t } = useTranslation();
+  const { p } = useAuth();
+
   const [confirmOpen, setConfirmOpen] = useState(false);
   const [editOpen, setEditOpen] = useState(false);
 
   const branch = row.original;
 
   const deleteMutation = useDeleteBranch({ branchId: branch.id });
+
+  if (!p([ApiPermissions.Branches.UPDATE, ApiPermissions.Branches.DELETE]))
+    return null;
 
   return (
     <>
@@ -35,18 +41,21 @@ export function BranchActions({ row }: DataActionsProps) {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-          <DropdownMenuItem onClick={() => setEditOpen(true)}>
-            <PencilIcon />
-            {t('actions.edit')}
-          </DropdownMenuItem>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem
-            variant="destructive"
-            onClick={() => setConfirmOpen(true)}
-          >
-            <TrashIcon />
-            {t('actions.delete')}
-          </DropdownMenuItem>
+          {p(ApiPermissions.Branches.UPDATE) && (
+            <DropdownMenuItem onClick={() => setEditOpen(true)}>
+              <PencilIcon />
+              {t('actions.edit')}
+            </DropdownMenuItem>
+          )}
+          {p(ApiPermissions.Branches.DELETE) && (
+            <DropdownMenuItem
+              variant="destructive"
+              onClick={() => setConfirmOpen(true)}
+            >
+              <TrashIcon />
+              {t('actions.delete')}
+            </DropdownMenuItem>
+          )}
         </DropdownMenuContent>
       </DropdownMenu>
 
