@@ -13,6 +13,8 @@ import {
 } from '@phosphor-icons/react';
 import { useTranslation } from 'react-i18next';
 
+import { ApiPermissions } from '@/modules/shared/constants/permissions';
+
 export function useNavigationItems(): UseNavigationItemsReturn {
   const { t } = useTranslation();
 
@@ -30,21 +32,25 @@ export function useNavigationItems(): UseNavigationItemsReturn {
             title: t('branches:name'),
             url: '/app/branches',
             icon: BuildingOfficeIcon,
+            permissions: [ApiPermissions.Branches.READ],
           },
           {
             title: t('cycles:name'),
             url: '/app/cycles',
             icon: KanbanIcon,
+            permissions: [ApiPermissions.Cycles.READ],
           },
           {
             title: t('groups:name'),
             url: '/app/groups',
             icon: UsersThreeIcon,
+            permissions: [ApiPermissions.Groups.READ],
           },
           {
             title: t('targets:name'),
             url: '/app/targets',
             icon: TargetIcon,
+            permissions: [ApiPermissions.Targets.READ],
           },
         ],
       },
