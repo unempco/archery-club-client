@@ -1,50 +1,29 @@
 import type { LoginData, User } from '@/modules/auth/types';
 
-import { sleep } from '@/core/lib/utils';
-import { getAccessToken } from '@/modules/auth/lib/token';
+import api from '@/core/api';
+import {
+  removeAccessToken,
+  removeRefreshToken,
+  setAccessToken,
+  setRefreshToken,
+} from '@/modules/auth/lib/token';
 
 export async function login(data: LoginData): Promise<User> {
-  await sleep(500);
+  const user = await api.post<User>('/auth/login', { body: data });
 
-  if (data.email === 'admin@example.com' && data.password === 'adminadmin') {
-    return {
-      id: 'skKjd78a-#',
-      username: 'admin',
-      fullName: 'Admin Root',
-      email: 'admin@example.com',
-      roles: ['admin'],
-      permissions: ['dashboard.read', 'dummies.read'],
-      accessToken: 'mock-jwt-token',
-      refreshToken: 'mock-jwt-refresh',
-    };
-  }
+  setAccessToken(user.accessToken);
+  setRefreshToken(user.refreshToken);
 
-  throw new Error('Invalid username or password');
+  return user;
 }
 
 export async function logout(): Promise<void> {
-  await sleep(500);
+  await api.post('/auth/logout');
 
-  return;
+  removeAccessToken();
+  removeRefreshToken();
 }
 
 export async function verifySession(): Promise<User> {
-  await sleep(500);
-
-  const token = getAccessToken();
-
-  if (token === 'mock-jwt-token') {
-    return {
-      id: 'skKjd78a-#',
-      username: 'admin',
-      fullName: 'Admin Root',
-      email: 'admin@example.com',
-      roles: ['admin'],
-      permissions: ['dashboard.read', 'dummies.read'],
-      accessToken: 'mock-jwt-token',
-      refreshToken: 'mock-jwt-refresh',
-    };
-  }
-
-  throw new Error('Invalid token');
+  return await api.get<User>('/users/me');
 }

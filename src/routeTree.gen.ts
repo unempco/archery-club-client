@@ -15,7 +15,9 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppIndexRouteImport } from './routes/app/index'
 import { Route as AppDashboardRouteImport } from './routes/app/dashboard'
 import { Route as AppDummiesRouteRouteImport } from './routes/app/dummies/route'
+import { Route as AppBranchesRouteRouteImport } from './routes/app/branches/route'
 import { Route as AppDummiesIndexRouteImport } from './routes/app/dummies/index'
+import { Route as AppBranchesIndexRouteImport } from './routes/app/branches/index'
 
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
@@ -47,19 +49,31 @@ const AppDummiesRouteRoute = AppDummiesRouteRouteImport.update({
   path: '/dummies',
   getParentRoute: () => AppRouteRoute,
 } as any)
+const AppBranchesRouteRoute = AppBranchesRouteRouteImport.update({
+  id: '/branches',
+  path: '/branches',
+  getParentRoute: () => AppRouteRoute,
+} as any)
 const AppDummiesIndexRoute = AppDummiesIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => AppDummiesRouteRoute,
+} as any)
+const AppBranchesIndexRoute = AppBranchesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AppBranchesRouteRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/app': typeof AppRouteRouteWithChildren
   '/login': typeof LoginRoute
+  '/app/branches': typeof AppBranchesRouteRouteWithChildren
   '/app/dummies': typeof AppDummiesRouteRouteWithChildren
   '/app/dashboard': typeof AppDashboardRoute
   '/app/': typeof AppIndexRoute
+  '/app/branches/': typeof AppBranchesIndexRoute
   '/app/dummies/': typeof AppDummiesIndexRoute
 }
 export interface FileRoutesByTo {
@@ -67,6 +81,7 @@ export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/app/dashboard': typeof AppDashboardRoute
   '/app': typeof AppIndexRoute
+  '/app/branches': typeof AppBranchesIndexRoute
   '/app/dummies': typeof AppDummiesIndexRoute
 }
 export interface FileRoutesById {
@@ -74,9 +89,11 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/app': typeof AppRouteRouteWithChildren
   '/login': typeof LoginRoute
+  '/app/branches': typeof AppBranchesRouteRouteWithChildren
   '/app/dummies': typeof AppDummiesRouteRouteWithChildren
   '/app/dashboard': typeof AppDashboardRoute
   '/app/': typeof AppIndexRoute
+  '/app/branches/': typeof AppBranchesIndexRoute
   '/app/dummies/': typeof AppDummiesIndexRoute
 }
 export interface FileRouteTypes {
@@ -85,20 +102,30 @@ export interface FileRouteTypes {
     | '/'
     | '/app'
     | '/login'
+    | '/app/branches'
     | '/app/dummies'
     | '/app/dashboard'
     | '/app/'
+    | '/app/branches/'
     | '/app/dummies/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/login' | '/app/dashboard' | '/app' | '/app/dummies'
+  to:
+    | '/'
+    | '/login'
+    | '/app/dashboard'
+    | '/app'
+    | '/app/branches'
+    | '/app/dummies'
   id:
     | '__root__'
     | '/'
     | '/app'
     | '/login'
+    | '/app/branches'
     | '/app/dummies'
     | '/app/dashboard'
     | '/app/'
+    | '/app/branches/'
     | '/app/dummies/'
   fileRoutesById: FileRoutesById
 }
@@ -152,6 +179,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppDummiesRouteRouteImport
       parentRoute: typeof AppRouteRoute
     }
+    '/app/branches': {
+      id: '/app/branches'
+      path: '/branches'
+      fullPath: '/app/branches'
+      preLoaderRoute: typeof AppBranchesRouteRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
     '/app/dummies/': {
       id: '/app/dummies/'
       path: '/'
@@ -159,8 +193,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppDummiesIndexRouteImport
       parentRoute: typeof AppDummiesRouteRoute
     }
+    '/app/branches/': {
+      id: '/app/branches/'
+      path: '/'
+      fullPath: '/app/branches/'
+      preLoaderRoute: typeof AppBranchesIndexRouteImport
+      parentRoute: typeof AppBranchesRouteRoute
+    }
   }
 }
+
+interface AppBranchesRouteRouteChildren {
+  AppBranchesIndexRoute: typeof AppBranchesIndexRoute
+}
+
+const AppBranchesRouteRouteChildren: AppBranchesRouteRouteChildren = {
+  AppBranchesIndexRoute: AppBranchesIndexRoute,
+}
+
+const AppBranchesRouteRouteWithChildren =
+  AppBranchesRouteRoute._addFileChildren(AppBranchesRouteRouteChildren)
 
 interface AppDummiesRouteRouteChildren {
   AppDummiesIndexRoute: typeof AppDummiesIndexRoute
@@ -175,12 +227,14 @@ const AppDummiesRouteRouteWithChildren = AppDummiesRouteRoute._addFileChildren(
 )
 
 interface AppRouteRouteChildren {
+  AppBranchesRouteRoute: typeof AppBranchesRouteRouteWithChildren
   AppDummiesRouteRoute: typeof AppDummiesRouteRouteWithChildren
   AppDashboardRoute: typeof AppDashboardRoute
   AppIndexRoute: typeof AppIndexRoute
 }
 
 const AppRouteRouteChildren: AppRouteRouteChildren = {
+  AppBranchesRouteRoute: AppBranchesRouteRouteWithChildren,
   AppDummiesRouteRoute: AppDummiesRouteRouteWithChildren,
   AppDashboardRoute: AppDashboardRoute,
   AppIndexRoute: AppIndexRoute,
