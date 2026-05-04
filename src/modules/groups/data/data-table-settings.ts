@@ -1,0 +1,102 @@
+import type { Group } from '@/modules/groups/types';
+import type { ColumnDef, VisibilityState } from '@tanstack/react-table';
+
+import { DataTableCell } from '@/core/components/data/data-table-cell';
+import { DataTableHeader } from '@/core/components/data/data-table-header';
+import { DataTableColumnType } from '@/core/constants/data-table';
+import { DateTableWeekdayCell } from '@/modules/groups/componentes/data/date-table-weekday-cell';
+import { GroupActions } from '@/modules/groups/componentes/group-actions';
+
+export const groupsTableColumns: ColumnDef<Group>[] = [
+  {
+    accessorKey: 'id',
+    meta: {
+      headerI18nKey: 'groups:attribs.id',
+      columnType: DataTableColumnType.ID,
+    },
+    header: DataTableHeader,
+    cell: DataTableCell,
+    enableHiding: false,
+  },
+  {
+    accessorKey: 'name',
+    meta: {
+      headerI18nKey: 'groups:attribs.name',
+      columnType: DataTableColumnType.TEXT,
+    },
+    header: DataTableHeader,
+    cell: DataTableCell,
+    enableHiding: false,
+  },
+  {
+    accessorKey: 'weekday',
+    meta: {
+      headerI18nKey: 'groups:attribs.weekday',
+    },
+    header: DataTableHeader,
+    cell: DateTableWeekdayCell,
+  },
+  {
+    accessorKey: 'startTime',
+    meta: {
+      headerI18nKey: 'groups:attribs.startTime',
+      columnType: DataTableColumnType.TEXT,
+    },
+    header: DataTableHeader,
+    cell: DataTableCell,
+  },
+  {
+    accessorKey: 'durationMinutes',
+    meta: {
+      headerI18nKey: 'groups:attribs.duration',
+      columnType: DataTableColumnType.NUMBER,
+    },
+    header: DataTableHeader,
+    cell: DataTableCell,
+  },
+  {
+    accessorKey: 'cycleId',
+    meta: {
+      headerI18nKey: 'groups:attribs.cycle',
+      columnType: DataTableColumnType.NUMBER,
+    },
+    header: DataTableHeader,
+    cell: DataTableCell,
+  },
+  {
+    accessorKey: 'status',
+    meta: {
+      headerI18nKey: 'groups:attribs.status',
+      columnType: DataTableColumnType.STATUS,
+    },
+    header: DataTableHeader,
+    cell: DataTableCell,
+  },
+  {
+    accessorKey: 'createdAt',
+    meta: {
+      headerI18nKey: 'groups:attribs.createdAt',
+      columnType: DataTableColumnType.DATETIME,
+    },
+    header: DataTableHeader,
+    cell: DataTableCell,
+  },
+  {
+    accessorKey: 'deletedAt',
+    meta: {
+      headerI18nKey: 'groups:attribs.deletedAt',
+      columnType: DataTableColumnType.DATETIME,
+    },
+    header: DataTableHeader,
+    cell: DataTableCell,
+  },
+  {
+    id: 'actions',
+    cell: GroupActions,
+    enableHiding: false,
+  },
+];
+
+export const groupsColumnsDefaultState: VisibilityState = {
+  deletedAt: false,
+};
