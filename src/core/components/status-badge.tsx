@@ -67,6 +67,11 @@ export function StatusBadge({ status }: StatusBadgeProps) {
       children: t('constants.status.canceled'),
       icon: ProhibitIcon,
     },
+    cancelled: {
+      variant: 'destructive',
+      children: t('constants.status.cancelled'),
+      icon: ProhibitIcon,
+    },
     failed: {
       variant: 'destructive',
       children: t('constants.status.failed'),
