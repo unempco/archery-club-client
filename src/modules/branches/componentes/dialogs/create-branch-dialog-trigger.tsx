@@ -25,12 +25,13 @@ export function CreateBranchDialogTrigger({
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent className="sm:max-w-lg">
         <DialogHeader>
-          <DialogTitle>{t('branches:actions.addNew')}</DialogTitle>
+          <DialogTitle>{t('branches:forms.add.title')}</DialogTitle>
         </DialogHeader>
         <CreateBranchForm
           onSubmit={(data) => mutation.mutate(data)}
           onCancel={() => onOpenChange(false)}
           isLoading={mutation.isPending}
+          submitLabel={t('actions.create')}
         />
       </DialogContent>
     </Dialog>

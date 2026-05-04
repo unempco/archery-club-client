@@ -7,11 +7,18 @@ export const branches = {
     maintenanceThreshold: 'Uso máximo de las dianas (sesiones)',
     maintenanceWarningOffset: 'Sesiones de advertencia',
   },
-  actions: {
-    addNew: 'Agregar nueva locación',
-    edit: 'Editar locación',
-  },
+  actions: {},
   dialogs: {},
   filters: {},
-  forms: {},
+  forms: {
+    add: {
+      title: 'Crear locación',
+    },
+    edit: {
+      title: 'Editar locación',
+    },
+    placeholders: {
+      name: 'Ej. "San Felipe"',
+    },
+  },
 };

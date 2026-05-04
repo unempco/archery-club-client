@@ -1,10 +1,30 @@
 export const targets = {
-  name: 'Objetivos',
-  name_one: 'Objetivo',
-  name_other: 'Objetivos',
-  attribs: {},
+  name: 'Dianas',
+  name_one: 'Diana',
+  name_other: 'Dianas',
+  attribs: {
+    usageCount: 'Veces usado',
+    branch: 'Locación',
+  },
   actions: {},
+  constants: {
+    status: {
+      retired: 'Retirado',
+      underMaintenance: 'En mantenimiento',
+    },
+  },
   dialogs: {},
   filters: {},
-  forms: {},
+  forms: {
+    add: {
+      title: 'Añadir diana',
+    },
+    edit: {
+      title: 'Editar diana',
+    },
+    placeholders: {
+      name: 'Ej. "DIA-001"',
+      branch: 'Seleccionan una locación',
+    },
+  },
 };

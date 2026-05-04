@@ -55,18 +55,18 @@ export const branchesTableColumns: ColumnDef<Branch>[] = [
     cell: DataTableCell,
   },
   {
-    accessorKey: 'createdAt',
+    accessorKey: 'closedAt',
     meta: {
-      headerI18nKey: 'branches:attribs.createdAt',
+      headerI18nKey: 'branches:attribs.closedAt',
       columnType: DataTableColumnType.DATETIME,
     },
     header: DataTableHeader,
     cell: DataTableCell,
   },
   {
-    accessorKey: 'closedAt',
+    accessorKey: 'createdAt',
     meta: {
-      headerI18nKey: 'branches:attribs.closedAt',
+      headerI18nKey: 'branches:attribs.createdAt',
       columnType: DataTableColumnType.DATETIME,
     },
     header: DataTableHeader,
@@ -80,10 +80,5 @@ export const branchesTableColumns: ColumnDef<Branch>[] = [
 ];
 
 export const branchesColumnsDefaultState: VisibilityState = {
-  name: true,
-  status: true,
-  maintenanceThreshold: true,
-  maintenanceWarningOffset: true,
-  created_at: true,
-  closedAt: true,
+  deletedAt: false,
 };
