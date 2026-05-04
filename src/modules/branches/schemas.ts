@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
-import { ItemStatus } from '@/core/constants/misc';
 import { paginationSearchSchema } from '@/core/types/search-params';
+import { branchStatuses } from '@/modules/branches/constants';
 
 export const branchSchema = z.object({
   // Server-generated fields
@@ -12,7 +12,7 @@ export const branchSchema = z.object({
   isDeleted: z.boolean(),
   // Form field
   name: z.string().min(1, 'Name is required'),
-  status: z.enum([ItemStatus.ACTIVE, ItemStatus.CLOSED]),
+  status: z.enum(branchStatuses),
   maintenanceThreshold: z
     .int()
     .min(0, 'Maintenance threshold must be non-negative'),

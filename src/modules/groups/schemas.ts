@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
-import { ItemStatus } from '@/core/constants/misc';
 import { paginationSearchSchema } from '@/core/types/search-params';
+import { groupStatuses } from '@/modules/groups/constants';
 
 export const groupSchema = z.object({
   // Server-generated fields
@@ -9,7 +9,7 @@ export const groupSchema = z.object({
   isDeleted: z.boolean(),
   deletedAt: z.string().nullable(),
   createdAt: z.string(),
-  status: z.enum([ItemStatus.ACTIVE, ItemStatus.INACTIVE]),
+  status: z.enum(groupStatuses),
   // Form fields
   name: z.string(),
   cycleId: z.coerce.number(),

@@ -10,8 +10,8 @@ import { FormSelect } from '@/core/components/form-fields/form-select';
 import { Button } from '@/core/components/ui/button';
 import { FieldGroup } from '@/core/components/ui/field';
 import { Spinner } from '@/core/components/ui/spinner';
-import { ItemStatus } from '@/core/constants/misc';
 import { convertCase } from '@/core/lib/utils';
+import { BranchStatus, branchStatuses } from '@/modules/branches/constants';
 import { updateBranchFormSchema } from '@/modules/branches/schemas';
 
 export function UpdateBranchForm({
@@ -28,13 +28,13 @@ export function UpdateBranchForm({
     defaultValues: {
       ...defaultValues,
       status: convertCase(
-        defaultValues?.status ?? ItemStatus.ACTIVE,
+        defaultValues?.status ?? BranchStatus.ACTIVE,
       ) as UpdateBranchFormData['status'],
     },
   });
 
   const isSubmitting = form.formState.isSubmitting || isLoading;
-  const statusOptions = [ItemStatus.ACTIVE, ItemStatus.CLOSED].map((s) => ({
+  const statusOptions = branchStatuses.map((s) => ({
     value: s,
     label: t(`constants.status.${s}`),
   }));

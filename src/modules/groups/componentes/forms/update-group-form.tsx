@@ -10,8 +10,8 @@ import { FormSelect } from '@/core/components/form-fields/form-select';
 import { Button } from '@/core/components/ui/button';
 import { FieldGroup } from '@/core/components/ui/field';
 import { Spinner } from '@/core/components/ui/spinner';
-import { ItemStatus } from '@/core/constants/misc';
 import { convertCase } from '@/core/lib/utils';
+import { GroupStatus, groupStatuses } from '@/modules/groups/constants';
 import { updateGroupFormSchema } from '@/modules/groups/schemas';
 
 export function UpdateGroupForm({
@@ -28,13 +28,13 @@ export function UpdateGroupForm({
     defaultValues: {
       ...defaultValues,
       status: convertCase(
-        defaultValues?.status ?? ItemStatus.ACTIVE,
+        defaultValues?.status ?? GroupStatus.ACTIVE,
       ) as UpdateGroupFormData['status'],
     },
   });
 
   const isSubmitting = form.formState.isSubmitting || isLoading;
-  const statusOptions = [ItemStatus.ACTIVE, ItemStatus.INACTIVE].map((s) => ({
+  const statusOptions = groupStatuses.map((s) => ({
     value: s,
     label: t(`constants.status.${s}`),
   }));

@@ -9,8 +9,8 @@ import { FormSelect } from '@/core/components/form-fields/form-select';
 import { Button } from '@/core/components/ui/button';
 import { FieldGroup } from '@/core/components/ui/field';
 import { Spinner } from '@/core/components/ui/spinner';
-import { ItemStatus } from '@/core/constants/misc';
 import { convertCase } from '@/core/lib/utils';
+import { CycleStatus, cycleStatuses } from '@/modules/cycles/constants';
 import { updateCycleFormSchema } from '@/modules/cycles/schemas';
 
 export function UpdateCycleForm({
@@ -27,17 +27,13 @@ export function UpdateCycleForm({
     defaultValues: {
       ...defaultValues,
       status: convertCase(
-        defaultValues?.status ?? ItemStatus.ACTIVE,
+        defaultValues?.status ?? CycleStatus.ACTIVE,
       ) as UpdateCycleFormData['status'],
     },
   });
 
   const isSubmitting = form.formState.isSubmitting || isLoading;
-  const statusOptions = [
-    ItemStatus.ACTIVE,
-    ItemStatus.COMPLETED,
-    ItemStatus.CANCELLED,
-  ].map((s) => ({
+  const statusOptions = cycleStatuses.map((s) => ({
     value: s,
     label: t(`constants.status.${s}`),
   }));

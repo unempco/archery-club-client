@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
-import { ItemStatus } from '@/core/constants/misc';
 import { paginationSearchSchema } from '@/core/types/search-params';
+import { cycleStatuses } from '@/modules/cycles/constants';
 
 export const cycleSchema = z.object({
   // Server-generated fields
@@ -14,11 +14,7 @@ export const cycleSchema = z.object({
   branchId: z.coerce.number(),
   startDate: z.coerce.date(),
   sessionCount: z.number(),
-  status: z.enum([
-    ItemStatus.ACTIVE,
-    ItemStatus.COMPLETED,
-    ItemStatus.CANCELLED,
-  ]),
+  status: z.enum(cycleStatuses),
 });
 
 export const createCycleFormSchema = cycleSchema.pick({
