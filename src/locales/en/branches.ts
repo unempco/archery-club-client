@@ -7,11 +7,18 @@ export const branches = {
     maintenanceThreshold: 'Maximum Target Usage (sessions)',
     maintenanceWarningOffset: 'Warning Sessions',
   },
-  actions: {
-    addNew: 'Add New Branch',
-    edit: 'Edit Branch',
-  },
+  actions: {},
   dialogs: {},
   filters: {},
-  forms: {},
+  forms: {
+    add: {
+      title: 'Create Branch',
+    },
+    edit: {
+      title: 'Edit Branch',
+    },
+    placeholders: {
+      name: 'e.g. "San Felipe"',
+    },
+  },
 };

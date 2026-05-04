@@ -48,6 +48,7 @@ export function UpdateBranchForm({
           control={form.control}
           name="name"
           label={t('branches:attribs.name')}
+          placeholder={t('branches:forms.placeholders.name')}
           disabled={isSubmitting}
         />
 
@@ -55,6 +56,7 @@ export function UpdateBranchForm({
           control={form.control}
           name="status"
           label={t('branches:attribs.status')}
+          placeholder={t('branches:forms.placeholders.status')}
           options={statusOptions}
           disabled={isSubmitting}
         />

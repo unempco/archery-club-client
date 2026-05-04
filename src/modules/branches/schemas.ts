@@ -8,6 +8,8 @@ export const branchSchema = z.object({
   id: z.number(),
   createdAt: z.string(),
   closedAt: z.string().nullable(),
+  deletedAt: z.string().nullable(),
+  isDeleted: z.boolean(),
   // Form field
   name: z.string().min(1, 'Name is required'),
   status: z.enum([ItemStatus.ACTIVE, ItemStatus.CLOSED]),

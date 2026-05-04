@@ -41,6 +41,7 @@ export function CreateBranchForm({
           control={form.control}
           name="name"
           label={t('branches:attribs.name')}
+          placeholder={t('branches:forms.placeholders.name')}
           disabled={isSubmitting}
         />
 

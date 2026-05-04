@@ -28,7 +28,7 @@ export function UpdateBranchDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-lg">
         <DialogHeader>
-          <DialogTitle>{t('branches:actions.edit')}</DialogTitle>
+          <DialogTitle>{t('branches:forms.edit.title')}</DialogTitle>
         </DialogHeader>
         <UpdateBranchForm
           defaultValues={branch}
