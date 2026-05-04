@@ -8,6 +8,7 @@ export const cycleSchema = z.object({
   id: z.number(),
   isDeleted: z.boolean(),
   deletedAt: z.string().nullable(),
+  createdAt: z.string(),
   // Form fields
   name: z.string(),
   branchId: z.coerce.number(),

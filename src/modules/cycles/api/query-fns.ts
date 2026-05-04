@@ -4,6 +4,7 @@ import type {
   CyclesSearchParams,
   UpdateCycleFormData,
 } from '@/modules/cycles/types';
+import type { Lookup } from '@/modules/shared/types';
 
 import api from '@/core/api';
 import { BRANCHES_MODULE_NAME } from '@/modules/branches/api/query-fns';
@@ -11,7 +12,7 @@ import { BRANCHES_MODULE_NAME } from '@/modules/branches/api/query-fns';
 export const CYCLES_MODULE_NAME = 'cycles';
 
 export async function getAllCycles() {
-  return await api.get(`/${CYCLES_MODULE_NAME}/lookup`);
+  return await api.get<Lookup[]>(`/${CYCLES_MODULE_NAME}/lookup`);
 }
 
 export async function getCyclesList(cyclesSearchParams: CyclesSearchParams) {

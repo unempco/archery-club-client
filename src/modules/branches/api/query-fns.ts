@@ -4,13 +4,14 @@ import type {
   CreateBranchFormData,
   UpdateBranchFormData,
 } from '@/modules/branches/types';
+import type { Lookup } from '@/modules/shared/types';
 
 import api from '@/core/api';
 
 export const BRANCHES_MODULE_NAME = 'branches';
 
 export async function getAllBranches() {
-  return await api.get<Branch[]>(`/${BRANCHES_MODULE_NAME}/lookup`);
+  return await api.get<Lookup[]>(`/${BRANCHES_MODULE_NAME}/lookup`);
 }
 
 export async function getBranchesList(

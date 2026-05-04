@@ -90,7 +90,10 @@ export function UpdateBranchForm({
               {t('actions.cancel')}
             </Button>
           )}
-          <Button type="submit" disabled={isSubmitting}>
+          <Button
+            type="submit"
+            disabled={isSubmitting || !form.formState.isDirty}
+          >
             {isSubmitting && <Spinner />}
             {submitLabel ?? t('actions.save')}
           </Button>

@@ -46,19 +46,19 @@ export const cyclesTableColumns: ColumnDef<Cycle>[] = [
     cell: DataTableCell,
   },
   {
-    accessorKey: 'status',
+    accessorKey: 'branchId',
     meta: {
-      headerI18nKey: 'cycles:attribs.status',
-      columnType: DataTableColumnType.STATUS,
+      headerI18nKey: 'cycles:attribs.branch',
+      columnType: DataTableColumnType.NUMBER,
     },
     header: DataTableHeader,
     cell: DataTableCell,
   },
   {
-    accessorKey: 'branchId',
+    accessorKey: 'status',
     meta: {
-      headerI18nKey: 'cycles:attribs.branch',
-      columnType: DataTableColumnType.NUMBER,
+      headerI18nKey: 'cycles:attribs.status',
+      columnType: DataTableColumnType.STATUS,
     },
     header: DataTableHeader,
     cell: DataTableCell,
@@ -88,4 +88,6 @@ export const cyclesTableColumns: ColumnDef<Cycle>[] = [
   },
 ];
 
-export const cyclesColumnsDefaultState: VisibilityState = {};
+export const cyclesColumnsDefaultState: VisibilityState = {
+  deletedAt: false,
+};
