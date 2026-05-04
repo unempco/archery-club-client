@@ -153,6 +153,7 @@ export const core = {
       waiting: 'Esperando',
       scheduled: 'Programado',
       canceled: 'Cancelado',
+      cancelled: 'Cancelado',
       failed: 'Fallido',
       confirmed: 'Confirmado',
       pending: 'Pendiente',
