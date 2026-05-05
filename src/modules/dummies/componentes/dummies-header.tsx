@@ -1,3 +1,5 @@
+import type { Dummy } from '@/modules/dummies/types';
+
 import { FolderPlusIcon, PlusIcon } from '@phosphor-icons/react';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
@@ -21,7 +23,12 @@ export function DummiesHeader({ selectedItems }: DummiesHeaderProps) {
         variant="secondary"
         size="icon"
         disabled={!selectedItems?.length}
-        onClick={() => toast.info(JSON.stringify(selectedItems))}
+        onClick={() => {
+          toast.info(
+            'Selected items: ' + selectedItems.map((d) => d.name).join(', '),
+          );
+          console.log(selectedItems);
+        }}
       >
         <FolderPlusIcon />
       </Button>
@@ -30,5 +37,5 @@ export function DummiesHeader({ selectedItems }: DummiesHeaderProps) {
 }
 
 export type DummiesHeaderProps = {
-  selectedItems: string[];
+  selectedItems: Dummy[];
 };

@@ -1,5 +1,5 @@
-import type { DummiesSearchParams } from '@/modules/dummies/types';
-import type { RowSelectionState, VisibilityState } from '@tanstack/react-table';
+import type { DummiesSearchParams, Dummy } from '@/modules/dummies/types';
+import type { VisibilityState } from '@tanstack/react-table';
 
 import { useState } from 'react';
 import { useSuspenseQuery } from '@tanstack/react-query';
@@ -38,19 +38,17 @@ function RouteComponent() {
     dummiesColumnsDefaultState,
   );
 
-  const [rowSelection, setRowSelection] = useState<RowSelectionState>({});
-
-  console.log(rowSelection);
+  const [selectedItems, setSelectedItems] = useState<Dummy[]>([]);
 
   return (
     <div className="min-h-full flex flex-col gap-4">
-      <DummiesHeader selectedItems={Object.keys(rowSelection)} />
+      <DummiesHeader selectedItems={selectedItems} />
       <DataTable
         data={data.items}
         columns={dummiesTableColumns}
         columnVisibility={columnVisibility}
-        rowSelection={rowSelection}
-        setRowSelection={setRowSelection}
+        selectedItems={selectedItems}
+        setSelectedItems={setSelectedItems}
         setColumnVisibility={setColumnVisibility}
         headerSlot={<DataSearch />}
       />
