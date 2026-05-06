@@ -12,6 +12,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { I18nextProvider, useTranslation } from 'react-i18next';
 
 import i18n from '@/i18n';
+import { AppRouteError } from '@/layout/components/app-route-error';
 import { ThemeProvider } from '@/layout/contexts/theme-provider';
 import { AuthProvider } from '@/modules/auth/contexts/auth-provider';
 import { useAuth } from '@/modules/auth/hooks/use-auth';
@@ -39,6 +40,8 @@ const router = createRouter({
   // This will ensure that the loader is always called when the route is preloaded or visited
   defaultPreloadStaleTime: 0,
   scrollRestoration: true,
+  defaultErrorComponent: AppRouteError,
+  defaultNotFoundComponent: () => <AppRouteError />,
 });
 
 // Register the router instance for type safety

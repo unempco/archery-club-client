@@ -3,7 +3,6 @@ import { createFileRoute, Outlet, redirect } from '@tanstack/react-router';
 import { NavigationProgress } from '@/core/components/navigation-progress';
 import { SidebarInset, SidebarProvider } from '@/core/components/ui/sidebar';
 import { AppHeader } from '@/layout/components/app-header';
-import { NotFoundComponent } from '@/layout/components/not-found-component';
 import { SidebarPrimary } from '@/layout/components/sidebar-primary';
 import { createRouteHead } from '@/layout/lib/create-route-head';
 import { sessionQueryOptions } from '@/modules/auth/api/query-options';
@@ -24,8 +23,6 @@ export const Route = createFileRoute('/app')({
     titleI18nKey: 'layout:navigation.home',
   }),
   component: AppLayout,
-  notFoundComponent: NotFoundComponent,
-  errorComponent: () => <p>Ocurrió un error</p>,
 });
 
 function AppLayout() {
