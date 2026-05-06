@@ -3,7 +3,6 @@ import type { CellContext } from '@tanstack/react-table';
 
 import { useState } from 'react';
 import { DotsThreeIcon, PencilIcon, TrashIcon } from '@phosphor-icons/react';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
 
 import { DeleteConfirmationDialog } from '@/core/components/delete-confirmation-dialog';
@@ -15,26 +14,16 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/core/components/ui/dropdown-menu';
-import { onMutationError, onMutationSuccess } from '@/core/lib/mutation-toast';
-import { deleteDummyMutationOptions } from '@/modules/dummies/api/query-options';
 import { UpdateDummyDialog } from '@/modules/dummies/componentes/dialogs/update-dummy-dialog';
+import { useDeleteDummy } from '@/modules/dummies/hooks/dummy-actions';
 
 export function DummyActions({ row }: DataActionsProps) {
   const { t } = useTranslation();
-  const queryClient = useQueryClient();
   const [confirmOpen, setConfirmOpen] = useState(false);
   const [editOpen, setEditOpen] = useState(false);
 
   const dummy = row.original;
-
-  const deleteMutation = useMutation({
-    ...deleteDummyMutationOptions(dummy.id),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['dummies'] });
-      onMutationSuccess(t, 'messages.wasDeleted')();
-    },
-    onError: onMutationError(t),
-  });
+  const deleteMutation = useDeleteDummy({ dummyId: dummy.id });
 
   return (
     <>

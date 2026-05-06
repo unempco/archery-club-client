@@ -47,7 +47,7 @@ export const dummiesTableColumns: ColumnDef<Dummy>[] = [
     accessorKey: 'key',
     meta: {
       headerI18nKey: 'dummies:fields.key',
-      columnType: DataTableColumnType.BADGES,
+      columnType: DataTableColumnType.KEY,
     },
     header: DataTableHeader,
     cell: DataTableCell,
