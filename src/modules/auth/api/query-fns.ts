@@ -1,12 +1,20 @@
 import type { LoginData, User } from '@/modules/auth/types';
 
 import { sleep } from '@/core/lib/utils';
-import { getAccessToken } from '@/modules/auth/lib/token';
+import {
+  getAccessToken,
+  removeRefreshToken,
+  setAccessToken,
+  setRefreshToken,
+} from '@/modules/auth/lib/token';
 
 export async function login(data: LoginData): Promise<User> {
   await sleep(500);
 
   if (data.email === 'admin@example.com' && data.password === 'adminadmin') {
+    setAccessToken('mock-jwt-token');
+    setRefreshToken('mock-jwt-refresh');
+
     return {
       id: 'skKjd78a-#',
       username: 'admin',
@@ -24,6 +32,9 @@ export async function login(data: LoginData): Promise<User> {
 
 export async function logout(): Promise<void> {
   await sleep(500);
+
+  removeRefreshToken();
+  removeRefreshToken();
 
   return;
 }
