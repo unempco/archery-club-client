@@ -1,7 +1,9 @@
 export const shared = {
-  attribs: {
+  fields: {
     id: 'ID',
     key: 'Key',
+    name: 'Name',
+    title: 'Title',
     status: 'Status',
     type: 'Type',
     registeredAt: 'Registered at',
@@ -10,20 +12,24 @@ export const shared = {
     deletedAt: 'Deleted at',
     scheduledAt: 'Scheduled at',
     createdBy: 'Created by',
-    name: 'Name',
     description: 'Description',
     notes: 'Notes',
     actions: 'Actions',
   },
   actions: {
+    accept: 'Accept',
+    cancel: 'Cancel',
+    next: 'Next',
+    back: 'Back',
     // Items actions
     save: 'Save',
-    cancel: 'Cancel',
     add: 'Add',
+    addNew: 'Add new',
+    create: 'Create',
     remove: 'Remove',
     delete: 'Delete',
-    edit: 'Edit',
     update: 'Update',
+    edit: 'Edit',
     enable: 'Enable',
     disable: 'Disable',
     restore: 'Restore',
@@ -31,19 +37,8 @@ export const shared = {
     register: 'Register',
     hardDelete: 'Hard delete',
     view: 'View',
-    // Content table actions
-    create: 'Create',
-    addNew: 'Add new',
-    reload: 'Reload',
-    search: 'Search',
-    clearFilters: 'Clear filters',
-    selectColumns: 'Select columns',
-    downloadReport: 'Download report',
-    // Navigation actions
-    backTo: 'Back to',
-    backToHome: 'Back to home',
     // Misc
-    seeTable: 'See table',
+    clear: 'Clear',
     clearAll: 'Clear all',
     generate: 'Generate',
     insert: 'Insert',
@@ -86,15 +81,6 @@ export const shared = {
     search: 'Search',
   },
   messages: {
-    // Dialog navigations
-    accept: 'Accept',
-    cancel: 'Cancel',
-    next: 'Next',
-    back: 'Back',
-    // Confirm dialog
-    requiredConfirmation: 'Required confirmation',
-    areYouSureDelete: 'Are you sure you want to delete this element?',
-    areYouSureContinue: 'Are you sure you want to continue?',
     // Toast messages
     wasCreated: 'Element created successfully',
     wasNotCreated: 'The element could not be created',
@@ -107,18 +93,5 @@ export const shared = {
     wasDrafted: 'Element drafted successfully',
     wasNotDrafted: 'The element could not be drafted',
     actionCompleted: 'Action completed successfully',
-    unableToHandleAction: 'Unable to handle the action',
-    // Tables not found items
-    tryAgainLater: 'Try again later',
-    noResultsFound: 'No results found',
-    tryRemovingFilters: 'Try removing all filters',
-    unexpectedError: 'An unexpected error has occurred',
-    loadingDataError: 'An error has occurred loading the data',
-    // Invalid files messages
-    fileSizeInvalid: 'File size should be smaller than',
-    fileTypeInvalid: 'File type should be',
-    // Misc
-    noAvailableOptions: 'No available options',
-    selectedItems: '{count} selected item | {count} selected items',
   },
 };

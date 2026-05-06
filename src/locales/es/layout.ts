@@ -2,6 +2,10 @@ export const layout = {
   theme: 'Tema',
   scale: 'Escala',
   language: 'Lenguaje',
+  actions: {
+    backTo: 'Volver a',
+    backToHome: 'Volver al inicio',
+  },
   themes: {
     dark: 'Oscuro',
     light: 'Claro',
@@ -18,13 +22,12 @@ export const layout = {
     spanish: 'Español',
     english: 'Inglés',
   },
-  navItems: {
+  navigation: {
     home: 'Inicio',
     tools: 'Herramientas',
     admin: 'Administrador',
-    dashboard: 'Dashboard',
+    dashboard: 'Panel de control',
     settings: 'Configuración',
     getHelp: 'Obtener ayuda',
-    dummies: 'Dummies',
   },
 };

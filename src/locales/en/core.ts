@@ -14,6 +14,27 @@ export const core = {
     goToNextPage: 'Go to next page',
     goToLastPage: 'Go to last page',
   },
+  messages: {
+    // Tables not found items
+    tryAgainLater: 'Try again later',
+    noResultsFound: 'No results found',
+    tryRemovingFilters: 'Try removing all filters',
+    unexpectedError: 'An unexpected error has occurred',
+    loadingDataError: 'An error has occurred loading the data',
+    // Invalid files messages
+    fileSizeInvalid: 'File size should be smaller than',
+    fileTypeInvalid: 'File type should be',
+    // Misc
+    noAvailableOptions: 'No available options',
+    selectedItems_one: '{{count}} selected item',
+    selectedItems_other: '{{count}} selected items',
+    // Generic confirm dialog
+    requiredConfirmation: 'Required confirmation',
+    areYouSureDelete: 'Are you sure you want to delete this element?',
+    areYouSureContinue: 'Are you sure you want to continue?',
+    // Generic mutation error message
+    unableToHandleAction: 'Unable to handle the action',
+  },
   nouns: {
     filter: 'Filter',
     filters: 'Filters',

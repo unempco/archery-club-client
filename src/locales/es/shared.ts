@@ -1,7 +1,9 @@
 export const shared = {
-  attribs: {
+  fields: {
     id: 'ID',
     key: 'Clave',
+    name: 'Nombre',
+    title: 'Titúlo',
     status: 'Estado',
     type: 'Tipo',
     registeredAt: 'Registrado en',
@@ -10,20 +12,24 @@ export const shared = {
     deletedAt: 'Eliminado en',
     scheduledAt: 'Programado en',
     createdBy: 'Creado por',
-    name: 'Nombre',
     description: 'Descripción',
     notes: 'Notas',
     actions: 'Acciones',
   },
   actions: {
+    accept: 'Aceptar',
+    cancel: 'Cancelar',
+    next: 'Siguiente',
+    back: 'Regresar',
     // Items actions
     save: 'Guardar',
-    cancel: 'Cancelar',
     add: 'Añadir',
+    addNew: 'Añadir nuevo',
+    create: 'Crear',
     remove: 'Remover',
     delete: 'Eliminar',
-    edit: 'Editar',
     update: 'Actualizar',
+    edit: 'Editar',
     enable: 'Habilitar',
     disable: 'Deshabilitar',
     unassign: 'Desasignar',
@@ -31,19 +37,8 @@ export const shared = {
     register: 'Registrar',
     hardDelete: 'Eliminar permanentemente',
     view: 'Ver',
-    // Content table actions
-    create: 'Crear',
-    addNew: 'Añadir nuevo',
-    reload: 'Recargar',
-    search: 'Buscar',
-    clearFilters: 'Limpiar filtros',
-    selectColumns: 'Selecciona columnas',
-    downloadReport: 'Descargar reporte',
-    // Navigations actions
-    backTo: 'Volver a',
-    backToHome: 'Volver al inicio',
     // Misc
-    seeTable: 'Ver tabla',
+    clear: 'Limpiar',
     clearAll: 'Limpiar todo',
     generate: 'Generar',
     insert: 'Insertar',
@@ -85,15 +80,6 @@ export const shared = {
     search: 'Búsqueda',
   },
   messages: {
-    // Dialog navigations
-    accept: 'Aceptar',
-    cancel: 'Cancelar',
-    next: 'Siguiente',
-    back: 'Atrás',
-    // Confirm dialog
-    requiredConfirmation: 'Confirmación requerida',
-    areYouSureDelete: '¿Estas seguro que deseas eliminar este elemento?',
-    areYouSureContinue: '¿Estas seguro que deseas continuar?',
     // Toast messages
     wasCreated: 'Elemento creado exitosamente',
     wasNotCreated: 'El elemento no pudo ser creado',
@@ -106,19 +92,5 @@ export const shared = {
     wasDrafted: 'Elemento convertido a borrador exitosamente',
     wasNotDrafted: 'El elemento no se pudo convertir en borrador',
     actionCompleted: 'Acción completada exitosamente',
-    unableToHandleAction: 'No se pudo manejar la acción',
-    // Tables not found items
-    tryAgainLater: 'Intente de nuevo mas tarde',
-    noResultsFound: 'No se encontraron resultados',
-    tryRemovingFilters: 'Prueba eliminando los filtros',
-    unexpectedError: 'Ha sucedido un error inesperado',
-    loadingDataError: 'Un error ha ocurrido cargando los datos',
-    // Invalid files messages
-    fileSizeInvalid: 'El tamaño del archivo debería ser menor que',
-    fileTypeInvalid: 'El tipo del archivo debería ser',
-    // Misc
-    noAvailableOptions: 'No hay opciones disponibles',
-    selectedItems:
-      '{count} elemento seleccionado | {count} elementos seleccionados',
   },
 };
