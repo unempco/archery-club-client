@@ -1,4 +1,3 @@
-// core/lib/mutation-toast.ts
 import type { TFunction } from 'i18next';
 
 import { toast } from 'sonner';
@@ -18,11 +17,4 @@ export function onMutationError(
       toast.error(t(fallbackKey));
     }
   };
-}
-
-export function onMutationSuccess(
-  t: TFunction,
-  fallbackKey = 'messages.wasUpdated',
-) {
-  return () => toast.success(t(fallbackKey));
 }
