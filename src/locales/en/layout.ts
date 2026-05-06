@@ -3,6 +3,7 @@ export const layout = {
   scale: 'Scale',
   language: 'Language',
   actions: {
+    goHome: 'Go Home',
     backTo: 'Back to',
     backToHome: 'Back to home',
   },
@@ -29,5 +30,14 @@ export const layout = {
     dashboard: 'Dashboard',
     settings: 'Settings',
     getHelp: 'Get Help',
+  },
+  errors: {
+    notFound: 'Página no encontrada',
+    notFoundDetail: 'La página que buscas no existe o ha sido trasladada.',
+    unexpectedError: 'Algo salió mal',
+    unexpectedErrorDetail:
+      'Ocurrió un error inesperado. Por favor, inténtalo de nuevo o regresa.',
+    goBack: 'Regresar',
+    tryAgain: 'Intentar de nuevo',
   },
 };

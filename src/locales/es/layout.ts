@@ -3,6 +3,7 @@ export const layout = {
   scale: 'Escala',
   language: 'Lenguaje',
   actions: {
+    goHome: 'Volver a inicio',
     backTo: 'Volver a',
     backToHome: 'Volver al inicio',
   },
@@ -29,5 +30,15 @@ export const layout = {
     dashboard: 'Panel de control',
     settings: 'Configuración',
     getHelp: 'Obtener ayuda',
+  },
+  errors: {
+    generic: {
+      title: 'Algo salió mal',
+      description: 'Se produjo un error inesperado. ',
+    },
+    notFound: {
+      title: 'Página no encontrada',
+      description: 'La página que buscas no existe o ha sido movida.',
+    },
   },
 };
