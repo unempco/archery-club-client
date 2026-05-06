@@ -133,7 +133,7 @@ export function DataTable<TData>({
                   colSpan={columns.length}
                   className="h-24 text-center"
                 >
-                  {t('dialogs.noResultsFound')}
+                  {t('core:messages.noResultsFound')}
                 </TableCell>
               </TableRow>
             )}

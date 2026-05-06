@@ -24,7 +24,7 @@ export function CreateDummyDialogTrigger({ children }: CreateDummyDialogProps) {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['dummies'] });
       onOpenChange(false);
-      onMutationSuccess(t, 'dialogs.wasCreated')();
+      onMutationSuccess(t, 'messages.wasCreated')();
     },
     onError: onMutationError(t),
   });

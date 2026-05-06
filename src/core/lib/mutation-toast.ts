@@ -7,7 +7,7 @@ import { NotOkResponseError } from '@/core/errors';
 
 export function onMutationError(
   t: TFunction,
-  fallbackKey = 'dialogs.unableToHandleAction',
+  fallbackKey = 'core:messages.unableToHandleAction',
 ) {
   return (e: Error) => {
     if (e instanceof NotOkResponseError) {
@@ -22,7 +22,7 @@ export function onMutationError(
 
 export function onMutationSuccess(
   t: TFunction,
-  fallbackKey = 'dialogs.wasUpdated',
+  fallbackKey = 'messages.wasUpdated',
 ) {
   return () => toast.success(t(fallbackKey));
 }

@@ -24,7 +24,7 @@ export const Route = createFileRoute('/app/dummies/')({
     queryClient.ensureQueryData(dummiesIndexQueryOptions(deps)),
   head: createRouteHead({
     type: 'index',
-    titleI18nKey: 'layout:navItems.dummies',
+    titleI18nKey: 'dummies:name',
   }),
   component: RouteComponent,
 });

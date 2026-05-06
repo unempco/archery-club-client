@@ -21,7 +21,7 @@ export const Route = createFileRoute('/app')({
   },
   head: createRouteHead({
     type: 'index',
-    titleI18nKey: 'layout:navItems.home',
+    titleI18nKey: 'layout:navigation.home',
   }),
   component: AppLayout,
   notFoundComponent: NotFoundComponent,

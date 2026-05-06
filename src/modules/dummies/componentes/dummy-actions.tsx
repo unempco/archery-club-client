@@ -31,7 +31,7 @@ export function DummyActions({ row }: DataActionsProps) {
     ...deleteDummyMutationOptions(dummy.id),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['dummies'] });
-      onMutationSuccess(t, 'dialogs.wasDeleted')();
+      onMutationSuccess(t, 'messages.wasDeleted')();
     },
     onError: onMutationError(t),
   });

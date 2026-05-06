@@ -18,7 +18,7 @@ export const dummiesTableColumns: ColumnDef<Dummy>[] = [
   {
     accessorKey: 'id',
     meta: {
-      headerI18nKey: 'dummies:attribs.id',
+      headerI18nKey: 'dummies:fields.id',
       columnType: DataTableColumnType.ID,
     },
     header: DataTableHeader,
@@ -28,7 +28,7 @@ export const dummiesTableColumns: ColumnDef<Dummy>[] = [
   {
     accessorKey: 'name',
     meta: {
-      headerI18nKey: 'dummies:attribs.name',
+      headerI18nKey: 'dummies:fields.name',
       columnType: DataTableColumnType.TEXT,
     },
     header: DataTableHeader,
@@ -37,7 +37,7 @@ export const dummiesTableColumns: ColumnDef<Dummy>[] = [
   {
     accessorKey: 'image',
     meta: {
-      headerI18nKey: 'dummies:attribs.image',
+      headerI18nKey: 'dummies:fields.image',
       columnType: DataTableColumnType.IMAGE,
     },
     header: DataTableHeader,
@@ -46,7 +46,7 @@ export const dummiesTableColumns: ColumnDef<Dummy>[] = [
   {
     accessorKey: 'key',
     meta: {
-      headerI18nKey: 'dummies:attribs.key',
+      headerI18nKey: 'dummies:fields.key',
       columnType: DataTableColumnType.BADGES,
     },
     header: DataTableHeader,
@@ -55,7 +55,7 @@ export const dummiesTableColumns: ColumnDef<Dummy>[] = [
   {
     accessorKey: 'email',
     meta: {
-      headerI18nKey: 'dummies:attribs.email',
+      headerI18nKey: 'dummies:fields.email',
       columnType: DataTableColumnType.EMAIL,
     },
     header: DataTableHeader,
@@ -64,7 +64,7 @@ export const dummiesTableColumns: ColumnDef<Dummy>[] = [
   {
     accessorKey: 'status',
     meta: {
-      headerI18nKey: 'dummies:attribs.status',
+      headerI18nKey: 'dummies:fields.status',
       columnType: DataTableColumnType.STATUS,
     },
     header: DataTableHeader,
@@ -73,7 +73,7 @@ export const dummiesTableColumns: ColumnDef<Dummy>[] = [
   {
     accessorKey: 'special',
     meta: {
-      headerI18nKey: 'dummies:attribs.isSpecial',
+      headerI18nKey: 'dummies:fields.isSpecial',
       columnType: DataTableColumnType.BOOLEAN,
     },
     header: DataTableHeader,
@@ -82,7 +82,7 @@ export const dummiesTableColumns: ColumnDef<Dummy>[] = [
   {
     accessorKey: 'created_at',
     meta: {
-      headerI18nKey: 'dummies:attribs.createdAt',
+      headerI18nKey: 'dummies:fields.createdAt',
       columnType: DataTableColumnType.DATETIME,
     },
     header: DataTableHeader,

@@ -52,13 +52,13 @@ export function DummyForm({
           <FormInput
             control={form.control}
             name="name"
-            label={t('dummies:attribs.name')}
+            label={t('dummies:fields.name')}
             disabled={isSubmitting}
           />
           <FormInput
             control={form.control}
             name="key"
-            label={t('dummies:attribs.key')}
+            label={t('dummies:fields.key')}
             disabled={isSubmitting}
           />
         </div>
@@ -66,7 +66,7 @@ export function DummyForm({
         <FormInput
           control={form.control}
           name="description"
-          label={t('dummies:attribs.description')}
+          label={t('dummies:fields.description')}
           disabled={isSubmitting}
         />
 
@@ -74,14 +74,14 @@ export function DummyForm({
           <FormSelect
             control={form.control}
             name="status"
-            label={t('dummies:attribs.status')}
+            label={t('dummies:fields.status')}
             options={statusOptions}
             disabled={isSubmitting}
           />
           <FormInput
             control={form.control}
             name="count"
-            label={t('dummies:attribs.count')}
+            label={t('dummies:fields.count')}
             type="number"
             disabled={isSubmitting}
           />
@@ -91,14 +91,14 @@ export function DummyForm({
           <FormInput
             control={form.control}
             name="email"
-            label={t('dummies:attribs.email')}
+            label={t('dummies:fields.email')}
             type="email"
             disabled={isSubmitting}
           />
           <FormInput
             control={form.control}
             name="price"
-            label={t('dummies:attribs.price')}
+            label={t('dummies:fields.price')}
             type="number"
             disabled={isSubmitting}
           />
@@ -108,14 +108,14 @@ export function DummyForm({
           <FormInput
             control={form.control}
             name="website"
-            label={t('dummies:attribs.website')}
+            label={t('dummies:fields.website')}
             type="url"
             disabled={isSubmitting}
           />
           <FormInput
             control={form.control}
             name="image"
-            label={t('dummies:attribs.image')}
+            label={t('dummies:fields.image')}
             type="url"
             disabled={isSubmitting}
           />
@@ -124,7 +124,7 @@ export function DummyForm({
         <FormSwitch
           control={form.control}
           name="special"
-          label={t('dummies:attribs.isSpecial')}
+          label={t('dummies:fields.isSpecial')}
           disabled={isSubmitting}
         />
 

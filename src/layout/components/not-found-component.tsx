@@ -38,7 +38,7 @@ export function NotFoundComponent() {
           <Link to="/app">
             <Button>
               <HouseIcon weight="bold" />
-              {t('actions.backToHome')}
+              {t('layout:actions.backToHome')}
             </Button>
           </Link>
         </div>

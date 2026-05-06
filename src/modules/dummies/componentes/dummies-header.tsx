@@ -12,7 +12,7 @@ export function DummiesHeader({ selectedItems }: DummiesHeaderProps) {
   const { t } = useTranslation();
 
   return (
-    <PageHeader title={t('layout:navItems.dummies')}>
+    <PageHeader title={t('dummies:name')}>
       <CreateDummyDialogTrigger>
         <Button>
           <PlusIcon />
