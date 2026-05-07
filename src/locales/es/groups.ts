@@ -2,7 +2,7 @@ export const groups = {
   name: 'Grupos',
   name_one: 'Grupo',
   name_other: 'Grupos',
-  attribs: {
+  fields: {
     weekday: 'Día de la semana',
     startTime: 'Hora de inicio',
     duration: 'Duración (minutos)',
@@ -20,7 +20,7 @@ export const groups = {
       'Sábado',
     ],
   },
-  dialogs: {},
+  messages: {},
   filters: {},
   forms: {
     add: {

@@ -2,7 +2,7 @@ export const targets = {
   name: 'Dianas',
   name_one: 'Diana',
   name_other: 'Dianas',
-  attribs: {
+  fields: {
     usageCount: 'Veces usado',
     branch: 'Locación',
   },
@@ -13,7 +13,7 @@ export const targets = {
       underMaintenance: 'En mantenimiento',
     },
   },
-  dialogs: {},
+  messages: {},
   filters: {},
   forms: {
     add: {

@@ -51,14 +51,14 @@ export function CreateCycleForm({
         <FormInput
           control={form.control}
           name="name"
-          label={t('cycles:attribs.name')}
+          label={t('cycles:fields.name')}
           placeholder={t('cycles:forms.placeholders.name')}
           disabled={isSubmitting}
         />
         <FormSelect
           control={form.control}
           name="branchId"
-          label={t('cycles:attribs.branch')}
+          label={t('cycles:fields.branch')}
           placeholder={t('cycles:forms.placeholders.branch')}
           options={branchesOptions}
           disabled={isSubmitting || !branchesSuccess}
@@ -66,12 +66,12 @@ export function CreateCycleForm({
         <FormDatePicker
           control={form.control}
           name="startDate"
-          label={t('cycles:attribs.startDate')}
+          label={t('cycles:fields.startDate')}
         />
         <FormInputNumber
           control={form.control}
           name="sessionCount"
-          label={t('cycles:attribs.sessionCount')}
+          label={t('cycles:fields.sessionCount')}
           disabled={isSubmitting}
           min={0}
           step={1}

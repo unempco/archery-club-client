@@ -22,7 +22,7 @@ export function useCreateTarget({ onSuccess }: { onSuccess: () => void }) {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['targets'] });
       onSuccess();
-      toast.success(t('targets:dialogs.wasCreated'));
+      toast.success(t('targets:messages.wasCreated'));
     },
     onError: onMutationError(t),
   });
@@ -45,7 +45,7 @@ export function useUpdateTarget({
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['targets'] });
       onSuccess();
-      toast.success(t('targets:dialogs.wasUpdated'));
+      toast.success(t('targets:messages.wasUpdated'));
     },
     onError: onMutationError(t),
   });
@@ -60,7 +60,7 @@ export function useDeleteTarget({ targetId }: { targetId: number }) {
     mutationFn: () => deleteTarget(targetId),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['targets'] });
-      toast.message(t('targets:dialogs.wasDeleted'));
+      toast.message(t('targets:messages.wasDeleted'));
     },
     onError: onMutationError(t),
   });

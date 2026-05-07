@@ -22,7 +22,7 @@ export function useCreateBranch({ onSuccess }: { onSuccess: () => void }) {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['branches'] });
       onSuccess();
-      toast.success(t('branches:dialogs.wasCreated'));
+      toast.success(t('branches:messages.wasCreated'));
     },
     onError: onMutationError(t),
   });
@@ -45,7 +45,7 @@ export function useUpdateBranch({
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['branches'] });
       onSuccess();
-      toast.success(t('branches:dialogs.wasUpdated'));
+      toast.success(t('branches:messages.wasUpdated'));
     },
     onError: onMutationError(t),
   });
@@ -60,7 +60,7 @@ export function useDeleteBranch({ branchId }: { branchId: number }) {
     mutationFn: () => deleteBranch(branchId),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['branches'] });
-      toast.message(t('branches:dialogs.wasDeleted'));
+      toast.message(t('branches:messages.wasDeleted'));
     },
     onError: onMutationError(t),
   });

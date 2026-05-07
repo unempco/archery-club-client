@@ -44,14 +44,14 @@ export function UpdateCycleForm({
         <FormInput
           control={form.control}
           name="name"
-          label={t('cycles:attribs.name')}
+          label={t('cycles:fields.name')}
           placeholder={t('cycles:forms.placeholders.name')}
           disabled={isSubmitting}
         />
         <FormSelect
           control={form.control}
           name="status"
-          label={t('cycles:attribs.status')}
+          label={t('cycles:fields.status')}
           placeholder={t('cycles:forms.placeholders.status')}
           options={statusOptions}
         />

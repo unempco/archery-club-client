@@ -22,7 +22,7 @@ export function useCreateCycle({ onSuccess }: { onSuccess: () => void }) {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['cycles'] });
       onSuccess();
-      toast.success(t('cycles:dialogs.wasCreated'));
+      toast.success(t('cycles:messages.wasCreated'));
     },
     onError: onMutationError(t),
   });
@@ -45,7 +45,7 @@ export function useUpdateCycle({
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['cycles'] });
       onSuccess();
-      toast.success(t('cycles:dialogs.wasUpdated'));
+      toast.success(t('cycles:messages.wasUpdated'));
     },
     onError: onMutationError(t),
   });
@@ -60,7 +60,7 @@ export function useDeleteCycle({ cycleId }: { cycleId: number }) {
     mutationFn: () => deleteCycle(cycleId),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['cycles'] });
-      toast.message(t('cycles:dialogs.wasDeleted'));
+      toast.message(t('cycles:messages.wasDeleted'));
     },
     onError: onMutationError(t),
   });

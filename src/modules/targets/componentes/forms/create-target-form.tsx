@@ -47,14 +47,14 @@ export function CreateTargetForm({
         <FormInput
           control={form.control}
           name="name"
-          label={t('targets:attribs.name')}
+          label={t('targets:fields.name')}
           placeholder={t('targets:forms.placeholders.name')}
           disabled={isSubmitting}
         />
         <FormSelect
           control={form.control}
           name="branchId"
-          label={t('targets:attribs.branch')}
+          label={t('targets:fields.branch')}
           placeholder={t('targets:forms.placeholders.branch')}
           options={branchesOptions}
           disabled={isSubmitting || !branchesSuccess}

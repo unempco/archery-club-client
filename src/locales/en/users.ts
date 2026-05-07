@@ -2,9 +2,9 @@ export const users = {
   name: 'Users',
   name_one: 'User',
   name_other: 'Users',
-  attribs: {},
+  fields: {},
   actions: {},
-  dialogs: {},
+  messages: {},
   filters: {},
   forms: {},
 };

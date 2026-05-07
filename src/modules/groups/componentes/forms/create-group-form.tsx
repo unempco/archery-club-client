@@ -55,14 +55,14 @@ export function CreateGroupForm({
         <FormInput
           control={form.control}
           name="name"
-          label={t('groups:attribs.name')}
+          label={t('groups:fields.name')}
           placeholder={t('groups:forms.placeholders.name')}
           disabled={isSubmitting}
         />
         <FormSelect
           control={form.control}
           name="cycleId"
-          label={t('groups:attribs.cycle')}
+          label={t('groups:fields.cycle')}
           placeholder={t('groups:forms.placeholders.cycle')}
           options={cyclesOptions}
           disabled={isSubmitting || !cyclesSuccess}
@@ -72,7 +72,7 @@ export function CreateGroupForm({
           <FormSelect
             control={form.control}
             name="weekday"
-            label={t('groups:attribs.weekday')}
+            label={t('groups:fields.weekday')}
             placeholder={t('groups:forms.placeholders.weekday')}
             options={weekdayOptions}
             disabled={isSubmitting}
@@ -80,7 +80,7 @@ export function CreateGroupForm({
           <FormInput
             control={form.control}
             name="startTime"
-            label={t('groups:attribs.startTime')}
+            label={t('groups:fields.startTime')}
             type="time"
           />
         </div>
@@ -88,7 +88,7 @@ export function CreateGroupForm({
         <FormInputNumber
           control={form.control}
           name="durationMinutes"
-          label={t('groups:attribs.duration')}
+          label={t('groups:fields.duration')}
           min={0}
           max={24 * 60}
           step={15}

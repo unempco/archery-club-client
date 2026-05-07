@@ -2,13 +2,13 @@ export const branches = {
   name: 'Branches',
   name_one: 'Branch',
   name_other: 'Branches',
-  attribs: {
+  fields: {
     closedAt: 'Closed At',
     maintenanceThreshold: 'Maximum Target Usage (sessions)',
     maintenanceWarningOffset: 'Warning Sessions',
   },
   actions: {},
-  dialogs: {},
+  messages: {},
   filters: {},
   forms: {
     add: {

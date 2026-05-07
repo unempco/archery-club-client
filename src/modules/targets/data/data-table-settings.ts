@@ -11,7 +11,7 @@ export const targetsTableColumns: ColumnDef<Target>[] = [
   {
     accessorKey: 'id',
     meta: {
-      headerI18nKey: 'targets:attribs.id',
+      headerI18nKey: 'targets:fields.id',
       columnType: DataTableColumnType.ID,
     },
     header: DataTableHeader,
@@ -21,7 +21,7 @@ export const targetsTableColumns: ColumnDef<Target>[] = [
   {
     accessorKey: 'name',
     meta: {
-      headerI18nKey: 'targets:attribs.name',
+      headerI18nKey: 'targets:fields.name',
       columnType: DataTableColumnType.TEXT,
     },
     header: DataTableHeader,
@@ -31,7 +31,7 @@ export const targetsTableColumns: ColumnDef<Target>[] = [
   {
     accessorKey: 'usageCount',
     meta: {
-      headerI18nKey: 'targets:attribs.usageCount',
+      headerI18nKey: 'targets:fields.usageCount',
       columnType: DataTableColumnType.NUMBER,
     },
     header: DataTableHeader,
@@ -40,7 +40,7 @@ export const targetsTableColumns: ColumnDef<Target>[] = [
   {
     accessorKey: 'branchId',
     meta: {
-      headerI18nKey: 'targets:attribs.branch',
+      headerI18nKey: 'targets:fields.branch',
       columnType: DataTableColumnType.NUMBER,
     },
     header: DataTableHeader,
@@ -49,7 +49,7 @@ export const targetsTableColumns: ColumnDef<Target>[] = [
   {
     accessorKey: 'status',
     meta: {
-      headerI18nKey: 'targets:attribs.status',
+      headerI18nKey: 'targets:fields.status',
     },
     header: DataTableHeader,
     cell: DateTableTargetStatusCell,
@@ -57,7 +57,7 @@ export const targetsTableColumns: ColumnDef<Target>[] = [
   {
     accessorKey: 'createdAt',
     meta: {
-      headerI18nKey: 'targets:attribs.createdAt',
+      headerI18nKey: 'targets:fields.createdAt',
       columnType: DataTableColumnType.DATETIME,
     },
     header: DataTableHeader,
@@ -66,7 +66,7 @@ export const targetsTableColumns: ColumnDef<Target>[] = [
   {
     accessorKey: 'deletedAt',
     meta: {
-      headerI18nKey: 'targets:attribs.deletedAt',
+      headerI18nKey: 'targets:fields.deletedAt',
       columnType: DataTableColumnType.DATETIME,
     },
     header: DataTableHeader,

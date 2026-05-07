@@ -44,14 +44,14 @@ export function UpdateTargetForm({
         <FormInput
           control={form.control}
           name="name"
-          label={t('targets:attribs.name')}
+          label={t('targets:fields.name')}
           placeholder={t('targets:forms.placeholders.name')}
           disabled={isSubmitting}
         />
         <FormSelect
           control={form.control}
           name="status"
-          label={t('targets:attribs.status')}
+          label={t('targets:fields.status')}
           placeholder={t('targets:forms.placeholders.status')}
           options={statusOptions}
         />

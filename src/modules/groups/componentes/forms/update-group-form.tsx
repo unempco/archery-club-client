@@ -45,27 +45,27 @@ export function UpdateGroupForm({
         <FormInput
           control={form.control}
           name="name"
-          label={t('groups:attribs.name')}
+          label={t('groups:fields.name')}
           placeholder={t('groups:forms.placeholders.name')}
           disabled={isSubmitting}
         />
         <FormSelect
           control={form.control}
           name="status"
-          label={t('groups:attribs.status')}
+          label={t('groups:fields.status')}
           placeholder={t('groups:forms.placeholders.status')}
           options={statusOptions}
         />
         <FormInput
           control={form.control}
           name="startTime"
-          label={t('groups:attribs.startTime')}
+          label={t('groups:fields.startTime')}
           type="time"
         />
         <FormInputNumber
           control={form.control}
           name="durationMinutes"
-          label={t('groups:attribs.duration')}
+          label={t('groups:fields.duration')}
           min={0}
           max={24 * 60}
           step={15}

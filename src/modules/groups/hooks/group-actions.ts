@@ -22,7 +22,7 @@ export function useCreateGroup({ onSuccess }: { onSuccess: () => void }) {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['groups'] });
       onSuccess();
-      toast.success(t('groups:dialogs.wasCreated'));
+      toast.success(t('groups:messages.wasCreated'));
     },
     onError: onMutationError(t),
   });
@@ -45,7 +45,7 @@ export function useUpdateGroup({
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['groups'] });
       onSuccess();
-      toast.success(t('groups:dialogs.wasUpdated'));
+      toast.success(t('groups:messages.wasUpdated'));
     },
     onError: onMutationError(t),
   });
@@ -60,7 +60,7 @@ export function useDeleteGroup({ groupId }: { groupId: number }) {
     mutationFn: () => deleteGroup(groupId),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['groups'] });
-      toast.message(t('groups:dialogs.wasDeleted'));
+      toast.message(t('groups:messages.wasDeleted'));
     },
     onError: onMutationError(t),
   });

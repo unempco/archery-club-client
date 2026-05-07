@@ -47,7 +47,7 @@ export function UpdateBranchForm({
         <FormInput
           control={form.control}
           name="name"
-          label={t('branches:attribs.name')}
+          label={t('branches:fields.name')}
           placeholder={t('branches:forms.placeholders.name')}
           disabled={isSubmitting}
         />
@@ -55,7 +55,7 @@ export function UpdateBranchForm({
         <FormSelect
           control={form.control}
           name="status"
-          label={t('branches:attribs.status')}
+          label={t('branches:fields.status')}
           placeholder={t('branches:forms.placeholders.status')}
           options={statusOptions}
           disabled={isSubmitting}
@@ -64,7 +64,7 @@ export function UpdateBranchForm({
         <FormInputNumber
           control={form.control}
           name="maintenanceThreshold"
-          label={t('branches:attribs.maintenanceThreshold')}
+          label={t('branches:fields.maintenanceThreshold')}
           disabled={isSubmitting}
           min={0}
           step={1}
@@ -72,7 +72,7 @@ export function UpdateBranchForm({
         <FormInputNumber
           control={form.control}
           name="maintenanceWarningOffset"
-          label={t('branches:attribs.maintenanceWarningOffset')}
+          label={t('branches:fields.maintenanceWarningOffset')}
           disabled={isSubmitting}
           min={0}
           max={maintenanceThreshold}

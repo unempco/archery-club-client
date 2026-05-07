@@ -2,13 +2,13 @@ export const cycles = {
   name: 'Cycles',
   name_one: 'Cycle',
   name_other: 'Cycles',
-  attribs: {
+  fields: {
     startDate: 'Start Date',
     sessionCount: 'Session Count',
     branch: 'Branch',
   },
   actions: {},
-  dialogs: {},
+  messages: {},
   filters: {},
   forms: {
     add: {

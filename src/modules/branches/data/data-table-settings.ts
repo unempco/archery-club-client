@@ -10,7 +10,7 @@ export const branchesTableColumns: ColumnDef<Branch>[] = [
   {
     accessorKey: 'id',
     meta: {
-      headerI18nKey: 'branches:attribs.id',
+      headerI18nKey: 'branches:fields.id',
       columnType: DataTableColumnType.ID,
     },
     header: DataTableHeader,
@@ -20,7 +20,7 @@ export const branchesTableColumns: ColumnDef<Branch>[] = [
   {
     accessorKey: 'name',
     meta: {
-      headerI18nKey: 'branches:attribs.name',
+      headerI18nKey: 'branches:fields.name',
       columnType: DataTableColumnType.TEXT,
     },
     header: DataTableHeader,
@@ -30,7 +30,7 @@ export const branchesTableColumns: ColumnDef<Branch>[] = [
   {
     accessorKey: 'maintenanceThreshold',
     meta: {
-      headerI18nKey: 'branches:attribs.maintenanceThreshold',
+      headerI18nKey: 'branches:fields.maintenanceThreshold',
       columnType: DataTableColumnType.NUMBER,
     },
     header: DataTableHeader,
@@ -39,7 +39,7 @@ export const branchesTableColumns: ColumnDef<Branch>[] = [
   {
     accessorKey: 'maintenanceWarningOffset',
     meta: {
-      headerI18nKey: 'branches:attribs.maintenanceWarningOffset',
+      headerI18nKey: 'branches:fields.maintenanceWarningOffset',
       columnType: DataTableColumnType.NUMBER,
     },
     header: DataTableHeader,
@@ -48,7 +48,7 @@ export const branchesTableColumns: ColumnDef<Branch>[] = [
   {
     accessorKey: 'status',
     meta: {
-      headerI18nKey: 'branches:attribs.status',
+      headerI18nKey: 'branches:fields.status',
       columnType: DataTableColumnType.STATUS,
     },
     header: DataTableHeader,
@@ -57,7 +57,7 @@ export const branchesTableColumns: ColumnDef<Branch>[] = [
   {
     accessorKey: 'closedAt',
     meta: {
-      headerI18nKey: 'branches:attribs.closedAt',
+      headerI18nKey: 'branches:fields.closedAt',
       columnType: DataTableColumnType.DATETIME,
     },
     header: DataTableHeader,
@@ -66,7 +66,7 @@ export const branchesTableColumns: ColumnDef<Branch>[] = [
   {
     accessorKey: 'createdAt',
     meta: {
-      headerI18nKey: 'branches:attribs.createdAt',
+      headerI18nKey: 'branches:fields.createdAt',
       columnType: DataTableColumnType.DATETIME,
     },
     header: DataTableHeader,
