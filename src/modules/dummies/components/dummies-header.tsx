@@ -6,7 +6,7 @@ import { toast } from 'sonner';
 
 import { Button } from '@/core/components/ui/button';
 import { PermissionGuard } from '@/modules/auth/components/permissions-guard';
-import { CreateDummyDialogTrigger } from '@/modules/dummies/componentes/dialogs/create-dummy-dialog-trigger';
+import { CreateDummyDialogTrigger } from '@/modules/dummies/components/dialogs/create-dummy-dialog-trigger';
 import { PageHeader } from '@/modules/shared/components/page-header';
 import { ApiPermissions } from '@/modules/shared/constants/permissions';
 
