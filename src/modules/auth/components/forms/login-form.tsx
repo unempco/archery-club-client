@@ -55,7 +55,7 @@ export function LoginForm({
             className="w-24 mx-auto py-4"
           />
           <CardTitle className="text-xl">
-            {t('greetings.welcomeBack')}
+            {t('core:greetings.welcomeBack')}
           </CardTitle>
           <CardDescription>
             {t('auth:dialogs.enterYourCredentials')}
