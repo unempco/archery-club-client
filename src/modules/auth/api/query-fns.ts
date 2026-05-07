@@ -21,7 +21,12 @@ export async function login(data: LoginData): Promise<User> {
       fullName: 'Admin Root',
       email: 'admin@example.com',
       roles: ['admin'],
-      permissions: ['dashboard.read', 'dummies.read'],
+      permissions: [
+        'Dummies.Read',
+        'Dummies.Write',
+        'Dummies.Modify',
+        'Dummies.Delete',
+      ],
       accessToken: 'mock-jwt-token',
       refreshToken: 'mock-jwt-refresh',
     };
@@ -51,7 +56,12 @@ export async function verifySession(): Promise<User> {
       fullName: 'Admin Root',
       email: 'admin@example.com',
       roles: ['admin'],
-      permissions: ['dashboard.read', 'dummies.read'],
+      permissions: [
+        'Dummies.Read',
+        'Dummies.Write',
+        'Dummies.Modify',
+        'Dummies.Delete',
+      ],
       accessToken: 'mock-jwt-token',
       refreshToken: 'mock-jwt-refresh',
     };

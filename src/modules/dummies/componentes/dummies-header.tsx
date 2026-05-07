@@ -5,20 +5,25 @@ import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
 
 import { Button } from '@/core/components/ui/button';
+import { useAuth } from '@/modules/auth/hooks/use-auth';
 import { CreateDummyDialogTrigger } from '@/modules/dummies/componentes/dialogs/create-dummy-dialog-trigger';
 import { PageHeader } from '@/modules/shared/components/page-header';
+import { ApiPermissions } from '@/modules/shared/constants/permissions';
 
 export function DummiesHeader({ selectedItems }: DummiesHeaderProps) {
   const { t } = useTranslation();
+  const { p } = useAuth();
 
   return (
     <PageHeader title={t('dummies:name')}>
-      <CreateDummyDialogTrigger>
-        <Button>
-          <PlusIcon />
-          {t('dummies:actions.addNew')}
-        </Button>
-      </CreateDummyDialogTrigger>
+      {p(ApiPermissions.Dummies.CREATE) && (
+        <CreateDummyDialogTrigger>
+          <Button>
+            <PlusIcon />
+            {t('dummies:actions.addNew')}
+          </Button>
+        </CreateDummyDialogTrigger>
+      )}
       <Button
         variant="secondary"
         size="icon"
