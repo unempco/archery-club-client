@@ -1,6 +1,5 @@
 // modules/dummies/components/create-dummy-dialog.tsx
 import { useState } from 'react';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
 
 import {
@@ -10,24 +9,14 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/core/components/ui/dialog';
-import { onMutationError, onMutationSuccess } from '@/core/lib/mutation-toast';
-import { createDummyMutationOptions } from '@/modules/dummies/api/query-options';
 import { DummyForm } from '@/modules/dummies/componentes/forms/dummy-form';
+import { useCreateDummy } from '@/modules/dummies/hooks/dummy-actions';
 
 export function CreateDummyDialogTrigger({ children }: CreateDummyDialogProps) {
   const { t } = useTranslation();
   const [open, onOpenChange] = useState(false);
 
-  const queryClient = useQueryClient();
-  const mutation = useMutation({
-    ...createDummyMutationOptions,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['dummies'] });
-      onOpenChange(false);
-      onMutationSuccess(t, 'dialogs.wasCreated')();
-    },
-    onError: onMutationError(t),
-  });
+  const mutation = useCreateDummy({ onSuccess: () => onOpenChange(false) });
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>

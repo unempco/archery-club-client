@@ -8,37 +8,38 @@ import {
 } from '@phosphor-icons/react';
 import { useTranslation } from 'react-i18next';
 
+import { ApiPermissions } from '@/modules/shared/constants/permissions';
+
 export function useNavigationItems(): UseNavigationItemsReturn {
   const { t } = useTranslation();
 
   return {
     main: [
       {
-        label: t('layout:navItems.tools'),
+        label: t('layout:navigation.tools'),
         items: [
           {
-            title: t('layout:navItems.dashboard'),
+            title: t('layout:navigation.dashboard'),
             url: '/app/dashboard',
             icon: ChartPieIcon,
-            permissions: 'dashboard.read',
           },
           {
-            title: t('layout:navItems.dummies'),
+            title: t('dummies:name'),
             url: '/app/dummies',
             icon: BookmarksIcon,
-            permissions: 'dummies.read',
+            permissions: ApiPermissions.Dummies.READ,
           },
         ],
       },
     ],
     secondary: [
       {
-        title: t('layout:navItems.settings'),
+        title: t('layout:navigation.settings'),
         url: '/app/settings',
         icon: GearIcon,
       },
       {
-        title: t('layout:navItems.getHelp'),
+        title: t('layout:navigation.getHelp'),
         url: '/app/about',
         icon: InfoIcon,
       },

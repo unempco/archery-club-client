@@ -1,19 +1,33 @@
 import type { LoginData, User } from '@/modules/auth/types';
 
 import { sleep } from '@/core/lib/utils';
-import { getAccessToken } from '@/modules/auth/lib/token';
+import {
+  getAccessToken,
+  removeAccessToken,
+  removeRefreshToken,
+  setAccessToken,
+  setRefreshToken,
+} from '@/modules/auth/lib/token';
 
 export async function login(data: LoginData): Promise<User> {
   await sleep(500);
 
   if (data.email === 'admin@example.com' && data.password === 'adminadmin') {
+    setAccessToken('mock-jwt-token');
+    setRefreshToken('mock-jwt-refresh');
+
     return {
       id: 'skKjd78a-#',
       username: 'admin',
       fullName: 'Admin Root',
       email: 'admin@example.com',
       roles: ['admin'],
-      permissions: ['dashboard.read', 'dummies.read'],
+      permissions: [
+        'Dummies.Read',
+        'Dummies.Write',
+        'Dummies.Modify',
+        'Dummies.Delete',
+      ],
       accessToken: 'mock-jwt-token',
       refreshToken: 'mock-jwt-refresh',
     };
@@ -24,6 +38,9 @@ export async function login(data: LoginData): Promise<User> {
 
 export async function logout(): Promise<void> {
   await sleep(500);
+
+  removeAccessToken();
+  removeRefreshToken();
 
   return;
 }
@@ -40,7 +57,12 @@ export async function verifySession(): Promise<User> {
       fullName: 'Admin Root',
       email: 'admin@example.com',
       roles: ['admin'],
-      permissions: ['dashboard.read', 'dummies.read'],
+      permissions: [
+        'Dummies.Read',
+        'Dummies.Write',
+        'Dummies.Modify',
+        'Dummies.Delete',
+      ],
       accessToken: 'mock-jwt-token',
       refreshToken: 'mock-jwt-refresh',
     };

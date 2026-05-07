@@ -1,8 +1,6 @@
-import type { LoginData } from '@/modules/auth/types';
+import { queryOptions } from '@tanstack/react-query';
 
-import { mutationOptions, queryOptions } from '@tanstack/react-query';
-
-import { login, logout, verifySession } from '@/modules/auth/api/query-fns';
+import { verifySession } from '@/modules/auth/api/query-fns';
 
 export const sessionQueryOptions = queryOptions({
   queryKey: ['users', 'me'],
@@ -15,14 +13,4 @@ export const sessionQueryOptions = queryOptions({
   },
   staleTime: Infinity, // don't re-fetch unless explicitly invalidated
   retry: false,
-});
-
-export const loginMutationOptions = mutationOptions({
-  mutationKey: ['auth', 'login'],
-  mutationFn: (loginData: LoginData) => login(loginData),
-});
-
-export const logoutMutationOptions = mutationOptions({
-  mutationKey: ['auth', 'logout'],
-  mutationFn: () => logout(),
 });

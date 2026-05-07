@@ -10,6 +10,7 @@ export const ItemStatus = {
   DISABLED: 'disabled',
   DELETED: 'deleted',
   CANCELED: 'canceled',
+  CANCELLED: 'cancelled',
   FAILED: 'failed',
   RUNNING: 'running',
   WAITING: 'waiting',

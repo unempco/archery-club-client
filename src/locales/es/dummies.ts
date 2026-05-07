@@ -1,5 +1,6 @@
 export const dummies = {
-  attribs: {
+  name: 'Dummies',
+  fields: {
     image: 'Imagen',
     email: 'Correo electrónico',
     isSpecial: '¿Es especial?',
@@ -8,7 +9,7 @@ export const dummies = {
     website: 'Sitio web',
   },
   actions: {},
-  dialogs: {},
+  messages: {},
   filters: {},
   forms: {},
 };

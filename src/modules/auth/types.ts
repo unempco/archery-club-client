@@ -14,3 +14,13 @@ export type User = {
   accessToken: string;
   refreshToken: string;
 };
+
+export type AuthContext = {
+  isAuthenticated: boolean;
+  user: User | null;
+  hasPermissions: (
+    permissions?: string[] | string,
+    requireAll?: boolean,
+  ) => boolean;
+  hasRoles: (roles?: string[] | string, requireAll?: boolean) => boolean;
+};

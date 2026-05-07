@@ -14,8 +14,8 @@ i18n
   .init({
     supportedLngs: languages,
     fallbackLng: localeData[defaultProjectLocale].langKey,
-    defaultNS: 'core',
-    fallbackNS: 'core',
+    defaultNS: 'shared',
+    fallbackNS: 'shared',
     interpolation: {
       escapeValue: false,
     },

@@ -1,13 +1,11 @@
-import { useContext } from 'react';
-
-import { AuthContext } from '@/modules/auth/contexts/auth-provider';
+import { useRouteContext } from '@tanstack/react-router';
 
 export function useAuth() {
-  const context = useContext(AuthContext);
+  const { auth } = useRouteContext({ from: '__root__' });
 
-  if (!context) {
-    throw new Error('useAuth must be used within an AuthProvider');
+  if (!auth) {
+    throw new Error('useAuth must be used within an RouterProvider');
   }
 
-  return context;
+  return auth;
 }
