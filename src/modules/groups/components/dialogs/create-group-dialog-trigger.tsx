@@ -9,7 +9,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/core/components/ui/dialog';
-import { CreateGroupForm } from '@/modules/groups/componentes/forms/create-group-form';
+import { CreateGroupForm } from '@/modules/groups/components/forms/create-group-form';
 import { useCreateGroup } from '@/modules/groups/hooks/group-actions';
 
 export function CreateGroupDialogTrigger({ children }: CreateGroupDialogProps) {

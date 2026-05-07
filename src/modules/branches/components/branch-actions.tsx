@@ -14,7 +14,7 @@ import {
   DropdownMenuTrigger,
 } from '@/core/components/ui/dropdown-menu';
 import { useAuth } from '@/modules/auth/hooks/use-auth';
-import { UpdateBranchDialog } from '@/modules/branches/componentes/dialogs/update-branch-dialog';
+import { UpdateBranchDialog } from '@/modules/branches/components/dialogs/update-branch-dialog';
 import { useDeleteBranch } from '@/modules/branches/hooks/branch-actions';
 import { ApiPermissions } from '@/modules/shared/constants/permissions';
 

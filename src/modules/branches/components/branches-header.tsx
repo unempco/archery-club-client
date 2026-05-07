@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import { Button } from '@/core/components/ui/button';
 import { useAuth } from '@/modules/auth/hooks/use-auth';
-import { CreateBranchDialogTrigger } from '@/modules/branches/componentes/dialogs/create-branch-dialog-trigger';
+import { CreateBranchDialogTrigger } from '@/modules/branches/components/dialogs/create-branch-dialog-trigger';
 import { PageHeader } from '@/modules/shared/components/page-header';
 import { ApiPermissions } from '@/modules/shared/constants/permissions';
 

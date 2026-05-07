@@ -9,7 +9,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/core/components/ui/dialog';
-import { UpdateTargetForm } from '@/modules/targets/componentes/forms/update-target-form';
+import { UpdateTargetForm } from '@/modules/targets/components/forms/update-target-form';
 import { useUpdateTarget } from '@/modules/targets/hooks/target-actions';
 
 export function UpdateTargetDialog({

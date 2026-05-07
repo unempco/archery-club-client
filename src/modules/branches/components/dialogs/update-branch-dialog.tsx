@@ -1,5 +1,5 @@
-// modules/groups/components/update-group-dialog.tsx
-import type { Group } from '@/modules/groups/types';
+// modules/branches/components/update-branch-dialog.tsx
+import type { Branch } from '@/modules/branches/types';
 
 import { useTranslation } from 'react-i18next';
 
@@ -9,18 +9,18 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/core/components/ui/dialog';
-import { UpdateGroupForm } from '@/modules/groups/componentes/forms/update-group-form';
-import { useUpdateGroup } from '@/modules/groups/hooks/group-actions';
+import { UpdateBranchForm } from '@/modules/branches/components/forms/update-branch-form';
+import { useUpdateBranch } from '@/modules/branches/hooks/branch-actions';
 
-export function UpdateGroupDialog({
-  group,
+export function UpdateBranchDialog({
+  branch,
   open,
   onOpenChange,
-}: UpdateGroupDialogProps) {
+}: UpdateBranchDialogProps) {
   const { t } = useTranslation();
 
-  const mutation = useUpdateGroup({
-    groupId: group.id,
+  const mutation = useUpdateBranch({
+    branchId: branch.id,
     onSuccess: () => onOpenChange(false),
   });
 
@@ -28,10 +28,10 @@ export function UpdateGroupDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-lg">
         <DialogHeader>
-          <DialogTitle>{t('groups:forms.edit.title')}</DialogTitle>
+          <DialogTitle>{t('branches:forms.edit.title')}</DialogTitle>
         </DialogHeader>
-        <UpdateGroupForm
-          defaultValues={group}
+        <UpdateBranchForm
+          defaultValues={branch}
           onSubmit={(data) => mutation.mutate(data)}
           onCancel={() => onOpenChange(false)}
           isLoading={mutation.isPending}
@@ -42,8 +42,8 @@ export function UpdateGroupDialog({
   );
 }
 
-export type UpdateGroupDialogProps = {
-  group: Group;
+export type UpdateBranchDialogProps = {
+  branch: Branch;
   open: boolean;
   onOpenChange: (v: boolean) => void;
 };

@@ -5,7 +5,7 @@ import { Button } from '@/core/components/ui/button';
 import { useAuth } from '@/modules/auth/hooks/use-auth';
 import { PageHeader } from '@/modules/shared/components/page-header';
 import { ApiPermissions } from '@/modules/shared/constants/permissions';
-import { CreateTargetDialogTrigger } from '@/modules/targets/componentes/dialogs/create-target-dialog-trigger';
+import { CreateTargetDialogTrigger } from '@/modules/targets/components/dialogs/create-target-dialog-trigger';
 
 export function TargetsHeader() {
   const { t } = useTranslation();

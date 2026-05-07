@@ -1,4 +1,4 @@
-import type { Target } from '@/modules/targets/types';
+import type { Group } from '@/modules/groups/types';
 import type { CellContext } from '@tanstack/react-table';
 
 import { useState } from 'react';
@@ -14,25 +14,25 @@ import {
   DropdownMenuTrigger,
 } from '@/core/components/ui/dropdown-menu';
 import { useAuth } from '@/modules/auth/hooks/use-auth';
+import { UpdateGroupDialog } from '@/modules/groups/components/dialogs/update-group-dialog';
+import { useDeleteGroup } from '@/modules/groups/hooks/group-actions';
 import { ApiPermissions } from '@/modules/shared/constants/permissions';
-import { UpdateTargetDialog } from '@/modules/targets/componentes/dialogs/update-target-dialog';
-import { useDeleteTarget } from '@/modules/targets/hooks/target-actions';
 
-export function TargetActions({ row }: DataActionsProps) {
+export function GroupActions({ row }: DataActionsProps) {
   const { t } = useTranslation();
   const { hasPermissions } = useAuth();
 
   const [confirmOpen, setConfirmOpen] = useState(false);
   const [editOpen, setEditOpen] = useState(false);
 
-  const target = row.original;
+  const group = row.original;
 
-  const deleteMutation = useDeleteTarget({ targetId: target.id });
+  const deleteMutation = useDeleteGroup({ groupId: group.id });
 
   if (
     !hasPermissions([
-      ApiPermissions.Targets.UPDATE,
-      ApiPermissions.Targets.DELETE,
+      ApiPermissions.Groups.UPDATE,
+      ApiPermissions.Groups.DELETE,
     ])
   )
     return null;
@@ -46,13 +46,13 @@ export function TargetActions({ row }: DataActionsProps) {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-          {hasPermissions(ApiPermissions.Targets.UPDATE) && (
+          {hasPermissions(ApiPermissions.Groups.UPDATE) && (
             <DropdownMenuItem onClick={() => setEditOpen(true)}>
               <PencilIcon />
               {t('actions.edit')}
             </DropdownMenuItem>
           )}
-          {hasPermissions(ApiPermissions.Targets.DELETE) && (
+          {hasPermissions(ApiPermissions.Groups.DELETE) && (
             <DropdownMenuItem
               variant="destructive"
               onClick={() => setConfirmOpen(true)}
@@ -64,8 +64,8 @@ export function TargetActions({ row }: DataActionsProps) {
         </DropdownMenuContent>
       </DropdownMenu>
 
-      <UpdateTargetDialog
-        target={target}
+      <UpdateGroupDialog
+        group={group}
         open={editOpen}
         onOpenChange={setEditOpen}
       />
@@ -75,10 +75,10 @@ export function TargetActions({ row }: DataActionsProps) {
         onOpenChange={setConfirmOpen}
         onConfirm={() => deleteMutation.mutate()}
         isPending={deleteMutation.isPending}
-        name={target.name}
+        name={group.name}
       />
     </>
   );
 }
 
-export type DataActionsProps = CellContext<Target, unknown> & {};
+export type DataActionsProps = CellContext<Group, unknown> & {};

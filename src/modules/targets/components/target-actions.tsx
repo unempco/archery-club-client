@@ -1,4 +1,4 @@
-import type { Cycle } from '@/modules/cycles/types';
+import type { Target } from '@/modules/targets/types';
 import type { CellContext } from '@tanstack/react-table';
 
 import { useState } from 'react';
@@ -14,25 +14,25 @@ import {
   DropdownMenuTrigger,
 } from '@/core/components/ui/dropdown-menu';
 import { useAuth } from '@/modules/auth/hooks/use-auth';
-import { UpdateCycleDialog } from '@/modules/cycles/componentes/dialogs/update-cycle-dialog';
-import { useDeleteCycle } from '@/modules/cycles/hooks/cycle-actions';
 import { ApiPermissions } from '@/modules/shared/constants/permissions';
+import { UpdateTargetDialog } from '@/modules/targets/components/dialogs/update-target-dialog';
+import { useDeleteTarget } from '@/modules/targets/hooks/target-actions';
 
-export function CycleActions({ row }: DataActionsProps) {
+export function TargetActions({ row }: DataActionsProps) {
   const { t } = useTranslation();
   const { hasPermissions } = useAuth();
 
   const [confirmOpen, setConfirmOpen] = useState(false);
   const [editOpen, setEditOpen] = useState(false);
 
-  const cycle = row.original;
+  const target = row.original;
 
-  const deleteMutation = useDeleteCycle({ cycleId: cycle.id });
+  const deleteMutation = useDeleteTarget({ targetId: target.id });
 
   if (
     !hasPermissions([
-      ApiPermissions.Cycles.UPDATE,
-      ApiPermissions.Cycles.DELETE,
+      ApiPermissions.Targets.UPDATE,
+      ApiPermissions.Targets.DELETE,
     ])
   )
     return null;
@@ -46,13 +46,13 @@ export function CycleActions({ row }: DataActionsProps) {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-          {hasPermissions(ApiPermissions.Cycles.UPDATE) && (
+          {hasPermissions(ApiPermissions.Targets.UPDATE) && (
             <DropdownMenuItem onClick={() => setEditOpen(true)}>
               <PencilIcon />
               {t('actions.edit')}
             </DropdownMenuItem>
           )}
-          {hasPermissions(ApiPermissions.Cycles.DELETE) && (
+          {hasPermissions(ApiPermissions.Targets.DELETE) && (
             <DropdownMenuItem
               variant="destructive"
               onClick={() => setConfirmOpen(true)}
@@ -64,8 +64,8 @@ export function CycleActions({ row }: DataActionsProps) {
         </DropdownMenuContent>
       </DropdownMenu>
 
-      <UpdateCycleDialog
-        cycle={cycle}
+      <UpdateTargetDialog
+        target={target}
         open={editOpen}
         onOpenChange={setEditOpen}
       />
@@ -75,10 +75,10 @@ export function CycleActions({ row }: DataActionsProps) {
         onOpenChange={setConfirmOpen}
         onConfirm={() => deleteMutation.mutate()}
         isPending={deleteMutation.isPending}
-        name={cycle.name}
+        name={target.name}
       />
     </>
   );
 }
 
-export type DataActionsProps = CellContext<Cycle, unknown> & {};
+export type DataActionsProps = CellContext<Target, unknown> & {};

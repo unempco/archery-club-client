@@ -1,4 +1,4 @@
-// modules/cycles/components/create-cycle-dialog.tsx
+// modules/branches/components/create-branch-dialog.tsx
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -9,32 +9,35 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/core/components/ui/dialog';
-import { CreateCycleForm } from '@/modules/cycles/componentes/forms/create-cycle-form';
-import { useCreateCycle } from '@/modules/cycles/hooks/cycle-actions';
+import { CreateBranchForm } from '@/modules/branches/components/forms/create-branch-form';
+import { useCreateBranch } from '@/modules/branches/hooks/branch-actions';
 
-export function CreateCycleDialogTrigger({ children }: CreateCycleDialogProps) {
+export function CreateBranchDialogTrigger({
+  children,
+}: CreateBranchDialogProps) {
   const { t } = useTranslation();
   const [open, onOpenChange] = useState(false);
 
-  const mutation = useCreateCycle({ onSuccess: () => onOpenChange(false) });
+  const mutation = useCreateBranch({ onSuccess: () => onOpenChange(false) });
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent className="sm:max-w-lg">
         <DialogHeader>
-          <DialogTitle>{t('cycles:forms.add.title')}</DialogTitle>
+          <DialogTitle>{t('branches:forms.add.title')}</DialogTitle>
         </DialogHeader>
-        <CreateCycleForm
+        <CreateBranchForm
           onSubmit={(data) => mutation.mutate(data)}
           onCancel={() => onOpenChange(false)}
           isLoading={mutation.isPending}
+          submitLabel={t('actions.create')}
         />
       </DialogContent>
     </Dialog>
   );
 }
 
-export type CreateCycleDialogProps = {
+export type CreateBranchDialogProps = {
   children: React.ReactNode;
 };

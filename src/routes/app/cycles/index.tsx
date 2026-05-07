@@ -10,7 +10,7 @@ import { DataSearch } from '@/core/components/data/data-search';
 import { DataTable } from '@/core/components/data/data-table';
 import { createRouteHead } from '@/layout/lib/create-route-head';
 import { cyclesIndexQueryOptions } from '@/modules/cycles/api/query-options';
-import { CyclesHeader } from '@/modules/cycles/componentes/cycles-header';
+import { CyclesHeader } from '@/modules/cycles/components/cycles-header';
 import {
   cyclesColumnsDefaultState,
   cyclesTableColumns,

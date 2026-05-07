@@ -10,7 +10,7 @@ import { DataSearch } from '@/core/components/data/data-search';
 import { DataTable } from '@/core/components/data/data-table';
 import { createRouteHead } from '@/layout/lib/create-route-head';
 import { groupsIndexQueryOptions } from '@/modules/groups/api/query-options';
-import { GroupsHeader } from '@/modules/groups/componentes/groups-header';
+import { GroupsHeader } from '@/modules/groups/components/groups-header';
 import {
   groupsColumnsDefaultState,
   groupsTableColumns,

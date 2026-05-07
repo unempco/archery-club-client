@@ -4,7 +4,7 @@ import type { ColumnDef, VisibilityState } from '@tanstack/react-table';
 import { DataTableCell } from '@/core/components/data/data-table-cell';
 import { DataTableHeader } from '@/core/components/data/data-table-header';
 import { DataTableColumnType } from '@/core/constants/data-table';
-import { CycleActions } from '@/modules/cycles/componentes/cycle-actions';
+import { CycleActions } from '@/modules/cycles/components/cycle-actions';
 
 export const cyclesTableColumns: ColumnDef<Cycle>[] = [
   {
