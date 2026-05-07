@@ -12,11 +12,11 @@ import { ApiPermissions } from '@/modules/shared/constants/permissions';
 
 export function DummiesHeader({ selectedItems }: DummiesHeaderProps) {
   const { t } = useTranslation();
-  const { p } = useAuth();
+  const { hasPermissions } = useAuth();
 
   return (
     <PageHeader title={t('dummies:name')}>
-      {p(ApiPermissions.Dummies.CREATE) && (
+      {hasPermissions(ApiPermissions.Dummies.CREATE) && (
         <CreateDummyDialogTrigger>
           <Button>
             <PlusIcon />

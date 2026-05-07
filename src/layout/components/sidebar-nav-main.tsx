@@ -21,7 +21,7 @@ import {
 import { useAuth } from '@/modules/auth/hooks/use-auth';
 
 export function SidebarNavMain({ groups, ...props }: SidebarNavMainProps) {
-  const { p } = useAuth();
+  const { hasPermissions } = useAuth();
 
   if (!groups.length) return null;
 
@@ -30,11 +30,11 @@ export function SidebarNavMain({ groups, ...props }: SidebarNavMainProps) {
       ...group,
       items: group.items
         .map((item) => {
-          if (!p(item.permissions)) return null;
+          if (!hasPermissions(item.permissions)) return null;
           if (!item?.items) return item;
 
           const filteredSubItems = item.items.filter((subItem) =>
-            p(subItem.permissions),
+            hasPermissions(subItem.permissions),
           );
 
           if (!filteredSubItems.length) return null;

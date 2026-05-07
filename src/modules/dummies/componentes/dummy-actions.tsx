@@ -20,7 +20,7 @@ import { ApiPermissions } from '@/modules/shared/constants/permissions';
 
 export function DummyActions({ row }: DataActionsProps) {
   const { t } = useTranslation();
-  const { p } = useAuth();
+  const { hasPermissions } = useAuth();
 
   const [confirmOpen, setConfirmOpen] = useState(false);
   const [editOpen, setEditOpen] = useState(false);
@@ -28,7 +28,12 @@ export function DummyActions({ row }: DataActionsProps) {
   const dummy = row.original;
   const deleteMutation = useDeleteDummy({ dummyId: dummy.id });
 
-  if (!p([ApiPermissions.Dummies.UPDATE, ApiPermissions.Dummies.DELETE]))
+  if (
+    !hasPermissions([
+      ApiPermissions.Dummies.UPDATE,
+      ApiPermissions.Dummies.DELETE,
+    ])
+  )
     return null;
 
   return (
@@ -40,13 +45,13 @@ export function DummyActions({ row }: DataActionsProps) {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-          {p(ApiPermissions.Dummies.UPDATE) && (
+          {hasPermissions(ApiPermissions.Dummies.UPDATE) && (
             <DropdownMenuItem onClick={() => setEditOpen(true)}>
               <PencilIcon />
               {t('actions.edit')}
             </DropdownMenuItem>
           )}
-          {p(ApiPermissions.Dummies.DELETE) && (
+          {hasPermissions(ApiPermissions.Dummies.DELETE) && (
             <DropdownMenuItem
               variant="destructive"
               onClick={() => setConfirmOpen(true)}
