@@ -26,10 +26,10 @@ export function DeleteConfirmationDialog({
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>
-            {t('dialogs.requiredConfirmation')}
+            {t('core:messages.requiredConfirmation')}
           </AlertDialogTitle>
           <AlertDialogDescription>
-            <span>{t('core:dialogs.areYouSureDelete')}</span>
+            <span>{t('core:messages.areYouSureDelete')}</span>
             {name && <span className="font-bold">: {name}</span>}
           </AlertDialogDescription>
         </AlertDialogHeader>

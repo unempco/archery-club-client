@@ -9,11 +9,11 @@ import { ApiPermissions } from '@/modules/shared/constants/permissions';
 
 export function BranchesHeader() {
   const { t } = useTranslation();
-  const { p } = useAuth();
+  const { hasPermissions } = useAuth();
 
   return (
     <PageHeader title={t('branches:name')}>
-      {p(ApiPermissions.Branches.CREATE) && (
+      {hasPermissions(ApiPermissions.Branches.CREATE) && (
         <CreateBranchDialogTrigger>
           <Button>
             <PlusIcon />

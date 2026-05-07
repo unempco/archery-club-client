@@ -69,7 +69,9 @@ export function DataPaginator({
     >
       {!isMobile && (
         <div className="flex shrink-0 items-center gap-3">
-          <Label htmlFor={rowsSelectorId}>{t('paginator.itemsPerPage')}</Label>
+          <Label htmlFor={rowsSelectorId}>
+            {t('core:paginator.itemsPerPage')}
+          </Label>
           <Select
             value={pageSize.toString()}
             onValueChange={(value) =>
@@ -106,7 +108,7 @@ export function DataPaginator({
             aria-live="polite"
           >
             <Trans
-              i18nKey="paginator.showingItems"
+              i18nKey="core:paginator.showingItems"
               values={{ firstItem, lastItem, totalItems }}
               components={{ i: <span className="text-foreground" /> }}
             />
@@ -118,7 +120,7 @@ export function DataPaginator({
           {!isMobile && (
             <PaginationItem>
               <Button
-                aria-label={t('paginator.goToFirstPage')}
+                aria-label={t('core:paginator.goToFirstPage')}
                 variant="ghost"
                 size="icon"
                 disabled={isFirst}
@@ -137,7 +139,7 @@ export function DataPaginator({
           )}
           <PaginationItem>
             <Button
-              aria-label={t('paginator.gotoPreviousPage')}
+              aria-label={t('core:paginator.gotoPreviousPage')}
               variant="ghost"
               size="icon"
               disabled={isFirst}
@@ -199,7 +201,7 @@ export function DataPaginator({
           })}
           <PaginationItem>
             <Button
-              aria-label={t('paginator.goToNextPage')}
+              aria-label={t('core:paginator.goToNextPage')}
               variant="ghost"
               size="icon"
               disabled={isLast}
@@ -218,7 +220,7 @@ export function DataPaginator({
           {!isMobile && (
             <PaginationItem>
               <Button
-                aria-label={t('paginator.goToLastPage')}
+                aria-label={t('core:paginator.goToLastPage')}
                 variant="ghost"
                 size="icon"
                 disabled={isLast}

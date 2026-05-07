@@ -3,6 +3,7 @@ export { dummies } from './dummies';
 export { statusCodes } from './status-codes';
 export { auth } from './auth';
 export { layout } from './layout';
+export { shared } from './shared';
 
 export { branches } from './branches';
 export { cycles } from './cycles';

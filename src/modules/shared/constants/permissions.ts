@@ -1,4 +1,10 @@
 export const ApiPermissions = {
+  Dummies: {
+    CREATE: 'Dummies.Write',
+    READ: 'Dummies.Read',
+    UPDATE: 'Dummies.Modify',
+    DELETE: 'Dummies.Delete',
+  },
   Branches: {
     CREATE: 'Branches.Write',
     READ: 'Branches.Read',

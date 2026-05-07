@@ -55,10 +55,10 @@ export function LoginForm({
             className="w-24 mx-auto py-4"
           />
           <CardTitle className="text-xl">
-            {t('greetings.welcomeBack')}
+            {t('core:greetings.welcomeBack')}
           </CardTitle>
           <CardDescription>
-            {t('auth:dialogs.enterYourCredentials')}
+            {t('auth:messages.enterYourCredentials')}
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -70,7 +70,7 @@ export function LoginForm({
                 render={({ field, fieldState }) => (
                   <Field data-invalid={fieldState.invalid}>
                     <FieldLabel htmlFor="login-form-email">
-                      {t('auth:attribs.email')}
+                      {t('auth:fields.email')}
                     </FieldLabel>
                     <Input
                       {...field}
@@ -91,7 +91,7 @@ export function LoginForm({
                 render={({ field, fieldState }) => (
                   <Field data-invalid={fieldState.invalid}>
                     <FieldLabel htmlFor="login-form-password">
-                      {t('auth:attribs.password')}
+                      {t('auth:fields.password')}
                     </FieldLabel>
                     <Input
                       {...field}

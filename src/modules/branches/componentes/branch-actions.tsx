@@ -20,7 +20,7 @@ import { ApiPermissions } from '@/modules/shared/constants/permissions';
 
 export function BranchActions({ row }: DataActionsProps) {
   const { t } = useTranslation();
-  const { p } = useAuth();
+  const { hasPermissions } = useAuth();
 
   const [confirmOpen, setConfirmOpen] = useState(false);
   const [editOpen, setEditOpen] = useState(false);
@@ -29,7 +29,12 @@ export function BranchActions({ row }: DataActionsProps) {
 
   const deleteMutation = useDeleteBranch({ branchId: branch.id });
 
-  if (!p([ApiPermissions.Branches.UPDATE, ApiPermissions.Branches.DELETE]))
+  if (
+    !hasPermissions([
+      ApiPermissions.Branches.UPDATE,
+      ApiPermissions.Branches.DELETE,
+    ])
+  )
     return null;
 
   return (
@@ -41,13 +46,13 @@ export function BranchActions({ row }: DataActionsProps) {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-          {p(ApiPermissions.Branches.UPDATE) && (
+          {hasPermissions(ApiPermissions.Branches.UPDATE) && (
             <DropdownMenuItem onClick={() => setEditOpen(true)}>
               <PencilIcon />
               {t('actions.edit')}
             </DropdownMenuItem>
           )}
-          {p(ApiPermissions.Branches.DELETE) && (
+          {hasPermissions(ApiPermissions.Branches.DELETE) && (
             <DropdownMenuItem
               variant="destructive"
               onClick={() => setConfirmOpen(true)}

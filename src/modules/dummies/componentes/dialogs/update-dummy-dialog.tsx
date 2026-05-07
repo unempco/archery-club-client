@@ -1,7 +1,6 @@
 // modules/dummies/components/update-dummy-dialog.tsx
 import type { Dummy } from '@/modules/dummies/types';
 
-import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
 
 import {
@@ -10,9 +9,8 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/core/components/ui/dialog';
-import { onMutationError, onMutationSuccess } from '@/core/lib/mutation-toast';
-import { updateDummyMutationOptions } from '@/modules/dummies/api/query-options';
 import { DummyForm } from '@/modules/dummies/componentes/forms/dummy-form';
+import { useUpdateDummyMutation } from '@/modules/dummies/hooks/dummy-mutations';
 
 export function UpdateDummyDialog({
   dummy,
@@ -20,16 +18,10 @@ export function UpdateDummyDialog({
   onOpenChange,
 }: UpdateDummyDialogProps) {
   const { t } = useTranslation();
-  const queryClient = useQueryClient();
 
-  const mutation = useMutation({
-    ...updateDummyMutationOptions(dummy.id),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['dummies'] });
-      onOpenChange(false);
-      onMutationSuccess(t)();
-    },
-    onError: onMutationError(t),
+  const mutation = useUpdateDummyMutation({
+    dummyId: dummy.id,
+    onSuccess: () => onOpenChange(false),
   });
 
   return (

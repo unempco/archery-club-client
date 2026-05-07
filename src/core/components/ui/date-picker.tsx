@@ -79,7 +79,7 @@ export function DatePicker({
                   setOpen(false);
                 }}
               >
-                {t('actions.clear')}
+                {t('core:actions.clear')}
               </Button>
             </div>
           }

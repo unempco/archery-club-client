@@ -20,7 +20,7 @@ import { useDeleteTarget } from '@/modules/targets/hooks/target-actions';
 
 export function TargetActions({ row }: DataActionsProps) {
   const { t } = useTranslation();
-  const { p } = useAuth();
+  const { hasPermissions } = useAuth();
 
   const [confirmOpen, setConfirmOpen] = useState(false);
   const [editOpen, setEditOpen] = useState(false);
@@ -29,7 +29,12 @@ export function TargetActions({ row }: DataActionsProps) {
 
   const deleteMutation = useDeleteTarget({ targetId: target.id });
 
-  if (!p([ApiPermissions.Targets.UPDATE, ApiPermissions.Targets.DELETE]))
+  if (
+    !hasPermissions([
+      ApiPermissions.Targets.UPDATE,
+      ApiPermissions.Targets.DELETE,
+    ])
+  )
     return null;
 
   return (
@@ -41,13 +46,13 @@ export function TargetActions({ row }: DataActionsProps) {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-          {p(ApiPermissions.Targets.UPDATE) && (
+          {hasPermissions(ApiPermissions.Targets.UPDATE) && (
             <DropdownMenuItem onClick={() => setEditOpen(true)}>
               <PencilIcon />
               {t('actions.edit')}
             </DropdownMenuItem>
           )}
-          {p(ApiPermissions.Targets.DELETE) && (
+          {hasPermissions(ApiPermissions.Targets.DELETE) && (
             <DropdownMenuItem
               variant="destructive"
               onClick={() => setConfirmOpen(true)}

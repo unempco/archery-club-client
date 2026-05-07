@@ -51,7 +51,7 @@ export function DataSearch({
               type="button"
               variant="ghost"
               size="icon"
-              aria-label={t('actions.clear')}
+              aria-label={t('core:actions.clear')}
               onClick={() => {
                 setSearchValue('');
                 navigate({

@@ -9,11 +9,11 @@ import { CreateTargetDialogTrigger } from '@/modules/targets/componentes/dialogs
 
 export function TargetsHeader() {
   const { t } = useTranslation();
-  const { p } = useAuth();
+  const { hasPermissions } = useAuth();
 
   return (
     <PageHeader title={t('targets:name')}>
-      {p(ApiPermissions.Targets.CREATE) && (
+      {hasPermissions(ApiPermissions.Targets.CREATE) && (
         <CreateTargetDialogTrigger>
           <Button>
             <PlusIcon />

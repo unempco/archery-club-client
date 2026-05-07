@@ -29,7 +29,6 @@ export async function createCycle(cycle: CreateCycleFormData) {
   return await api.post<Cycle>(
     `/${BRANCHES_MODULE_NAME}/${cycle.branchId}/${CYCLES_MODULE_NAME}`,
     {
-      // @ts-expect-error TODO: Check body type to support dates
       body: cycle,
     },
   );

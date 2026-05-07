@@ -9,11 +9,11 @@ import { ApiPermissions } from '@/modules/shared/constants/permissions';
 
 export function GroupsHeader() {
   const { t } = useTranslation();
-  const { p } = useAuth();
+  const { hasPermissions } = useAuth();
 
   return (
     <PageHeader title={t('groups:name')}>
-      {p(ApiPermissions.Groups.CREATE) && (
+      {hasPermissions(ApiPermissions.Groups.CREATE) && (
         <CreateGroupDialogTrigger>
           <Button>
             <PlusIcon />

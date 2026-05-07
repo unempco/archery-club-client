@@ -9,11 +9,11 @@ import { ApiPermissions } from '@/modules/shared/constants/permissions';
 
 export function CyclesHeader() {
   const { t } = useTranslation();
-  const { p } = useAuth();
+  const { hasPermissions } = useAuth();
 
   return (
     <PageHeader title={t('cycles:name')}>
-      {p(ApiPermissions.Cycles.CREATE) && (
+      {hasPermissions(ApiPermissions.Cycles.CREATE) && (
         <CreateCycleDialogTrigger>
           <Button>
             <PlusIcon />

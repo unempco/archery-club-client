@@ -3,7 +3,6 @@ import type { CellContext } from '@tanstack/react-table';
 
 import { useState } from 'react';
 import { DotsThreeIcon, PencilIcon, TrashIcon } from '@phosphor-icons/react';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
 
 import { DeleteConfirmationDialog } from '@/core/components/delete-confirmation-dialog';
@@ -12,32 +11,29 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/core/components/ui/dropdown-menu';
-import { onMutationError, onMutationSuccess } from '@/core/lib/mutation-toast';
-import { deleteDummyMutationOptions } from '@/modules/dummies/api/query-options';
+import { PermissionGuard } from '@/modules/auth/components/permissions-guard';
 import { UpdateDummyDialog } from '@/modules/dummies/componentes/dialogs/update-dummy-dialog';
+import { useDeleteDummyMutation } from '@/modules/dummies/hooks/dummy-mutations';
+import { ApiPermissions } from '@/modules/shared/constants/permissions';
 
 export function DummyActions({ row }: DataActionsProps) {
   const { t } = useTranslation();
-  const queryClient = useQueryClient();
+
   const [confirmOpen, setConfirmOpen] = useState(false);
   const [editOpen, setEditOpen] = useState(false);
 
   const dummy = row.original;
-
-  const deleteMutation = useMutation({
-    ...deleteDummyMutationOptions(dummy.id),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['dummies'] });
-      onMutationSuccess(t, 'dialogs.wasDeleted')();
-    },
-    onError: onMutationError(t),
-  });
+  const deleteMutation = useDeleteDummyMutation({ dummyId: dummy.id });
 
   return (
-    <>
+    <PermissionGuard
+      permissions={[
+        ApiPermissions.Dummies.UPDATE,
+        ApiPermissions.Dummies.DELETE,
+      ]}
+    >
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" size="icon">
@@ -45,18 +41,22 @@ export function DummyActions({ row }: DataActionsProps) {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-          <DropdownMenuItem onClick={() => setEditOpen(true)}>
-            <PencilIcon />
-            {t('actions.edit')}
-          </DropdownMenuItem>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem
-            variant="destructive"
-            onClick={() => setConfirmOpen(true)}
-          >
-            <TrashIcon />
-            {t('actions.delete')}
-          </DropdownMenuItem>
+          <PermissionGuard permissions={ApiPermissions.Dummies.UPDATE}>
+            <DropdownMenuItem onClick={() => setEditOpen(true)}>
+              <PencilIcon />
+              {t('actions.edit')}
+            </DropdownMenuItem>
+          </PermissionGuard>
+
+          <PermissionGuard permissions={ApiPermissions.Dummies.DELETE}>
+            <DropdownMenuItem
+              variant="destructive"
+              onClick={() => setConfirmOpen(true)}
+            >
+              <TrashIcon />
+              {t('actions.delete')}
+            </DropdownMenuItem>
+          </PermissionGuard>
         </DropdownMenuContent>
       </DropdownMenu>
 
@@ -73,7 +73,7 @@ export function DummyActions({ row }: DataActionsProps) {
         isPending={deleteMutation.isPending}
         name={dummy.name}
       />
-    </>
+    </PermissionGuard>
   );
 }
 

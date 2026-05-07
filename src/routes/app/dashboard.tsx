@@ -7,7 +7,7 @@ export const Route = createFileRoute('/app/dashboard')({
   component: DashboardPage,
   head: createRouteHead({
     type: 'index',
-    titleI18nKey: 'layout:navItems.dashboard',
+    titleI18nKey: 'layout:navigation.dashboard',
   }),
 });
 

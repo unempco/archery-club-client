@@ -20,7 +20,7 @@ import { ApiPermissions } from '@/modules/shared/constants/permissions';
 
 export function GroupActions({ row }: DataActionsProps) {
   const { t } = useTranslation();
-  const { p } = useAuth();
+  const { hasPermissions } = useAuth();
 
   const [confirmOpen, setConfirmOpen] = useState(false);
   const [editOpen, setEditOpen] = useState(false);
@@ -29,7 +29,12 @@ export function GroupActions({ row }: DataActionsProps) {
 
   const deleteMutation = useDeleteGroup({ groupId: group.id });
 
-  if (!p([ApiPermissions.Groups.UPDATE, ApiPermissions.Groups.DELETE]))
+  if (
+    !hasPermissions([
+      ApiPermissions.Groups.UPDATE,
+      ApiPermissions.Groups.DELETE,
+    ])
+  )
     return null;
 
   return (
@@ -41,13 +46,13 @@ export function GroupActions({ row }: DataActionsProps) {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-          {p(ApiPermissions.Groups.UPDATE) && (
+          {hasPermissions(ApiPermissions.Groups.UPDATE) && (
             <DropdownMenuItem onClick={() => setEditOpen(true)}>
               <PencilIcon />
               {t('actions.edit')}
             </DropdownMenuItem>
           )}
-          {p(ApiPermissions.Groups.DELETE) && (
+          {hasPermissions(ApiPermissions.Groups.DELETE) && (
             <DropdownMenuItem
               variant="destructive"
               onClick={() => setConfirmOpen(true)}

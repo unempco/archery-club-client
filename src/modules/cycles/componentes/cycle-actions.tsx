@@ -20,7 +20,7 @@ import { ApiPermissions } from '@/modules/shared/constants/permissions';
 
 export function CycleActions({ row }: DataActionsProps) {
   const { t } = useTranslation();
-  const { p } = useAuth();
+  const { hasPermissions } = useAuth();
 
   const [confirmOpen, setConfirmOpen] = useState(false);
   const [editOpen, setEditOpen] = useState(false);
@@ -29,7 +29,12 @@ export function CycleActions({ row }: DataActionsProps) {
 
   const deleteMutation = useDeleteCycle({ cycleId: cycle.id });
 
-  if (!p([ApiPermissions.Cycles.UPDATE, ApiPermissions.Cycles.DELETE]))
+  if (
+    !hasPermissions([
+      ApiPermissions.Cycles.UPDATE,
+      ApiPermissions.Cycles.DELETE,
+    ])
+  )
     return null;
 
   return (
@@ -41,13 +46,13 @@ export function CycleActions({ row }: DataActionsProps) {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-          {p(ApiPermissions.Cycles.UPDATE) && (
+          {hasPermissions(ApiPermissions.Cycles.UPDATE) && (
             <DropdownMenuItem onClick={() => setEditOpen(true)}>
               <PencilIcon />
               {t('actions.edit')}
             </DropdownMenuItem>
           )}
-          {p(ApiPermissions.Cycles.DELETE) && (
+          {hasPermissions(ApiPermissions.Cycles.DELETE) && (
             <DropdownMenuItem
               variant="destructive"
               onClick={() => setConfirmOpen(true)}
