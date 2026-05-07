@@ -10,7 +10,7 @@ import {
   DialogTitle,
 } from '@/core/components/ui/dialog';
 import { UpdateGroupForm } from '@/modules/groups/components/forms/update-group-form';
-import { useUpdateGroup } from '@/modules/groups/hooks/group-actions';
+import { useUpdateGroupMutation } from '@/modules/groups/hooks/group-mutations';
 
 export function UpdateGroupDialog({
   group,
@@ -19,7 +19,7 @@ export function UpdateGroupDialog({
 }: UpdateGroupDialogProps) {
   const { t } = useTranslation();
 
-  const mutation = useUpdateGroup({
+  const mutation = useUpdateGroupMutation({
     groupId: group.id,
     onSuccess: () => onOpenChange(false),
   });

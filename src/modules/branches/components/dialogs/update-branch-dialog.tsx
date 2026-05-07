@@ -10,7 +10,7 @@ import {
   DialogTitle,
 } from '@/core/components/ui/dialog';
 import { UpdateBranchForm } from '@/modules/branches/components/forms/update-branch-form';
-import { useUpdateBranch } from '@/modules/branches/hooks/branch-actions';
+import { useUpdateBranchMutation } from '@/modules/branches/hooks/branch-mutations';
 
 export function UpdateBranchDialog({
   branch,
@@ -19,7 +19,7 @@ export function UpdateBranchDialog({
 }: UpdateBranchDialogProps) {
   const { t } = useTranslation();
 
-  const mutation = useUpdateBranch({
+  const mutation = useUpdateBranchMutation({
     branchId: branch.id,
     onSuccess: () => onOpenChange(false),
   });

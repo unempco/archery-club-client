@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from '@/core/components/ui/dialog';
 import { CreateBranchForm } from '@/modules/branches/components/forms/create-branch-form';
-import { useCreateBranch } from '@/modules/branches/hooks/branch-actions';
+import { useCreateBranchMutation } from '@/modules/branches/hooks/branch-mutations';
 
 export function CreateBranchDialogTrigger({
   children,
@@ -18,7 +18,9 @@ export function CreateBranchDialogTrigger({
   const { t } = useTranslation();
   const [open, onOpenChange] = useState(false);
 
-  const mutation = useCreateBranch({ onSuccess: () => onOpenChange(false) });
+  const mutation = useCreateBranchMutation({
+    onSuccess: () => onOpenChange(false),
+  });
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>

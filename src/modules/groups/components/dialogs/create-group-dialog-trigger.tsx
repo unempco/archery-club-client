@@ -10,13 +10,15 @@ import {
   DialogTrigger,
 } from '@/core/components/ui/dialog';
 import { CreateGroupForm } from '@/modules/groups/components/forms/create-group-form';
-import { useCreateGroup } from '@/modules/groups/hooks/group-actions';
+import { useCreateGroupMutation } from '@/modules/groups/hooks/group-mutations';
 
 export function CreateGroupDialogTrigger({ children }: CreateGroupDialogProps) {
   const { t } = useTranslation();
   const [open, onOpenChange] = useState(false);
 
-  const mutation = useCreateGroup({ onSuccess: () => onOpenChange(false) });
+  const mutation = useCreateGroupMutation({
+    onSuccess: () => onOpenChange(false),
+  });
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>

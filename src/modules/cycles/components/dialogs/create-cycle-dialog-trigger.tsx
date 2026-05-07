@@ -10,13 +10,15 @@ import {
   DialogTrigger,
 } from '@/core/components/ui/dialog';
 import { CreateCycleForm } from '@/modules/cycles/components/forms/create-cycle-form';
-import { useCreateCycle } from '@/modules/cycles/hooks/cycle-actions';
+import { useCreateCycleMutation } from '@/modules/cycles/hooks/cycle-mutations';
 
 export function CreateCycleDialogTrigger({ children }: CreateCycleDialogProps) {
   const { t } = useTranslation();
   const [open, onOpenChange] = useState(false);
 
-  const mutation = useCreateCycle({ onSuccess: () => onOpenChange(false) });
+  const mutation = useCreateCycleMutation({
+    onSuccess: () => onOpenChange(false),
+  });
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>

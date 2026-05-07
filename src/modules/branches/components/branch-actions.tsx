@@ -15,7 +15,7 @@ import {
 } from '@/core/components/ui/dropdown-menu';
 import { useAuth } from '@/modules/auth/hooks/use-auth';
 import { UpdateBranchDialog } from '@/modules/branches/components/dialogs/update-branch-dialog';
-import { useDeleteBranch } from '@/modules/branches/hooks/branch-actions';
+import { useDeleteBranchMutation } from '@/modules/branches/hooks/branch-mutations';
 import { ApiPermissions } from '@/modules/shared/constants/permissions';
 
 export function BranchActions({ row }: DataActionsProps) {
@@ -27,7 +27,7 @@ export function BranchActions({ row }: DataActionsProps) {
 
   const branch = row.original;
 
-  const deleteMutation = useDeleteBranch({ branchId: branch.id });
+  const deleteMutation = useDeleteBranchMutation({ branchId: branch.id });
 
   if (
     !hasPermissions([

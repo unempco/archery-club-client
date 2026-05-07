@@ -11,7 +11,11 @@ import {
   updateGroup,
 } from '@/modules/groups/api/query-fns';
 
-export function useCreateGroup({ onSuccess }: { onSuccess: () => void }) {
+export function useCreateGroupMutation({
+  onSuccess,
+}: {
+  onSuccess: () => void;
+}) {
   const { t } = useTranslation();
 
   const queryClient = useQueryClient();
@@ -28,7 +32,7 @@ export function useCreateGroup({ onSuccess }: { onSuccess: () => void }) {
   });
 }
 
-export function useUpdateGroup({
+export function useUpdateGroupMutation({
   groupId,
   onSuccess,
 }: {
@@ -51,7 +55,7 @@ export function useUpdateGroup({
   });
 }
 
-export function useDeleteGroup({ groupId }: { groupId: number }) {
+export function useDeleteGroupMutation({ groupId }: { groupId: number }) {
   const queryClient = useQueryClient();
   const { t } = useTranslation();
 

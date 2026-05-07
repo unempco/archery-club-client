@@ -10,7 +10,7 @@ import {
   DialogTitle,
 } from '@/core/components/ui/dialog';
 import { UpdateTargetForm } from '@/modules/targets/components/forms/update-target-form';
-import { useUpdateTarget } from '@/modules/targets/hooks/target-actions';
+import { useUpdateTargetMutation } from '@/modules/targets/hooks/target-mutations';
 
 export function UpdateTargetDialog({
   target,
@@ -19,7 +19,7 @@ export function UpdateTargetDialog({
 }: UpdateTargetDialogProps) {
   const { t } = useTranslation();
 
-  const mutation = useUpdateTarget({
+  const mutation = useUpdateTargetMutation({
     targetId: target.id,
     onSuccess: () => onOpenChange(false),
   });

@@ -10,7 +10,7 @@ import {
   DialogTitle,
 } from '@/core/components/ui/dialog';
 import { UpdateCycleForm } from '@/modules/cycles/components/forms/update-cycle-form';
-import { useUpdateCycle } from '@/modules/cycles/hooks/cycle-actions';
+import { useUpdateCycleMutation } from '@/modules/cycles/hooks/cycle-mutations';
 
 export function UpdateCycleDialog({
   cycle,
@@ -19,7 +19,7 @@ export function UpdateCycleDialog({
 }: UpdateCycleDialogProps) {
   const { t } = useTranslation();
 
-  const mutation = useUpdateCycle({
+  const mutation = useUpdateCycleMutation({
     cycleId: cycle.id,
     onSuccess: () => onOpenChange(false),
   });

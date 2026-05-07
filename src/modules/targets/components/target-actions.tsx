@@ -16,7 +16,7 @@ import {
 import { useAuth } from '@/modules/auth/hooks/use-auth';
 import { ApiPermissions } from '@/modules/shared/constants/permissions';
 import { UpdateTargetDialog } from '@/modules/targets/components/dialogs/update-target-dialog';
-import { useDeleteTarget } from '@/modules/targets/hooks/target-actions';
+import { useDeleteTargetMutation } from '@/modules/targets/hooks/target-mutations';
 
 export function TargetActions({ row }: DataActionsProps) {
   const { t } = useTranslation();
@@ -27,7 +27,7 @@ export function TargetActions({ row }: DataActionsProps) {
 
   const target = row.original;
 
-  const deleteMutation = useDeleteTarget({ targetId: target.id });
+  const deleteMutation = useDeleteTargetMutation({ targetId: target.id });
 
   if (
     !hasPermissions([

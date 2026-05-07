@@ -15,7 +15,7 @@ import {
 } from '@/core/components/ui/dropdown-menu';
 import { useAuth } from '@/modules/auth/hooks/use-auth';
 import { UpdateCycleDialog } from '@/modules/cycles/components/dialogs/update-cycle-dialog';
-import { useDeleteCycle } from '@/modules/cycles/hooks/cycle-actions';
+import { useDeleteCycleMutation } from '@/modules/cycles/hooks/cycle-mutations';
 import { ApiPermissions } from '@/modules/shared/constants/permissions';
 
 export function CycleActions({ row }: DataActionsProps) {
@@ -27,7 +27,7 @@ export function CycleActions({ row }: DataActionsProps) {
 
   const cycle = row.original;
 
-  const deleteMutation = useDeleteCycle({ cycleId: cycle.id });
+  const deleteMutation = useDeleteCycleMutation({ cycleId: cycle.id });
 
   if (
     !hasPermissions([

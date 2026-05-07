@@ -15,7 +15,7 @@ import {
 } from '@/core/components/ui/dropdown-menu';
 import { useAuth } from '@/modules/auth/hooks/use-auth';
 import { UpdateGroupDialog } from '@/modules/groups/components/dialogs/update-group-dialog';
-import { useDeleteGroup } from '@/modules/groups/hooks/group-actions';
+import { useDeleteGroupMutation } from '@/modules/groups/hooks/group-mutations';
 import { ApiPermissions } from '@/modules/shared/constants/permissions';
 
 export function GroupActions({ row }: DataActionsProps) {
@@ -27,7 +27,7 @@ export function GroupActions({ row }: DataActionsProps) {
 
   const group = row.original;
 
-  const deleteMutation = useDeleteGroup({ groupId: group.id });
+  const deleteMutation = useDeleteGroupMutation({ groupId: group.id });
 
   if (
     !hasPermissions([

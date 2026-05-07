@@ -11,7 +11,11 @@ import {
   updateBranch,
 } from '@/modules/branches/api/query-fns';
 
-export function useCreateBranch({ onSuccess }: { onSuccess: () => void }) {
+export function useCreateBranchMutation({
+  onSuccess,
+}: {
+  onSuccess: () => void;
+}) {
   const { t } = useTranslation();
 
   const queryClient = useQueryClient();
@@ -28,7 +32,7 @@ export function useCreateBranch({ onSuccess }: { onSuccess: () => void }) {
   });
 }
 
-export function useUpdateBranch({
+export function useUpdateBranchMutation({
   branchId,
   onSuccess,
 }: {
@@ -51,7 +55,7 @@ export function useUpdateBranch({
   });
 }
 
-export function useDeleteBranch({ branchId }: { branchId: number }) {
+export function useDeleteBranchMutation({ branchId }: { branchId: number }) {
   const queryClient = useQueryClient();
   const { t } = useTranslation();
 

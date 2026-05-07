@@ -11,7 +11,11 @@ import {
   updateCycle,
 } from '@/modules/cycles/api/query-fns';
 
-export function useCreateCycle({ onSuccess }: { onSuccess: () => void }) {
+export function useCreateCycleMutation({
+  onSuccess,
+}: {
+  onSuccess: () => void;
+}) {
   const { t } = useTranslation();
 
   const queryClient = useQueryClient();
@@ -28,7 +32,7 @@ export function useCreateCycle({ onSuccess }: { onSuccess: () => void }) {
   });
 }
 
-export function useUpdateCycle({
+export function useUpdateCycleMutation({
   cycleId,
   onSuccess,
 }: {
@@ -51,7 +55,7 @@ export function useUpdateCycle({
   });
 }
 
-export function useDeleteCycle({ cycleId }: { cycleId: number }) {
+export function useDeleteCycleMutation({ cycleId }: { cycleId: number }) {
   const queryClient = useQueryClient();
   const { t } = useTranslation();
 

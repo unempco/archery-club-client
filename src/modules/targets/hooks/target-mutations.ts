@@ -11,7 +11,11 @@ import {
   updateTarget,
 } from '@/modules/targets/api/query-fns';
 
-export function useCreateTarget({ onSuccess }: { onSuccess: () => void }) {
+export function useCreateTargetMutation({
+  onSuccess,
+}: {
+  onSuccess: () => void;
+}) {
   const { t } = useTranslation();
 
   const queryClient = useQueryClient();
@@ -28,7 +32,7 @@ export function useCreateTarget({ onSuccess }: { onSuccess: () => void }) {
   });
 }
 
-export function useUpdateTarget({
+export function useUpdateTargetMutation({
   targetId,
   onSuccess,
 }: {
@@ -51,7 +55,7 @@ export function useUpdateTarget({
   });
 }
 
-export function useDeleteTarget({ targetId }: { targetId: number }) {
+export function useDeleteTargetMutation({ targetId }: { targetId: number }) {
   const queryClient = useQueryClient();
   const { t } = useTranslation();
 
