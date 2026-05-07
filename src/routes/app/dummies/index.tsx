@@ -8,6 +8,7 @@ import { createFileRoute, useSearch } from '@tanstack/react-router';
 import { DataPaginator } from '@/core/components/data/data-paginator';
 import { DataSearch } from '@/core/components/data/data-search';
 import { DataTable } from '@/core/components/data/data-table';
+import { NotOkResponseError } from '@/core/errors';
 import { createRouteHead } from '@/layout/lib/create-route-head';
 import { dummiesIndexQueryOptions } from '@/modules/dummies/api/query-options';
 import { DummiesHeader } from '@/modules/dummies/componentes/dummies-header';
@@ -16,9 +17,20 @@ import {
   dummiesTableColumns,
 } from '@/modules/dummies/data/data-table-settings';
 import { dummiesSearchSchema } from '@/modules/dummies/schemas';
+import { ApiPermissions } from '@/modules/shared/constants/permissions';
 
 export const Route = createFileRoute('/app/dummies/')({
   validateSearch: dummiesSearchSchema,
+  beforeLoad: ({ context: { auth } }) => {
+    // Just an example, maybe your query functions should throw a 403
+    if (!auth.hasPermissions(ApiPermissions.Dummies.READ)) {
+      throw new NotOkResponseError({
+        detail: 'You dont belong here',
+        title: 'Forbidden',
+        status: 403,
+      });
+    }
+  },
   loaderDeps: ({ search }): DummiesSearchParams => search,
   loader: async ({ context: { queryClient }, deps }) =>
     queryClient.ensureQueryData(dummiesIndexQueryOptions(deps)),
