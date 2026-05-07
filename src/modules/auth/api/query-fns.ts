@@ -3,6 +3,7 @@ import type { LoginData, User } from '@/modules/auth/types';
 import { sleep } from '@/core/lib/utils';
 import {
   getAccessToken,
+  removeAccessToken,
   removeRefreshToken,
   setAccessToken,
   setRefreshToken,
@@ -38,7 +39,7 @@ export async function login(data: LoginData): Promise<User> {
 export async function logout(): Promise<void> {
   await sleep(500);
 
-  removeRefreshToken();
+  removeAccessToken();
   removeRefreshToken();
 
   return;

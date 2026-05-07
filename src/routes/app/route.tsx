@@ -5,13 +5,10 @@ import { SidebarInset, SidebarProvider } from '@/core/components/ui/sidebar';
 import { AppHeader } from '@/layout/components/app-header';
 import { SidebarPrimary } from '@/layout/components/sidebar-primary';
 import { createRouteHead } from '@/layout/lib/create-route-head';
-import { sessionQueryOptions } from '@/modules/auth/api/query-options';
 
 export const Route = createFileRoute('/app')({
-  beforeLoad: async ({ context, location }) => {
-    const user = await context.queryClient.ensureQueryData(sessionQueryOptions);
-
-    if (!user) {
+  beforeLoad: async ({ context: { auth }, location }) => {
+    if (!auth.isAuthenticated) {
       throw redirect({
         to: '/login',
         search: { redirect: location.href },

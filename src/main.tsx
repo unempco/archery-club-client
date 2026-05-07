@@ -14,8 +14,6 @@ import { I18nextProvider, useTranslation } from 'react-i18next';
 import i18n from '@/i18n';
 import { AppRouteError } from '@/layout/components/app-route-error';
 import { ThemeProvider } from '@/layout/contexts/theme-provider';
-import { AuthProvider } from '@/modules/auth/contexts/auth-provider';
-import { useAuth } from '@/modules/auth/hooks/use-auth';
 
 // Import the generated route tree
 import { routeTree } from './routeTree.gen';
@@ -53,12 +51,9 @@ declare module '@tanstack/react-router' {
 
 // eslint-disable-next-line react-refresh/only-export-components
 function ContextualizedApp() {
-  const auth = useAuth();
   const { i18n } = useTranslation();
 
-  return (
-    <RouterProvider router={router} context={{ auth, queryClient, i18n }} />
-  );
+  return <RouterProvider router={router} context={{ queryClient, i18n }} />;
 }
 
 // Render the app
@@ -70,9 +65,7 @@ if (!rootElement.innerHTML) {
     <I18nextProvider i18n={i18n}>
       <ThemeProvider>
         <QueryClientProvider client={queryClient}>
-          <AuthProvider>
-            <ContextualizedApp />
-          </AuthProvider>
+          <ContextualizedApp />
         </QueryClientProvider>
       </ThemeProvider>
     </I18nextProvider>,

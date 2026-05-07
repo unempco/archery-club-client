@@ -1,4 +1,4 @@
-import type { AuthContextValue } from '@/modules/auth/contexts/auth-provider';
+import type { AuthContext } from '@/modules/auth/types';
 import type { QueryClient } from '@tanstack/react-query';
 
 import { useEffect } from 'react';
@@ -17,21 +17,36 @@ import {
   getUserLocalePreference,
   setLocaleInDocument,
 } from '@/layout/lib/locales';
+import { sessionQueryOptions } from '@/modules/auth/api/query-options';
+import { validator } from '@/modules/auth/lib/utils';
 
 type RootRouteContext = {
   queryClient: QueryClient;
-  auth: AuthContextValue;
+  auth: AuthContext;
   i18n: ReturnType<typeof useTranslation>['i18n'];
 };
 
 export const Route = createRootRouteWithContext<RootRouteContext>()({
+  beforeLoad: async ({ context: { queryClient } }) => {
+    const user = await queryClient.ensureQueryData(sessionQueryOptions);
+
+    const auth: AuthContext = {
+      user,
+      isAuthenticated: !!user,
+      hasPermissions: (permissions, requireAll) =>
+        validator(permissions, user?.permissions, requireAll),
+      hasRoles: (roles, requireAll) =>
+        validator(roles, user?.roles, requireAll),
+    };
+
+    return { auth };
+  },
   head: createRouteHead({ type: 'root' }),
   component: RootLayout,
 });
 
 export function RootLayout() {
   const { i18n } = useTranslation();
-
   const loadedLocale = getUserLocalePreference();
 
   useEffect(() => {
