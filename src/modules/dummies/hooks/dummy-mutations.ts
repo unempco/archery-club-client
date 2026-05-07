@@ -11,7 +11,11 @@ import {
   updateDummy,
 } from '@/modules/dummies/api/query-fns';
 
-export function useCreateDummy({ onSuccess }: { onSuccess: () => void }) {
+export function useCreateDummyMutation({
+  onSuccess,
+}: {
+  onSuccess: () => void;
+}) {
   const { t } = useTranslation();
   const queryClient = useQueryClient();
 
@@ -27,7 +31,7 @@ export function useCreateDummy({ onSuccess }: { onSuccess: () => void }) {
   });
 }
 
-export function useUpdateDummy({
+export function useUpdateDummyMutation({
   dummyId,
   onSuccess,
 }: {
@@ -49,7 +53,7 @@ export function useUpdateDummy({
   });
 }
 
-export function useDeleteDummy({ dummyId }: { dummyId: number }) {
+export function useDeleteDummyMutation({ dummyId }: { dummyId: number }) {
   const { t } = useTranslation();
   const queryClient = useQueryClient();
 
