@@ -10,13 +10,15 @@ import {
   DialogTrigger,
 } from '@/core/components/ui/dialog';
 import { DummyForm } from '@/modules/dummies/componentes/forms/dummy-form';
-import { useCreateDummy } from '@/modules/dummies/hooks/dummy-actions';
+import { useCreateDummyMutation } from '@/modules/dummies/hooks/dummy-mutations';
 
 export function CreateDummyDialogTrigger({ children }: CreateDummyDialogProps) {
   const { t } = useTranslation();
   const [open, onOpenChange] = useState(false);
 
-  const mutation = useCreateDummy({ onSuccess: () => onOpenChange(false) });
+  const mutation = useCreateDummyMutation({
+    onSuccess: () => onOpenChange(false),
+  });
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>

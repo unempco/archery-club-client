@@ -10,7 +10,7 @@ import {
   DialogTitle,
 } from '@/core/components/ui/dialog';
 import { DummyForm } from '@/modules/dummies/componentes/forms/dummy-form';
-import { useUpdateDummy } from '@/modules/dummies/hooks/dummy-actions';
+import { useUpdateDummyMutation } from '@/modules/dummies/hooks/dummy-mutations';
 
 export function UpdateDummyDialog({
   dummy,
@@ -19,7 +19,7 @@ export function UpdateDummyDialog({
 }: UpdateDummyDialogProps) {
   const { t } = useTranslation();
 
-  const mutation = useUpdateDummy({
+  const mutation = useUpdateDummyMutation({
     dummyId: dummy.id,
     onSuccess: () => onOpenChange(false),
   });

@@ -15,7 +15,7 @@ import {
 } from '@/core/components/ui/dropdown-menu';
 import { PermissionGuard } from '@/modules/auth/components/permissions-guard';
 import { UpdateDummyDialog } from '@/modules/dummies/componentes/dialogs/update-dummy-dialog';
-import { useDeleteDummy } from '@/modules/dummies/hooks/dummy-actions';
+import { useDeleteDummyMutation } from '@/modules/dummies/hooks/dummy-mutations';
 import { ApiPermissions } from '@/modules/shared/constants/permissions';
 
 export function DummyActions({ row }: DataActionsProps) {
@@ -25,7 +25,7 @@ export function DummyActions({ row }: DataActionsProps) {
   const [editOpen, setEditOpen] = useState(false);
 
   const dummy = row.original;
-  const deleteMutation = useDeleteDummy({ dummyId: dummy.id });
+  const deleteMutation = useDeleteDummyMutation({ dummyId: dummy.id });
 
   return (
     <PermissionGuard
