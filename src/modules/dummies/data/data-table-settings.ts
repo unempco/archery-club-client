@@ -6,7 +6,7 @@ import { DataTableCheckboxCell } from '@/core/components/data/data-table-checkbo
 import { DataTableCheckboxHeader } from '@/core/components/data/data-table-checkbox-header';
 import { DataTableHeader } from '@/core/components/data/data-table-header';
 import { DataTableColumnType } from '@/core/constants/data-table';
-import { DummyActions } from '@/modules/dummies/componentes/dummy-actions';
+import { DummyActions } from '@/modules/dummies/components/dummy-actions';
 
 export const dummiesTableColumns: ColumnDef<Dummy>[] = [
   {

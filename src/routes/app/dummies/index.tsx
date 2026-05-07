@@ -11,7 +11,7 @@ import { DataTable } from '@/core/components/data/data-table';
 import { NotOkResponseError } from '@/core/errors';
 import { createRouteHead } from '@/layout/lib/create-route-head';
 import { dummiesIndexQueryOptions } from '@/modules/dummies/api/query-options';
-import { DummiesHeader } from '@/modules/dummies/componentes/dummies-header';
+import { DummiesHeader } from '@/modules/dummies/components/dummies-header';
 import {
   dummiesColumnsDefaultState,
   dummiesTableColumns,

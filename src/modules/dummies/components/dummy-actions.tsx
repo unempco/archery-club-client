@@ -14,7 +14,7 @@ import {
   DropdownMenuTrigger,
 } from '@/core/components/ui/dropdown-menu';
 import { PermissionGuard } from '@/modules/auth/components/permissions-guard';
-import { UpdateDummyDialog } from '@/modules/dummies/componentes/dialogs/update-dummy-dialog';
+import { UpdateDummyDialog } from '@/modules/dummies/components/dialogs/update-dummy-dialog';
 import { useDeleteDummyMutation } from '@/modules/dummies/hooks/dummy-mutations';
 import { ApiPermissions } from '@/modules/shared/constants/permissions';
 
