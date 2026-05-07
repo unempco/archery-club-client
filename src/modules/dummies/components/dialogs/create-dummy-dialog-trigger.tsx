@@ -9,7 +9,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/core/components/ui/dialog';
-import { DummyForm } from '@/modules/dummies/componentes/forms/dummy-form';
+import { DummyForm } from '@/modules/dummies/components/forms/dummy-form';
 import { useCreateDummyMutation } from '@/modules/dummies/hooks/dummy-mutations';
 
 export function CreateDummyDialogTrigger({ children }: CreateDummyDialogProps) {
