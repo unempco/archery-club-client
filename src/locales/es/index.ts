@@ -9,6 +9,7 @@ export { branches } from './branches';
 export { cycles } from './cycles';
 export { groups } from './groups';
 export { targets } from './targets';
+export { sessions } from './sessions';
 
 export { users } from './users';
 export { roles } from './roles';
