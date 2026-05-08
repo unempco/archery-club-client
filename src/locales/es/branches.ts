@@ -2,13 +2,13 @@ export const branches = {
   name: 'Locaciones',
   name_one: 'Location',
   name_other: 'Locaciones',
-  attribs: {
+  fields: {
     closedAt: 'Cerrada el',
     maintenanceThreshold: 'Uso máximo de las dianas (sesiones)',
     maintenanceWarningOffset: 'Sesiones de advertencia',
   },
   actions: {},
-  dialogs: {},
+  messages: {},
   filters: {},
   forms: {
     add: {

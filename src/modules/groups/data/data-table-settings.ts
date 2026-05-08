@@ -4,14 +4,14 @@ import type { ColumnDef, VisibilityState } from '@tanstack/react-table';
 import { DataTableCell } from '@/core/components/data/data-table-cell';
 import { DataTableHeader } from '@/core/components/data/data-table-header';
 import { DataTableColumnType } from '@/core/constants/data-table';
-import { DateTableWeekdayCell } from '@/modules/groups/componentes/data/date-table-weekday-cell';
-import { GroupActions } from '@/modules/groups/componentes/group-actions';
+import { DateTableWeekdayCell } from '@/modules/groups/components/data/date-table-weekday-cell';
+import { GroupActions } from '@/modules/groups/components/group-actions';
 
 export const groupsTableColumns: ColumnDef<Group>[] = [
   {
     accessorKey: 'id',
     meta: {
-      headerI18nKey: 'groups:attribs.id',
+      headerI18nKey: 'groups:fields.id',
       columnType: DataTableColumnType.ID,
     },
     header: DataTableHeader,
@@ -21,7 +21,7 @@ export const groupsTableColumns: ColumnDef<Group>[] = [
   {
     accessorKey: 'name',
     meta: {
-      headerI18nKey: 'groups:attribs.name',
+      headerI18nKey: 'groups:fields.name',
       columnType: DataTableColumnType.TEXT,
     },
     header: DataTableHeader,
@@ -31,7 +31,7 @@ export const groupsTableColumns: ColumnDef<Group>[] = [
   {
     accessorKey: 'weekday',
     meta: {
-      headerI18nKey: 'groups:attribs.weekday',
+      headerI18nKey: 'groups:fields.weekday',
     },
     header: DataTableHeader,
     cell: DateTableWeekdayCell,
@@ -39,7 +39,7 @@ export const groupsTableColumns: ColumnDef<Group>[] = [
   {
     accessorKey: 'startTime',
     meta: {
-      headerI18nKey: 'groups:attribs.startTime',
+      headerI18nKey: 'groups:fields.startTime',
       columnType: DataTableColumnType.TEXT,
     },
     header: DataTableHeader,
@@ -48,7 +48,7 @@ export const groupsTableColumns: ColumnDef<Group>[] = [
   {
     accessorKey: 'durationMinutes',
     meta: {
-      headerI18nKey: 'groups:attribs.duration',
+      headerI18nKey: 'groups:fields.duration',
       columnType: DataTableColumnType.NUMBER,
     },
     header: DataTableHeader,
@@ -57,7 +57,7 @@ export const groupsTableColumns: ColumnDef<Group>[] = [
   {
     accessorKey: 'cycleId',
     meta: {
-      headerI18nKey: 'groups:attribs.cycle',
+      headerI18nKey: 'groups:fields.cycle',
       columnType: DataTableColumnType.NUMBER,
     },
     header: DataTableHeader,
@@ -66,7 +66,7 @@ export const groupsTableColumns: ColumnDef<Group>[] = [
   {
     accessorKey: 'status',
     meta: {
-      headerI18nKey: 'groups:attribs.status',
+      headerI18nKey: 'groups:fields.status',
       columnType: DataTableColumnType.STATUS,
     },
     header: DataTableHeader,
@@ -75,7 +75,7 @@ export const groupsTableColumns: ColumnDef<Group>[] = [
   {
     accessorKey: 'createdAt',
     meta: {
-      headerI18nKey: 'groups:attribs.createdAt',
+      headerI18nKey: 'groups:fields.createdAt',
       columnType: DataTableColumnType.DATETIME,
     },
     header: DataTableHeader,
@@ -84,7 +84,7 @@ export const groupsTableColumns: ColumnDef<Group>[] = [
   {
     accessorKey: 'deletedAt',
     meta: {
-      headerI18nKey: 'groups:attribs.deletedAt',
+      headerI18nKey: 'groups:fields.deletedAt',
       columnType: DataTableColumnType.DATETIME,
     },
     header: DataTableHeader,

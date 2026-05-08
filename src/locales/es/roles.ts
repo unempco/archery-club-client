@@ -2,9 +2,9 @@ export const roles = {
   name: 'Roles',
   name_one: 'Rol',
   name_other: 'Roles',
-  attribs: {},
+  fields: {},
   actions: {},
-  dialogs: {},
+  messages: {},
   filters: {},
   forms: {},
 };

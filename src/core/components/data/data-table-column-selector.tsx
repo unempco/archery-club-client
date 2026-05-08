@@ -31,7 +31,7 @@ export function DataTableColumnSelector<TData>({
           {...restOfProps}
         >
           <ColumnsPlusRightIcon />
-          {t('nouns.column_other')}
+          {t('core:nouns.column_other')}
           <CaretDownIcon />
         </Button>
       </DropdownMenuTrigger>

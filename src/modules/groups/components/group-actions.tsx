@@ -1,0 +1,77 @@
+import type { Group } from '@/modules/groups/types';
+import type { CellContext } from '@tanstack/react-table';
+
+import { useState } from 'react';
+import { DotsThreeIcon, PencilIcon, TrashIcon } from '@phosphor-icons/react';
+import { useTranslation } from 'react-i18next';
+
+import { DeleteConfirmationDialog } from '@/core/components/delete-confirmation-dialog';
+import { Button } from '@/core/components/ui/button';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/core/components/ui/dropdown-menu';
+import { PermissionGuard } from '@/modules/auth/components/permissions-guard';
+import { UpdateGroupDialog } from '@/modules/groups/components/dialogs/update-group-dialog';
+import { useDeleteGroupMutation } from '@/modules/groups/hooks/group-mutations';
+import { ApiPermissions } from '@/modules/shared/constants/permissions';
+
+export function GroupActions({ row }: DataActionsProps) {
+  const { t } = useTranslation();
+
+  const [confirmOpen, setConfirmOpen] = useState(false);
+  const [editOpen, setEditOpen] = useState(false);
+
+  const group = row.original;
+
+  const deleteMutation = useDeleteGroupMutation({ groupId: group.id });
+
+  return (
+    <PermissionGuard
+      permissions={[ApiPermissions.Groups.UPDATE, ApiPermissions.Groups.DELETE]}
+    >
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant="ghost" size="icon">
+            <DotsThreeIcon weight="bold" />
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent>
+          <PermissionGuard permissions={ApiPermissions.Groups.UPDATE}>
+            <DropdownMenuItem onClick={() => setEditOpen(true)}>
+              <PencilIcon />
+              {t('actions.edit')}
+            </DropdownMenuItem>
+          </PermissionGuard>
+          <PermissionGuard permissions={ApiPermissions.Groups.DELETE}>
+            <DropdownMenuItem
+              variant="destructive"
+              onClick={() => setConfirmOpen(true)}
+            >
+              <TrashIcon />
+              {t('actions.delete')}
+            </DropdownMenuItem>
+          </PermissionGuard>
+        </DropdownMenuContent>
+      </DropdownMenu>
+
+      <UpdateGroupDialog
+        group={group}
+        open={editOpen}
+        onOpenChange={setEditOpen}
+      />
+
+      <DeleteConfirmationDialog
+        open={confirmOpen}
+        onOpenChange={setConfirmOpen}
+        onConfirm={() => deleteMutation.mutate()}
+        isPending={deleteMutation.isPending}
+        name={group.name}
+      />
+    </PermissionGuard>
+  );
+}
+
+export type DataActionsProps = CellContext<Group, unknown> & {};

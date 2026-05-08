@@ -1,11 +1,9 @@
-import { useMutation } from '@tanstack/react-query';
-import { createFileRoute, redirect, useRouter } from '@tanstack/react-router';
+import { createFileRoute, redirect } from '@tanstack/react-router';
 import { z } from 'zod';
 
 import { createRouteHead } from '@/layout/lib/create-route-head';
-import { sessionQueryOptions } from '@/modules/auth/api/query-options';
 import { LoginForm } from '@/modules/auth/components/forms/login-form';
-import { useAuth } from '@/modules/auth/hooks/use-auth';
+import { useAuthLoginMutation } from '@/modules/auth/hooks/auth-mutations';
 
 const fallback = '/app/dashboard' as const;
 
@@ -13,10 +11,8 @@ export const Route = createFileRoute('/login')({
   validateSearch: z.object({
     redirect: z.string().optional().catch(''),
   }),
-  beforeLoad: async ({ context, search }) => {
-    const user = await context.queryClient.ensureQueryData(sessionQueryOptions);
-
-    if (user) {
+  beforeLoad: async ({ context: { auth }, search }) => {
+    if (auth.isAuthenticated) {
       throw redirect({ to: search.redirect || fallback });
     }
   },
@@ -28,19 +24,7 @@ export const Route = createFileRoute('/login')({
 });
 
 function LoginComponent() {
-  const auth = useAuth();
-  const router = useRouter();
-  const { redirect: redirectTo } = Route.useSearch();
-  const navigate = Route.useNavigate();
-
-  const loginMutation = useMutation({
-    mutationFn: auth.login,
-    onSuccess: async () => {
-      await router.invalidate();
-      await navigate({ to: redirectTo || fallback });
-    },
-    onError: (error) => console.error('Login error:', error),
-  });
+  const loginMutation = useAuthLoginMutation();
 
   return (
     <main className="bg-muted h-screen w-screen flex flex-col justify-center items-center">

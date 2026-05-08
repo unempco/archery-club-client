@@ -10,7 +10,7 @@ import { DataSearch } from '@/core/components/data/data-search';
 import { DataTable } from '@/core/components/data/data-table';
 import { createRouteHead } from '@/layout/lib/create-route-head';
 import { targetsIndexQueryOptions } from '@/modules/targets/api/query-options';
-import { TargetsHeader } from '@/modules/targets/componentes/targets-header';
+import { TargetsHeader } from '@/modules/targets/components/targets-header';
 import {
   targetsColumnsDefaultState,
   targetsTableColumns,

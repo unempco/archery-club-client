@@ -1,7 +1,7 @@
 export const auth = {
   myProfile: 'Mi perfil',
   basicInfo: 'Información básica',
-  attribs: {
+  fields: {
     id: 'ID',
     name: 'Nombre',
     email: 'Correo electrónico',
@@ -24,7 +24,7 @@ export const auth = {
     showPermission_other: 'Mostrar {{count}} permisos',
     updatePassword: 'Actualizar contraseña',
   },
-  dialogs: {
+  messages: {
     loggedIn: 'Sesión iniciada',
     signOutSuccess: 'Has cerrado la sesión.',
     signOutError: 'Error al cerrar la sesión.',

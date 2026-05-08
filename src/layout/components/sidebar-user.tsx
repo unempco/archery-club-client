@@ -1,6 +1,4 @@
 import { CaretDownIcon, SignOutIcon } from '@phosphor-icons/react';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { useRouter } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 
 import {
@@ -22,26 +20,14 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from '@/core/components/ui/sidebar';
-import {
-  logoutMutationOptions,
-  sessionQueryOptions,
-} from '@/modules/auth/api/query-options';
+import { useAuthLogoutMutation } from '@/modules/auth/hooks/auth-mutations';
 import { useAuth } from '@/modules/auth/hooks/use-auth';
 
 export function SidebarUser() {
   const { t } = useTranslation();
   const { isMobile } = useSidebar();
   const { user } = useAuth();
-  const router = useRouter();
-  const queryClient = useQueryClient();
-
-  const logoutMutation = useMutation({
-    ...logoutMutationOptions,
-    onSuccess: async () => {
-      queryClient.setQueryData(sessionQueryOptions.queryKey, null);
-      await router.invalidate();
-    },
-  });
+  const logoutMutation = useAuthLogoutMutation();
 
   return (
     <SidebarMenu>
@@ -92,7 +78,7 @@ export function SidebarUser() {
             >
               <SignOutIcon />
               {logoutMutation.isPending
-                ? t('common:actions.loading')
+                ? t('actions.loading')
                 : t('auth:actions.signOut')}
             </DropdownMenuItem>
           </DropdownMenuContent>

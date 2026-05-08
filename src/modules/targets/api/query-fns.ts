@@ -29,7 +29,6 @@ export async function createTarget(target: CreateTargetFormData) {
   return await api.post<Target>(
     `/${BRANCHES_MODULE_NAME}/${target.branchId}/${TARGETS_MODULE_NAME}`,
     {
-      // @ts-expect-error TODO: Check body type to support dates
       body: target,
     },
   );

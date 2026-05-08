@@ -10,7 +10,7 @@ import { DataSearch } from '@/core/components/data/data-search';
 import { DataTable } from '@/core/components/data/data-table';
 import { createRouteHead } from '@/layout/lib/create-route-head';
 import { branchesIndexQueryOptions } from '@/modules/branches/api/query-options';
-import { BranchesHeader } from '@/modules/branches/componentes/branches-header';
+import { BranchesHeader } from '@/modules/branches/components/branches-header';
 import {
   branchesColumnsDefaultState,
   branchesTableColumns,

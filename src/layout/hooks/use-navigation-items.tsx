@@ -21,10 +21,10 @@ export function useNavigationItems(): UseNavigationItemsReturn {
   return {
     main: [
       {
-        label: t('layout:navItems.tools'),
+        label: t('layout:navigation.tools'),
         items: [
           {
-            title: t('layout:navItems.dashboard'),
+            title: t('layout:navigation.dashboard'),
             url: '/app/dashboard',
             icon: ChartDonutIcon,
           },
@@ -55,7 +55,7 @@ export function useNavigationItems(): UseNavigationItemsReturn {
         ],
       },
       {
-        label: t('layout:navItems.admin'),
+        label: t('layout:navigation.admin'),
         items: [
           {
             title: t('users:name'),
@@ -72,12 +72,12 @@ export function useNavigationItems(): UseNavigationItemsReturn {
     ],
     secondary: [
       {
-        title: t('layout:navItems.settings'),
+        title: t('layout:navigation.settings'),
         url: '/app/settings',
         icon: GearIcon,
       },
       {
-        title: t('layout:navItems.getHelp'),
+        title: t('layout:navigation.getHelp'),
         url: '/app/about',
         icon: InfoIcon,
       },

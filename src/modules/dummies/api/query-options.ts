@@ -1,17 +1,8 @@
-import type {
-  DummiesSearchParams,
-  DummyFormData,
-} from '@/modules/dummies/types';
+import type { DummiesSearchParams } from '@/modules/dummies/types';
 
-import { mutationOptions, queryOptions } from '@tanstack/react-query';
+import { queryOptions } from '@tanstack/react-query';
 
-import {
-  createDummy,
-  deleteDummy,
-  getDummiesList,
-  getDummyById,
-  updateDummy,
-} from '@/modules/dummies/api/query-fns';
+import { getDummiesList, getDummyById } from '@/modules/dummies/api/query-fns';
 
 export const dummiesIndexQueryOptions = (params: DummiesSearchParams) =>
   queryOptions({
@@ -23,18 +14,4 @@ export const dummyQueryOptions = (itemId: number) =>
   queryOptions({
     queryKey: ['dummyById', itemId],
     queryFn: () => getDummyById(itemId),
-  });
-
-export const createDummyMutationOptions = mutationOptions({
-  mutationFn: createDummy,
-});
-
-export const updateDummyMutationOptions = (id: number) =>
-  mutationOptions({
-    mutationFn: (data: DummyFormData) => updateDummy(id, data),
-  });
-
-export const deleteDummyMutationOptions = (id: number) =>
-  mutationOptions({
-    mutationFn: () => deleteDummy(id),
   });

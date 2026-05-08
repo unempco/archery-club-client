@@ -4,13 +4,13 @@ import type { ColumnDef, VisibilityState } from '@tanstack/react-table';
 import { DataTableCell } from '@/core/components/data/data-table-cell';
 import { DataTableHeader } from '@/core/components/data/data-table-header';
 import { DataTableColumnType } from '@/core/constants/data-table';
-import { CycleActions } from '@/modules/cycles/componentes/cycle-actions';
+import { CycleActions } from '@/modules/cycles/components/cycle-actions';
 
 export const cyclesTableColumns: ColumnDef<Cycle>[] = [
   {
     accessorKey: 'id',
     meta: {
-      headerI18nKey: 'cycles:attribs.id',
+      headerI18nKey: 'cycles:fields.id',
       columnType: DataTableColumnType.ID,
     },
     header: DataTableHeader,
@@ -20,7 +20,7 @@ export const cyclesTableColumns: ColumnDef<Cycle>[] = [
   {
     accessorKey: 'name',
     meta: {
-      headerI18nKey: 'cycles:attribs.name',
+      headerI18nKey: 'cycles:fields.name',
       columnType: DataTableColumnType.TEXT,
     },
     header: DataTableHeader,
@@ -30,7 +30,7 @@ export const cyclesTableColumns: ColumnDef<Cycle>[] = [
   {
     accessorKey: 'startDate',
     meta: {
-      headerI18nKey: 'cycles:attribs.startDate',
+      headerI18nKey: 'cycles:fields.startDate',
       columnType: DataTableColumnType.DATE,
     },
     header: DataTableHeader,
@@ -39,7 +39,7 @@ export const cyclesTableColumns: ColumnDef<Cycle>[] = [
   {
     accessorKey: 'sessionCount',
     meta: {
-      headerI18nKey: 'cycles:attribs.sessionCount',
+      headerI18nKey: 'cycles:fields.sessionCount',
       columnType: DataTableColumnType.NUMBER,
     },
     header: DataTableHeader,
@@ -48,7 +48,7 @@ export const cyclesTableColumns: ColumnDef<Cycle>[] = [
   {
     accessorKey: 'branchId',
     meta: {
-      headerI18nKey: 'cycles:attribs.branch',
+      headerI18nKey: 'cycles:fields.branch',
       columnType: DataTableColumnType.NUMBER,
     },
     header: DataTableHeader,
@@ -57,7 +57,7 @@ export const cyclesTableColumns: ColumnDef<Cycle>[] = [
   {
     accessorKey: 'status',
     meta: {
-      headerI18nKey: 'cycles:attribs.status',
+      headerI18nKey: 'cycles:fields.status',
       columnType: DataTableColumnType.STATUS,
     },
     header: DataTableHeader,
@@ -66,7 +66,7 @@ export const cyclesTableColumns: ColumnDef<Cycle>[] = [
   {
     accessorKey: 'createdAt',
     meta: {
-      headerI18nKey: 'cycles:attribs.createdAt',
+      headerI18nKey: 'cycles:fields.createdAt',
       columnType: DataTableColumnType.DATETIME,
     },
     header: DataTableHeader,
@@ -75,7 +75,7 @@ export const cyclesTableColumns: ColumnDef<Cycle>[] = [
   {
     accessorKey: 'deletedAt',
     meta: {
-      headerI18nKey: 'cycles:attribs.deletedAt',
+      headerI18nKey: 'cycles:fields.deletedAt',
       columnType: DataTableColumnType.DATETIME,
     },
     header: DataTableHeader,

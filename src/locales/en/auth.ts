@@ -1,7 +1,7 @@
 export const auth = {
   myProfile: 'My profile',
   basicInfo: 'Basic information',
-  attribs: {
+  fields: {
     id: 'ID',
     name: 'Name',
     email: 'E-mail',
@@ -24,7 +24,7 @@ export const auth = {
     showPermission_other: 'Show {{count}} permissions',
     updatePassword: 'Update password',
   },
-  dialogs: {
+  messages: {
     loggedIn: 'Logged In',
     signOutSuccess: 'You have been signed out.',
     signOutError: 'Error signing out.',
