@@ -7,7 +7,9 @@ export const targets = {
     branch: 'Branch',
     retiredAt: 'Retired at',
   },
-  actions: {},
+  actions: {
+    viewLogs: 'View Logs',
+  },
   constants: {
     status: {
       retired: 'Retired',
