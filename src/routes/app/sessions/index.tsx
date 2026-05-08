@@ -6,7 +6,6 @@ import { useSuspenseQuery } from '@tanstack/react-query';
 import { createFileRoute, useSearch } from '@tanstack/react-router';
 
 import { DataPaginator } from '@/core/components/data/data-paginator';
-import { DataSearch } from '@/core/components/data/data-search';
 import { DataTable } from '@/core/components/data/data-table';
 import { createRouteHead } from '@/layout/lib/create-route-head';
 import { sessionsIndexQueryOptions } from '@/modules/sessions/api/query-options';
@@ -45,7 +44,6 @@ function RouteComponent() {
         columns={sessionsTableColumns}
         columnVisibility={columnVisibility}
         setColumnVisibility={setColumnVisibility}
-        headerSlot={<DataSearch />}
       />
       <DataPaginator
         className="mt-auto"
