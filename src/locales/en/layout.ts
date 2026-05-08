@@ -30,6 +30,8 @@ export const layout = {
     dashboard: 'Dashboard',
     settings: 'Settings',
     getHelp: 'Get Help',
+    business: 'Business',
+    equipment: 'Equipment',
   },
   errors: {
     notFound: 'Página no encontrada',

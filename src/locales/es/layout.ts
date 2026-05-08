@@ -30,6 +30,8 @@ export const layout = {
     dashboard: 'Panel de control',
     settings: 'Configuración',
     getHelp: 'Obtener ayuda',
+    business: 'Negocio',
+    equipment: 'Equipamiento',
   },
   errors: {
     generic: {
