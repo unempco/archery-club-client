@@ -13,17 +13,26 @@ import { Route as LoginRouteImport } from './routes/login'
 import { Route as AppRouteRouteImport } from './routes/app/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppIndexRouteImport } from './routes/app/index'
+import { Route as AppSettingsRouteImport } from './routes/app/settings'
 import { Route as AppDashboardRouteImport } from './routes/app/dashboard'
+import { Route as AppAboutRouteImport } from './routes/app/about'
+import { Route as AppUsersRouteRouteImport } from './routes/app/users/route'
 import { Route as AppTargetsRouteRouteImport } from './routes/app/targets/route'
+import { Route as AppSessionsRouteRouteImport } from './routes/app/sessions/route'
+import { Route as AppRolesRouteRouteImport } from './routes/app/roles/route'
 import { Route as AppGroupsRouteRouteImport } from './routes/app/groups/route'
 import { Route as AppDummiesRouteRouteImport } from './routes/app/dummies/route'
 import { Route as AppCyclesRouteRouteImport } from './routes/app/cycles/route'
 import { Route as AppBranchesRouteRouteImport } from './routes/app/branches/route'
 import { Route as AppTargetsIndexRouteImport } from './routes/app/targets/index'
+import { Route as AppSessionsIndexRouteImport } from './routes/app/sessions/index'
 import { Route as AppGroupsIndexRouteImport } from './routes/app/groups/index'
 import { Route as AppDummiesIndexRouteImport } from './routes/app/dummies/index'
 import { Route as AppCyclesIndexRouteImport } from './routes/app/cycles/index'
 import { Route as AppBranchesIndexRouteImport } from './routes/app/branches/index'
+import { Route as AppTargetsTargetIdRouteRouteImport } from './routes/app/targets/$targetId/route'
+import { Route as AppTargetsTargetIdIndexRouteImport } from './routes/app/targets/$targetId/index'
+import { Route as AppTargetsTargetIdSessionsRouteImport } from './routes/app/targets/$targetId/sessions'
 
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
@@ -45,14 +54,39 @@ const AppIndexRoute = AppIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AppRouteRoute,
 } as any)
+const AppSettingsRoute = AppSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => AppRouteRoute,
+} as any)
 const AppDashboardRoute = AppDashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
   getParentRoute: () => AppRouteRoute,
 } as any)
+const AppAboutRoute = AppAboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppUsersRouteRoute = AppUsersRouteRouteImport.update({
+  id: '/users',
+  path: '/users',
+  getParentRoute: () => AppRouteRoute,
+} as any)
 const AppTargetsRouteRoute = AppTargetsRouteRouteImport.update({
   id: '/targets',
   path: '/targets',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppSessionsRouteRoute = AppSessionsRouteRouteImport.update({
+  id: '/sessions',
+  path: '/sessions',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppRolesRouteRoute = AppRolesRouteRouteImport.update({
+  id: '/roles',
+  path: '/roles',
   getParentRoute: () => AppRouteRoute,
 } as any)
 const AppGroupsRouteRoute = AppGroupsRouteRouteImport.update({
@@ -80,6 +114,11 @@ const AppTargetsIndexRoute = AppTargetsIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AppTargetsRouteRoute,
 } as any)
+const AppSessionsIndexRoute = AppSessionsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AppSessionsRouteRoute,
+} as any)
 const AppGroupsIndexRoute = AppGroupsIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -100,6 +139,22 @@ const AppBranchesIndexRoute = AppBranchesIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AppBranchesRouteRoute,
 } as any)
+const AppTargetsTargetIdRouteRoute = AppTargetsTargetIdRouteRouteImport.update({
+  id: '/$targetId',
+  path: '/$targetId',
+  getParentRoute: () => AppTargetsRouteRoute,
+} as any)
+const AppTargetsTargetIdIndexRoute = AppTargetsTargetIdIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AppTargetsTargetIdRouteRoute,
+} as any)
+const AppTargetsTargetIdSessionsRoute =
+  AppTargetsTargetIdSessionsRouteImport.update({
+    id: '/sessions',
+    path: '/sessions',
+    getParentRoute: () => AppTargetsTargetIdRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -109,25 +164,41 @@ export interface FileRoutesByFullPath {
   '/app/cycles': typeof AppCyclesRouteRouteWithChildren
   '/app/dummies': typeof AppDummiesRouteRouteWithChildren
   '/app/groups': typeof AppGroupsRouteRouteWithChildren
+  '/app/roles': typeof AppRolesRouteRoute
+  '/app/sessions': typeof AppSessionsRouteRouteWithChildren
   '/app/targets': typeof AppTargetsRouteRouteWithChildren
+  '/app/users': typeof AppUsersRouteRoute
+  '/app/about': typeof AppAboutRoute
   '/app/dashboard': typeof AppDashboardRoute
+  '/app/settings': typeof AppSettingsRoute
   '/app/': typeof AppIndexRoute
+  '/app/targets/$targetId': typeof AppTargetsTargetIdRouteRouteWithChildren
   '/app/branches/': typeof AppBranchesIndexRoute
   '/app/cycles/': typeof AppCyclesIndexRoute
   '/app/dummies/': typeof AppDummiesIndexRoute
   '/app/groups/': typeof AppGroupsIndexRoute
+  '/app/sessions/': typeof AppSessionsIndexRoute
   '/app/targets/': typeof AppTargetsIndexRoute
+  '/app/targets/$targetId/sessions': typeof AppTargetsTargetIdSessionsRoute
+  '/app/targets/$targetId/': typeof AppTargetsTargetIdIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
+  '/app/roles': typeof AppRolesRouteRoute
+  '/app/users': typeof AppUsersRouteRoute
+  '/app/about': typeof AppAboutRoute
   '/app/dashboard': typeof AppDashboardRoute
+  '/app/settings': typeof AppSettingsRoute
   '/app': typeof AppIndexRoute
   '/app/branches': typeof AppBranchesIndexRoute
   '/app/cycles': typeof AppCyclesIndexRoute
   '/app/dummies': typeof AppDummiesIndexRoute
   '/app/groups': typeof AppGroupsIndexRoute
+  '/app/sessions': typeof AppSessionsIndexRoute
   '/app/targets': typeof AppTargetsIndexRoute
+  '/app/targets/$targetId/sessions': typeof AppTargetsTargetIdSessionsRoute
+  '/app/targets/$targetId': typeof AppTargetsTargetIdIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -138,14 +209,23 @@ export interface FileRoutesById {
   '/app/cycles': typeof AppCyclesRouteRouteWithChildren
   '/app/dummies': typeof AppDummiesRouteRouteWithChildren
   '/app/groups': typeof AppGroupsRouteRouteWithChildren
+  '/app/roles': typeof AppRolesRouteRoute
+  '/app/sessions': typeof AppSessionsRouteRouteWithChildren
   '/app/targets': typeof AppTargetsRouteRouteWithChildren
+  '/app/users': typeof AppUsersRouteRoute
+  '/app/about': typeof AppAboutRoute
   '/app/dashboard': typeof AppDashboardRoute
+  '/app/settings': typeof AppSettingsRoute
   '/app/': typeof AppIndexRoute
+  '/app/targets/$targetId': typeof AppTargetsTargetIdRouteRouteWithChildren
   '/app/branches/': typeof AppBranchesIndexRoute
   '/app/cycles/': typeof AppCyclesIndexRoute
   '/app/dummies/': typeof AppDummiesIndexRoute
   '/app/groups/': typeof AppGroupsIndexRoute
+  '/app/sessions/': typeof AppSessionsIndexRoute
   '/app/targets/': typeof AppTargetsIndexRoute
+  '/app/targets/$targetId/sessions': typeof AppTargetsTargetIdSessionsRoute
+  '/app/targets/$targetId/': typeof AppTargetsTargetIdIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -157,25 +237,41 @@ export interface FileRouteTypes {
     | '/app/cycles'
     | '/app/dummies'
     | '/app/groups'
+    | '/app/roles'
+    | '/app/sessions'
     | '/app/targets'
+    | '/app/users'
+    | '/app/about'
     | '/app/dashboard'
+    | '/app/settings'
     | '/app/'
+    | '/app/targets/$targetId'
     | '/app/branches/'
     | '/app/cycles/'
     | '/app/dummies/'
     | '/app/groups/'
+    | '/app/sessions/'
     | '/app/targets/'
+    | '/app/targets/$targetId/sessions'
+    | '/app/targets/$targetId/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/login'
+    | '/app/roles'
+    | '/app/users'
+    | '/app/about'
     | '/app/dashboard'
+    | '/app/settings'
     | '/app'
     | '/app/branches'
     | '/app/cycles'
     | '/app/dummies'
     | '/app/groups'
+    | '/app/sessions'
     | '/app/targets'
+    | '/app/targets/$targetId/sessions'
+    | '/app/targets/$targetId'
   id:
     | '__root__'
     | '/'
@@ -185,14 +281,23 @@ export interface FileRouteTypes {
     | '/app/cycles'
     | '/app/dummies'
     | '/app/groups'
+    | '/app/roles'
+    | '/app/sessions'
     | '/app/targets'
+    | '/app/users'
+    | '/app/about'
     | '/app/dashboard'
+    | '/app/settings'
     | '/app/'
+    | '/app/targets/$targetId'
     | '/app/branches/'
     | '/app/cycles/'
     | '/app/dummies/'
     | '/app/groups/'
+    | '/app/sessions/'
     | '/app/targets/'
+    | '/app/targets/$targetId/sessions'
+    | '/app/targets/$targetId/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -231,6 +336,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppIndexRouteImport
       parentRoute: typeof AppRouteRoute
     }
+    '/app/settings': {
+      id: '/app/settings'
+      path: '/settings'
+      fullPath: '/app/settings'
+      preLoaderRoute: typeof AppSettingsRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
     '/app/dashboard': {
       id: '/app/dashboard'
       path: '/dashboard'
@@ -238,11 +350,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppDashboardRouteImport
       parentRoute: typeof AppRouteRoute
     }
+    '/app/about': {
+      id: '/app/about'
+      path: '/about'
+      fullPath: '/app/about'
+      preLoaderRoute: typeof AppAboutRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/app/users': {
+      id: '/app/users'
+      path: '/users'
+      fullPath: '/app/users'
+      preLoaderRoute: typeof AppUsersRouteRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
     '/app/targets': {
       id: '/app/targets'
       path: '/targets'
       fullPath: '/app/targets'
       preLoaderRoute: typeof AppTargetsRouteRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/app/sessions': {
+      id: '/app/sessions'
+      path: '/sessions'
+      fullPath: '/app/sessions'
+      preLoaderRoute: typeof AppSessionsRouteRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/app/roles': {
+      id: '/app/roles'
+      path: '/roles'
+      fullPath: '/app/roles'
+      preLoaderRoute: typeof AppRolesRouteRouteImport
       parentRoute: typeof AppRouteRoute
     }
     '/app/groups': {
@@ -280,6 +420,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppTargetsIndexRouteImport
       parentRoute: typeof AppTargetsRouteRoute
     }
+    '/app/sessions/': {
+      id: '/app/sessions/'
+      path: '/'
+      fullPath: '/app/sessions/'
+      preLoaderRoute: typeof AppSessionsIndexRouteImport
+      parentRoute: typeof AppSessionsRouteRoute
+    }
     '/app/groups/': {
       id: '/app/groups/'
       path: '/'
@@ -307,6 +454,27 @@ declare module '@tanstack/react-router' {
       fullPath: '/app/branches/'
       preLoaderRoute: typeof AppBranchesIndexRouteImport
       parentRoute: typeof AppBranchesRouteRoute
+    }
+    '/app/targets/$targetId': {
+      id: '/app/targets/$targetId'
+      path: '/$targetId'
+      fullPath: '/app/targets/$targetId'
+      preLoaderRoute: typeof AppTargetsTargetIdRouteRouteImport
+      parentRoute: typeof AppTargetsRouteRoute
+    }
+    '/app/targets/$targetId/': {
+      id: '/app/targets/$targetId/'
+      path: '/'
+      fullPath: '/app/targets/$targetId/'
+      preLoaderRoute: typeof AppTargetsTargetIdIndexRouteImport
+      parentRoute: typeof AppTargetsTargetIdRouteRoute
+    }
+    '/app/targets/$targetId/sessions': {
+      id: '/app/targets/$targetId/sessions'
+      path: '/sessions'
+      fullPath: '/app/targets/$targetId/sessions'
+      preLoaderRoute: typeof AppTargetsTargetIdSessionsRouteImport
+      parentRoute: typeof AppTargetsTargetIdRouteRoute
     }
   }
 }
@@ -358,11 +526,40 @@ const AppGroupsRouteRouteWithChildren = AppGroupsRouteRoute._addFileChildren(
   AppGroupsRouteRouteChildren,
 )
 
+interface AppSessionsRouteRouteChildren {
+  AppSessionsIndexRoute: typeof AppSessionsIndexRoute
+}
+
+const AppSessionsRouteRouteChildren: AppSessionsRouteRouteChildren = {
+  AppSessionsIndexRoute: AppSessionsIndexRoute,
+}
+
+const AppSessionsRouteRouteWithChildren =
+  AppSessionsRouteRoute._addFileChildren(AppSessionsRouteRouteChildren)
+
+interface AppTargetsTargetIdRouteRouteChildren {
+  AppTargetsTargetIdSessionsRoute: typeof AppTargetsTargetIdSessionsRoute
+  AppTargetsTargetIdIndexRoute: typeof AppTargetsTargetIdIndexRoute
+}
+
+const AppTargetsTargetIdRouteRouteChildren: AppTargetsTargetIdRouteRouteChildren =
+  {
+    AppTargetsTargetIdSessionsRoute: AppTargetsTargetIdSessionsRoute,
+    AppTargetsTargetIdIndexRoute: AppTargetsTargetIdIndexRoute,
+  }
+
+const AppTargetsTargetIdRouteRouteWithChildren =
+  AppTargetsTargetIdRouteRoute._addFileChildren(
+    AppTargetsTargetIdRouteRouteChildren,
+  )
+
 interface AppTargetsRouteRouteChildren {
+  AppTargetsTargetIdRouteRoute: typeof AppTargetsTargetIdRouteRouteWithChildren
   AppTargetsIndexRoute: typeof AppTargetsIndexRoute
 }
 
 const AppTargetsRouteRouteChildren: AppTargetsRouteRouteChildren = {
+  AppTargetsTargetIdRouteRoute: AppTargetsTargetIdRouteRouteWithChildren,
   AppTargetsIndexRoute: AppTargetsIndexRoute,
 }
 
@@ -375,8 +572,13 @@ interface AppRouteRouteChildren {
   AppCyclesRouteRoute: typeof AppCyclesRouteRouteWithChildren
   AppDummiesRouteRoute: typeof AppDummiesRouteRouteWithChildren
   AppGroupsRouteRoute: typeof AppGroupsRouteRouteWithChildren
+  AppRolesRouteRoute: typeof AppRolesRouteRoute
+  AppSessionsRouteRoute: typeof AppSessionsRouteRouteWithChildren
   AppTargetsRouteRoute: typeof AppTargetsRouteRouteWithChildren
+  AppUsersRouteRoute: typeof AppUsersRouteRoute
+  AppAboutRoute: typeof AppAboutRoute
   AppDashboardRoute: typeof AppDashboardRoute
+  AppSettingsRoute: typeof AppSettingsRoute
   AppIndexRoute: typeof AppIndexRoute
 }
 
@@ -385,8 +587,13 @@ const AppRouteRouteChildren: AppRouteRouteChildren = {
   AppCyclesRouteRoute: AppCyclesRouteRouteWithChildren,
   AppDummiesRouteRoute: AppDummiesRouteRouteWithChildren,
   AppGroupsRouteRoute: AppGroupsRouteRouteWithChildren,
+  AppRolesRouteRoute: AppRolesRouteRoute,
+  AppSessionsRouteRoute: AppSessionsRouteRouteWithChildren,
   AppTargetsRouteRoute: AppTargetsRouteRouteWithChildren,
+  AppUsersRouteRoute: AppUsersRouteRoute,
+  AppAboutRoute: AppAboutRoute,
   AppDashboardRoute: AppDashboardRoute,
+  AppSettingsRoute: AppSettingsRoute,
   AppIndexRoute: AppIndexRoute,
 }
 
