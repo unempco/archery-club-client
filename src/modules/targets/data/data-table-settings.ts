@@ -55,6 +55,15 @@ export const targetsTableColumns: ColumnDef<Target>[] = [
     cell: DateTableTargetStatusCell,
   },
   {
+    accessorKey: 'retiredAt',
+    meta: {
+      headerI18nKey: 'targets:fields.retiredAt',
+      columnType: DataTableColumnType.DATETIME,
+    },
+    header: DataTableHeader,
+    cell: DataTableCell,
+  },
+  {
     accessorKey: 'createdAt',
     meta: {
       headerI18nKey: 'targets:fields.createdAt',
