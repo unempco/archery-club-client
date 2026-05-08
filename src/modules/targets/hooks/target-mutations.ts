@@ -55,7 +55,13 @@ export function useUpdateTargetMutation({
   });
 }
 
-export function useDeleteTargetMutation({ targetId }: { targetId: number }) {
+export function useDeleteTargetMutation({
+  targetId,
+  onSuccess,
+}: {
+  targetId: number;
+  onSuccess?: () => void;
+}) {
   const queryClient = useQueryClient();
   const { t } = useTranslation();
 
@@ -64,6 +70,7 @@ export function useDeleteTargetMutation({ targetId }: { targetId: number }) {
     mutationFn: () => deleteTarget(targetId),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['targets'] });
+      onSuccess?.();
       toast.message(t('targets:messages.wasDeleted'));
     },
     onError: onMutationError(t),
