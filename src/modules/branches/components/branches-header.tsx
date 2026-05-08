@@ -2,25 +2,24 @@ import { PlusIcon } from '@phosphor-icons/react';
 import { useTranslation } from 'react-i18next';
 
 import { Button } from '@/core/components/ui/button';
-import { useAuth } from '@/modules/auth/hooks/use-auth';
+import { PermissionGuard } from '@/modules/auth/components/permissions-guard';
 import { CreateBranchDialogTrigger } from '@/modules/branches/components/dialogs/create-branch-dialog-trigger';
 import { PageHeader } from '@/modules/shared/components/page-header';
 import { ApiPermissions } from '@/modules/shared/constants/permissions';
 
 export function BranchesHeader() {
   const { t } = useTranslation();
-  const { hasPermissions } = useAuth();
 
   return (
     <PageHeader title={t('branches:name')}>
-      {hasPermissions(ApiPermissions.Branches.CREATE) && (
+      <PermissionGuard permissions={ApiPermissions.Branches.CREATE}>
         <CreateBranchDialogTrigger>
           <Button>
             <PlusIcon />
             {t('branches:actions.addNew')}
           </Button>
         </CreateBranchDialogTrigger>
-      )}
+      </PermissionGuard>
     </PageHeader>
   );
 }

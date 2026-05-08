@@ -13,14 +13,13 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/core/components/ui/dropdown-menu';
-import { useAuth } from '@/modules/auth/hooks/use-auth';
+import { PermissionGuard } from '@/modules/auth/components/permissions-guard';
 import { UpdateBranchDialog } from '@/modules/branches/components/dialogs/update-branch-dialog';
 import { useDeleteBranchMutation } from '@/modules/branches/hooks/branch-mutations';
 import { ApiPermissions } from '@/modules/shared/constants/permissions';
 
 export function BranchActions({ row }: DataActionsProps) {
   const { t } = useTranslation();
-  const { hasPermissions } = useAuth();
 
   const [confirmOpen, setConfirmOpen] = useState(false);
   const [editOpen, setEditOpen] = useState(false);
@@ -29,16 +28,13 @@ export function BranchActions({ row }: DataActionsProps) {
 
   const deleteMutation = useDeleteBranchMutation({ branchId: branch.id });
 
-  if (
-    !hasPermissions([
-      ApiPermissions.Branches.UPDATE,
-      ApiPermissions.Branches.DELETE,
-    ])
-  )
-    return null;
-
   return (
-    <>
+    <PermissionGuard
+      permissions={[
+        ApiPermissions.Branches.UPDATE,
+        ApiPermissions.Branches.DELETE,
+      ]}
+    >
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" size="icon">
@@ -46,13 +42,13 @@ export function BranchActions({ row }: DataActionsProps) {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-          {hasPermissions(ApiPermissions.Branches.UPDATE) && (
+          <PermissionGuard permissions={ApiPermissions.Branches.UPDATE}>
             <DropdownMenuItem onClick={() => setEditOpen(true)}>
               <PencilIcon />
               {t('actions.edit')}
             </DropdownMenuItem>
-          )}
-          {hasPermissions(ApiPermissions.Branches.DELETE) && (
+          </PermissionGuard>
+          <PermissionGuard permissions={ApiPermissions.Branches.DELETE}>
             <DropdownMenuItem
               variant="destructive"
               onClick={() => setConfirmOpen(true)}
@@ -60,7 +56,7 @@ export function BranchActions({ row }: DataActionsProps) {
               <TrashIcon />
               {t('actions.delete')}
             </DropdownMenuItem>
-          )}
+          </PermissionGuard>
         </DropdownMenuContent>
       </DropdownMenu>
 
@@ -77,7 +73,7 @@ export function BranchActions({ row }: DataActionsProps) {
         isPending={deleteMutation.isPending}
         name={branch.name}
       />
-    </>
+    </PermissionGuard>
   );
 }
 

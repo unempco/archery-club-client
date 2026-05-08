@@ -13,14 +13,13 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/core/components/ui/dropdown-menu';
-import { useAuth } from '@/modules/auth/hooks/use-auth';
+import { PermissionGuard } from '@/modules/auth/components/permissions-guard';
 import { UpdateCycleDialog } from '@/modules/cycles/components/dialogs/update-cycle-dialog';
 import { useDeleteCycleMutation } from '@/modules/cycles/hooks/cycle-mutations';
 import { ApiPermissions } from '@/modules/shared/constants/permissions';
 
 export function CycleActions({ row }: DataActionsProps) {
   const { t } = useTranslation();
-  const { hasPermissions } = useAuth();
 
   const [confirmOpen, setConfirmOpen] = useState(false);
   const [editOpen, setEditOpen] = useState(false);
@@ -29,16 +28,10 @@ export function CycleActions({ row }: DataActionsProps) {
 
   const deleteMutation = useDeleteCycleMutation({ cycleId: cycle.id });
 
-  if (
-    !hasPermissions([
-      ApiPermissions.Cycles.UPDATE,
-      ApiPermissions.Cycles.DELETE,
-    ])
-  )
-    return null;
-
   return (
-    <>
+    <PermissionGuard
+      permissions={[ApiPermissions.Cycles.UPDATE, ApiPermissions.Cycles.DELETE]}
+    >
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" size="icon">
@@ -46,13 +39,13 @@ export function CycleActions({ row }: DataActionsProps) {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-          {hasPermissions(ApiPermissions.Cycles.UPDATE) && (
+          <PermissionGuard permissions={ApiPermissions.Cycles.UPDATE}>
             <DropdownMenuItem onClick={() => setEditOpen(true)}>
               <PencilIcon />
               {t('actions.edit')}
             </DropdownMenuItem>
-          )}
-          {hasPermissions(ApiPermissions.Cycles.DELETE) && (
+          </PermissionGuard>
+          <PermissionGuard permissions={ApiPermissions.Cycles.DELETE}>
             <DropdownMenuItem
               variant="destructive"
               onClick={() => setConfirmOpen(true)}
@@ -60,7 +53,7 @@ export function CycleActions({ row }: DataActionsProps) {
               <TrashIcon />
               {t('actions.delete')}
             </DropdownMenuItem>
-          )}
+          </PermissionGuard>
         </DropdownMenuContent>
       </DropdownMenu>
 
@@ -77,7 +70,7 @@ export function CycleActions({ row }: DataActionsProps) {
         isPending={deleteMutation.isPending}
         name={cycle.name}
       />
-    </>
+    </PermissionGuard>
   );
 }
 

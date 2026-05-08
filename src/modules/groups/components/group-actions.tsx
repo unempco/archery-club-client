@@ -13,14 +13,13 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/core/components/ui/dropdown-menu';
-import { useAuth } from '@/modules/auth/hooks/use-auth';
+import { PermissionGuard } from '@/modules/auth/components/permissions-guard';
 import { UpdateGroupDialog } from '@/modules/groups/components/dialogs/update-group-dialog';
 import { useDeleteGroupMutation } from '@/modules/groups/hooks/group-mutations';
 import { ApiPermissions } from '@/modules/shared/constants/permissions';
 
 export function GroupActions({ row }: DataActionsProps) {
   const { t } = useTranslation();
-  const { hasPermissions } = useAuth();
 
   const [confirmOpen, setConfirmOpen] = useState(false);
   const [editOpen, setEditOpen] = useState(false);
@@ -29,16 +28,10 @@ export function GroupActions({ row }: DataActionsProps) {
 
   const deleteMutation = useDeleteGroupMutation({ groupId: group.id });
 
-  if (
-    !hasPermissions([
-      ApiPermissions.Groups.UPDATE,
-      ApiPermissions.Groups.DELETE,
-    ])
-  )
-    return null;
-
   return (
-    <>
+    <PermissionGuard
+      permissions={[ApiPermissions.Groups.UPDATE, ApiPermissions.Groups.DELETE]}
+    >
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" size="icon">
@@ -46,13 +39,13 @@ export function GroupActions({ row }: DataActionsProps) {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-          {hasPermissions(ApiPermissions.Groups.UPDATE) && (
+          <PermissionGuard permissions={ApiPermissions.Groups.UPDATE}>
             <DropdownMenuItem onClick={() => setEditOpen(true)}>
               <PencilIcon />
               {t('actions.edit')}
             </DropdownMenuItem>
-          )}
-          {hasPermissions(ApiPermissions.Groups.DELETE) && (
+          </PermissionGuard>
+          <PermissionGuard permissions={ApiPermissions.Groups.DELETE}>
             <DropdownMenuItem
               variant="destructive"
               onClick={() => setConfirmOpen(true)}
@@ -60,7 +53,7 @@ export function GroupActions({ row }: DataActionsProps) {
               <TrashIcon />
               {t('actions.delete')}
             </DropdownMenuItem>
-          )}
+          </PermissionGuard>
         </DropdownMenuContent>
       </DropdownMenu>
 
@@ -77,7 +70,7 @@ export function GroupActions({ row }: DataActionsProps) {
         isPending={deleteMutation.isPending}
         name={group.name}
       />
-    </>
+    </PermissionGuard>
   );
 }
 

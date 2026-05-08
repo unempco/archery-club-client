@@ -13,14 +13,13 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/core/components/ui/dropdown-menu';
-import { useAuth } from '@/modules/auth/hooks/use-auth';
+import { PermissionGuard } from '@/modules/auth/components/permissions-guard';
 import { ApiPermissions } from '@/modules/shared/constants/permissions';
 import { UpdateTargetDialog } from '@/modules/targets/components/dialogs/update-target-dialog';
 import { useDeleteTargetMutation } from '@/modules/targets/hooks/target-mutations';
 
 export function TargetActions({ row }: DataActionsProps) {
   const { t } = useTranslation();
-  const { hasPermissions } = useAuth();
 
   const [confirmOpen, setConfirmOpen] = useState(false);
   const [editOpen, setEditOpen] = useState(false);
@@ -29,16 +28,13 @@ export function TargetActions({ row }: DataActionsProps) {
 
   const deleteMutation = useDeleteTargetMutation({ targetId: target.id });
 
-  if (
-    !hasPermissions([
-      ApiPermissions.Targets.UPDATE,
-      ApiPermissions.Targets.DELETE,
-    ])
-  )
-    return null;
-
   return (
-    <>
+    <PermissionGuard
+      permissions={[
+        ApiPermissions.Targets.UPDATE,
+        ApiPermissions.Targets.DELETE,
+      ]}
+    >
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" size="icon">
@@ -46,13 +42,13 @@ export function TargetActions({ row }: DataActionsProps) {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-          {hasPermissions(ApiPermissions.Targets.UPDATE) && (
+          <PermissionGuard permissions={ApiPermissions.Targets.UPDATE}>
             <DropdownMenuItem onClick={() => setEditOpen(true)}>
               <PencilIcon />
               {t('actions.edit')}
             </DropdownMenuItem>
-          )}
-          {hasPermissions(ApiPermissions.Targets.DELETE) && (
+          </PermissionGuard>
+          <PermissionGuard permissions={ApiPermissions.Targets.DELETE}>
             <DropdownMenuItem
               variant="destructive"
               onClick={() => setConfirmOpen(true)}
@@ -60,7 +56,7 @@ export function TargetActions({ row }: DataActionsProps) {
               <TrashIcon />
               {t('actions.delete')}
             </DropdownMenuItem>
-          )}
+          </PermissionGuard>
         </DropdownMenuContent>
       </DropdownMenu>
 
@@ -77,7 +73,7 @@ export function TargetActions({ row }: DataActionsProps) {
         isPending={deleteMutation.isPending}
         name={target.name}
       />
-    </>
+    </PermissionGuard>
   );
 }
 
