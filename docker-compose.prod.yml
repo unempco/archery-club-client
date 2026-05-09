@@ -1,0 +1,21 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        VITE_BASE_API_URL: ${VITE_BASE_API_URL}
+        VITE_BROWSER_HISTORY: ${VITE_BROWSER_HISTORY}
+    container_name: archery-club-app-prod
+    restart: unless-stopped
+    expose:
+      - "80"
+    networks:
+      - proxy-net
+      - client-internal
+
+networks:
+  proxy-net:
+    external: true
+  client-internal:
+    driver: bridge
