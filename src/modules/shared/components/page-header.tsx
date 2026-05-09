@@ -7,6 +7,7 @@ import { cn } from '@/core/lib/utils';
 
 export function PageHeader({
   title,
+  titleVariant = 'h1',
   itemId,
   className,
   backTo,
@@ -30,14 +31,15 @@ export function PageHeader({
           </Button>
         )}
         <Typography
-          variant="h1"
+          variant={titleVariant}
+          as="h1"
           className="animate-in fade-in slide-in-from-left-5 duration-300"
         >
           {title}
         </Typography>
         {itemId && (
           <Typography
-            variant="h1"
+            variant={titleVariant}
             as="span"
             className="font-normal text-muted-foreground"
           >
@@ -67,6 +69,7 @@ export function PageHeader({
 
 export type PageHeaderProps = React.ComponentProps<'div'> & {
   title: string;
+  titleVariant?: 'h1' | 'h2' | 'h3' | 'h4';
   itemId?: string | number;
   backTo?: string;
   afterTitleSlot?: React.ReactNode;
