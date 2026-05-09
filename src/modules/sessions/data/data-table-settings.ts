@@ -6,16 +6,6 @@ import { DataTableHeader } from '@/core/components/data/data-table-header';
 import { DataTableColumnType } from '@/core/constants/data-table';
 import { SessionActions } from '@/modules/sessions/components/session-actions';
 
-/*
-*     public int Id { get; set; }
-    public int GroupId { get; set; }
-    public DateTime ScheduledAt { get; set; }
-    public int DurationMinutes { get; set; }
-    public string Status { get; set; } = string.Empty;
-    public string? Notes { get; set; }
-    public List<int>? TargetIds { get; set; }
-* */
-
 export const sessionsTableColumns: ColumnDef<Session>[] = [
   {
     accessorKey: 'id',
@@ -57,7 +47,7 @@ export const sessionsTableColumns: ColumnDef<Session>[] = [
   {
     accessorKey: 'scheduledAt',
     meta: {
-      headerI18nKey: 'targets:fields.scheduledAt',
+      headerI18nKey: 'sessions:fields.scheduledAt',
       columnType: DataTableColumnType.DATETIME,
     },
     header: DataTableHeader,
@@ -79,6 +69,4 @@ export const sessionsTableColumns: ColumnDef<Session>[] = [
   },
 ];
 
-export const sessionsColumnsDefaultState: VisibilityState = {
-  deletedAt: false,
-};
+export const sessionsColumnsDefaultState: VisibilityState = {};

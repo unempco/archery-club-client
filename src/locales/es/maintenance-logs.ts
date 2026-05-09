@@ -2,9 +2,16 @@ export const maintenanceLogs = {
   name: 'Registros de mantenimiento',
   name_one: 'Registro de mantenimiento',
   name_other: 'Registros de mantenimiento',
-  fields: {},
+  fields: {
+    target: 'Diana',
+    performedAt: 'Realizado en',
+  },
   actions: {},
-  dialogs: {},
+  dialogs: {
+    add: {
+      title: 'Crear nuevo registro de mantenimiento',
+    },
+  },
   messages: {},
   filters: {},
 };

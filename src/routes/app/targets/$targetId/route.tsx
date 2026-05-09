@@ -1,6 +1,7 @@
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { createFileRoute, Outlet } from '@tanstack/react-router';
 
+import { Separator } from '@/core/components/ui/separator';
 import { createRouteHead } from '@/layout/lib/create-route-head';
 import { targetQueryOptions } from '@/modules/targets/api/query-options';
 import { TargetDetail } from '@/modules/targets/components/target-detail';
@@ -27,6 +28,7 @@ function RouteComponent() {
     <div className="min-h-full flex flex-col gap-4">
       <TargetHeader target={target} />
       <TargetDetail target={target} />
+      <Separator />
       <Outlet />
     </div>
   );
