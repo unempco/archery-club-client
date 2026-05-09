@@ -33,3 +33,20 @@ export function isDateValid(d?: Date | string) {
 export function getYear(d?: Date | string): string | undefined {
   return isDateValid(d) ? new Date(d!).getFullYear().toString() : undefined;
 }
+
+export function mergeDateAndTime(date: Date, timeString: string): Date {
+  const timePart = dayjs(
+    timeString,
+    ['HH:mm', 'HH:mm:ss', 'h:mm A', 'h:mm:ss A'],
+    true,
+  );
+  if (!timePart.isValid())
+    throw new Error(`Unrecognized time format: "${timeString}"`);
+
+  return dayjs(date)
+    .hour(timePart.hour())
+    .minute(timePart.minute())
+    .second(timePart.second())
+    .millisecond(0)
+    .toDate();
+}
