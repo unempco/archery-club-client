@@ -7,12 +7,13 @@ import { cn } from '@/core/lib/utils';
 
 export function PageHeader({
   title,
+  itemId,
   className,
   backTo,
   afterTitleSlot,
   children,
   ...restOfProps
-}: IndexHeaderProps) {
+}: PageHeaderProps) {
   return (
     <div className={cn('flex justify-between', className)} {...restOfProps}>
       <div className="flex items-center gap-2">
@@ -34,6 +35,15 @@ export function PageHeader({
         >
           {title}
         </Typography>
+        {itemId && (
+          <Typography
+            variant="h1"
+            as="span"
+            className="font-normal text-muted-foreground"
+          >
+            {`#${itemId}`}
+          </Typography>
+        )}
         {afterTitleSlot && (
           <div className="animate-in fade-in duration-300">
             {afterTitleSlot}
@@ -55,8 +65,9 @@ export function PageHeader({
   );
 }
 
-export type IndexHeaderProps = React.ComponentProps<'div'> & {
+export type PageHeaderProps = React.ComponentProps<'div'> & {
   title: string;
+  itemId?: string | number;
   backTo?: string;
   afterTitleSlot?: React.ReactNode;
   children?: React.ReactNode;
