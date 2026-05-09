@@ -30,6 +30,8 @@ export const layout = {
     dashboard: 'Panel de control',
     settings: 'Configuración',
     getHelp: 'Obtener ayuda',
+    business: 'Negocio',
+    equipment: 'Equipamiento',
   },
   errors: {
     generic: {
@@ -40,5 +42,10 @@ export const layout = {
       title: 'Página no encontrada',
       description: 'La página que buscas no existe o ha sido movida.',
     },
+  },
+  underConstruction: {
+    badge: 'Trabajo en progreso',
+    title: 'Muy pronto',
+    detail: 'Esta sección aún está en construcción. ',
   },
 };

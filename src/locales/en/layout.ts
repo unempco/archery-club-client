@@ -30,6 +30,8 @@ export const layout = {
     dashboard: 'Dashboard',
     settings: 'Settings',
     getHelp: 'Get Help',
+    business: 'Business',
+    equipment: 'Equipment',
   },
   errors: {
     notFound: 'Página no encontrada',
@@ -39,5 +41,10 @@ export const layout = {
       'Ocurrió un error inesperado. Por favor, inténtalo de nuevo o regresa.',
     goBack: 'Regresar',
     tryAgain: 'Intentar de nuevo',
+  },
+  underConstruction: {
+    badge: 'Work in progress',
+    title: 'Coming Soon',
+    detail: 'This section is still being built. Check back later.',
   },
 };

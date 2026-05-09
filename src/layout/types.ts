@@ -10,6 +10,6 @@ export type NavigationItem = {
 };
 
 export type NavigationGroup = {
-  label: string;
+  label?: string;
   items: NavigationItem[];
 };

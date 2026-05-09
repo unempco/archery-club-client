@@ -4,8 +4,8 @@ import type { ColumnDef, VisibilityState } from '@tanstack/react-table';
 import { DataTableCell } from '@/core/components/data/data-table-cell';
 import { DataTableHeader } from '@/core/components/data/data-table-header';
 import { DataTableColumnType } from '@/core/constants/data-table';
+import { DataTableTargetActionsCell } from '@/modules/targets/components/data/data-table-target-actions-cell';
 import { DateTableTargetStatusCell } from '@/modules/targets/components/data/data-table-target-status-cell';
-import { TargetActions } from '@/modules/targets/components/target-actions';
 
 export const targetsTableColumns: ColumnDef<Target>[] = [
   {
@@ -55,6 +55,15 @@ export const targetsTableColumns: ColumnDef<Target>[] = [
     cell: DateTableTargetStatusCell,
   },
   {
+    accessorKey: 'retiredAt',
+    meta: {
+      headerI18nKey: 'targets:fields.retiredAt',
+      columnType: DataTableColumnType.DATETIME,
+    },
+    header: DataTableHeader,
+    cell: DataTableCell,
+  },
+  {
     accessorKey: 'createdAt',
     meta: {
       headerI18nKey: 'targets:fields.createdAt',
@@ -74,7 +83,7 @@ export const targetsTableColumns: ColumnDef<Target>[] = [
   },
   {
     id: 'actions',
-    cell: TargetActions,
+    cell: DataTableTargetActionsCell,
     enableHiding: false,
   },
 ];

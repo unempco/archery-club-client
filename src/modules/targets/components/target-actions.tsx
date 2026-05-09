@@ -1,8 +1,13 @@
 import type { Target } from '@/modules/targets/types';
-import type { CellContext } from '@tanstack/react-table';
 
 import { useState } from 'react';
-import { DotsThreeIcon, PencilIcon, TrashIcon } from '@phosphor-icons/react';
+import {
+  ClipboardIcon,
+  DotsThreeIcon,
+  PencilIcon,
+  TrashIcon,
+} from '@phosphor-icons/react';
+import { useNavigate } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 
 import { DeleteConfirmationDialog } from '@/core/components/delete-confirmation-dialog';
@@ -11,6 +16,7 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/core/components/ui/dropdown-menu';
 import { PermissionGuard } from '@/modules/auth/components/permissions-guard';
@@ -18,13 +24,12 @@ import { ApiPermissions } from '@/modules/shared/constants/permissions';
 import { UpdateTargetDialog } from '@/modules/targets/components/dialogs/update-target-dialog';
 import { useDeleteTargetMutation } from '@/modules/targets/hooks/target-mutations';
 
-export function TargetActions({ row }: DataActionsProps) {
+export function TargetActions({ target }: TargetActionsProps) {
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   const [confirmOpen, setConfirmOpen] = useState(false);
   const [editOpen, setEditOpen] = useState(false);
-
-  const target = row.original;
 
   const deleteMutation = useDeleteTargetMutation({ targetId: target.id });
 
@@ -38,10 +43,26 @@ export function TargetActions({ row }: DataActionsProps) {
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" size="icon">
-            <DotsThreeIcon weight="bold" />
+            <DotsThreeIcon weight="bold" className="size-6" />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
+          <PermissionGuard permissions={ApiPermissions.MaintenanceLogs.READ}>
+            <DropdownMenuItem
+              onClick={() =>
+                navigate({
+                  to: '/app/targets/$targetId/maintenance-logs',
+                  params: { targetId: String(target.id) },
+                })
+              }
+            >
+              <ClipboardIcon />
+              {t('targets:actions.viewLogs')}
+            </DropdownMenuItem>
+          </PermissionGuard>
+          <PermissionGuard permissions={ApiPermissions.MaintenanceLogs.READ}>
+            <DropdownMenuSeparator />
+          </PermissionGuard>
           <PermissionGuard permissions={ApiPermissions.Targets.UPDATE}>
             <DropdownMenuItem onClick={() => setEditOpen(true)}>
               <PencilIcon />
@@ -77,4 +98,6 @@ export function TargetActions({ row }: DataActionsProps) {
   );
 }
 
-export type DataActionsProps = CellContext<Target, unknown> & {};
+export type TargetActionsProps = {
+  target: Target;
+};

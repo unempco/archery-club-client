@@ -5,8 +5,11 @@ export const targets = {
   fields: {
     usageCount: 'Veces usado',
     branch: 'Locación',
+    retiredAt: 'Retirado en',
   },
-  actions: {},
+  actions: {
+    viewLogs: 'Ver registros',
+  },
   constants: {
     status: {
       retired: 'Retirado',

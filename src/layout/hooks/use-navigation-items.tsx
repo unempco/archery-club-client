@@ -3,6 +3,8 @@ import type { NavigationGroup, NavigationItem } from '@/layout/types';
 import {
   BuildingOfficeIcon,
   ChartDonutIcon,
+  ClipboardTextIcon,
+  ClockCountdownIcon,
   GearIcon,
   InfoIcon,
   KanbanIcon,
@@ -21,13 +23,17 @@ export function useNavigationItems(): UseNavigationItemsReturn {
   return {
     main: [
       {
-        label: t('layout:navigation.tools'),
         items: [
           {
             title: t('layout:navigation.dashboard'),
             url: '/app/dashboard',
             icon: ChartDonutIcon,
           },
+        ],
+      },
+      {
+        label: t('layout:navigation.business'),
+        items: [
           {
             title: t('branches:name'),
             url: '/app/branches',
@@ -47,10 +53,27 @@ export function useNavigationItems(): UseNavigationItemsReturn {
             permissions: [ApiPermissions.Groups.READ],
           },
           {
+            title: t('sessions:name'),
+            url: '/app/sessions',
+            icon: ClockCountdownIcon,
+            permissions: [ApiPermissions.Sessions.READ],
+          },
+        ],
+      },
+      {
+        label: t('layout:navigation.equipment'),
+        items: [
+          {
             title: t('targets:name'),
             url: '/app/targets',
             icon: TargetIcon,
             permissions: [ApiPermissions.Targets.READ],
+          },
+          {
+            title: t('maintenanceLogs:name'),
+            url: '/app/maintenance-logs',
+            icon: ClipboardTextIcon,
+            permissions: [ApiPermissions.MaintenanceLogs.READ],
           },
         ],
       },
