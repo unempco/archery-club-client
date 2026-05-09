@@ -1,6 +1,4 @@
-import type { Icon } from '@phosphor-icons/react';
-
-export function MetaItem({ icon: Icon, label, value }: MetaItemProps) {
+export function DetailFieldItem({ icon: Icon, label, value }: FieldItemProps) {
   return (
     <div className="flex items-center gap-2 text-sm">
       <Icon
@@ -16,8 +14,8 @@ export function MetaItem({ icon: Icon, label, value }: MetaItemProps) {
   );
 }
 
-export type MetaItemProps = {
-  icon: Icon;
+export type FieldItemProps = {
+  icon: React.ElementType;
   label: string;
   value: React.ReactNode;
 };
