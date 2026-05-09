@@ -33,7 +33,7 @@ import { Route as AppCyclesIndexRouteImport } from './routes/app/cycles/index'
 import { Route as AppBranchesIndexRouteImport } from './routes/app/branches/index'
 import { Route as AppTargetsTargetIdRouteRouteImport } from './routes/app/targets/$targetId/route'
 import { Route as AppTargetsTargetIdIndexRouteImport } from './routes/app/targets/$targetId/index'
-import { Route as AppTargetsTargetIdSessionsRouteImport } from './routes/app/targets/$targetId/sessions'
+import { Route as AppTargetsTargetIdMaintenanceLogsRouteImport } from './routes/app/targets/$targetId/maintenance-logs'
 
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
@@ -155,10 +155,10 @@ const AppTargetsTargetIdIndexRoute = AppTargetsTargetIdIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AppTargetsTargetIdRouteRoute,
 } as any)
-const AppTargetsTargetIdSessionsRoute =
-  AppTargetsTargetIdSessionsRouteImport.update({
-    id: '/sessions',
-    path: '/sessions',
+const AppTargetsTargetIdMaintenanceLogsRoute =
+  AppTargetsTargetIdMaintenanceLogsRouteImport.update({
+    id: '/maintenance-logs',
+    path: '/maintenance-logs',
     getParentRoute: () => AppTargetsTargetIdRouteRoute,
   } as any)
 
@@ -186,7 +186,7 @@ export interface FileRoutesByFullPath {
   '/app/groups/': typeof AppGroupsIndexRoute
   '/app/sessions/': typeof AppSessionsIndexRoute
   '/app/targets/': typeof AppTargetsIndexRoute
-  '/app/targets/$targetId/sessions': typeof AppTargetsTargetIdSessionsRoute
+  '/app/targets/$targetId/maintenance-logs': typeof AppTargetsTargetIdMaintenanceLogsRoute
   '/app/targets/$targetId/': typeof AppTargetsTargetIdIndexRoute
 }
 export interface FileRoutesByTo {
@@ -205,7 +205,7 @@ export interface FileRoutesByTo {
   '/app/groups': typeof AppGroupsIndexRoute
   '/app/sessions': typeof AppSessionsIndexRoute
   '/app/targets': typeof AppTargetsIndexRoute
-  '/app/targets/$targetId/sessions': typeof AppTargetsTargetIdSessionsRoute
+  '/app/targets/$targetId/maintenance-logs': typeof AppTargetsTargetIdMaintenanceLogsRoute
   '/app/targets/$targetId': typeof AppTargetsTargetIdIndexRoute
 }
 export interface FileRoutesById {
@@ -233,7 +233,7 @@ export interface FileRoutesById {
   '/app/groups/': typeof AppGroupsIndexRoute
   '/app/sessions/': typeof AppSessionsIndexRoute
   '/app/targets/': typeof AppTargetsIndexRoute
-  '/app/targets/$targetId/sessions': typeof AppTargetsTargetIdSessionsRoute
+  '/app/targets/$targetId/maintenance-logs': typeof AppTargetsTargetIdMaintenanceLogsRoute
   '/app/targets/$targetId/': typeof AppTargetsTargetIdIndexRoute
 }
 export interface FileRouteTypes {
@@ -262,7 +262,7 @@ export interface FileRouteTypes {
     | '/app/groups/'
     | '/app/sessions/'
     | '/app/targets/'
-    | '/app/targets/$targetId/sessions'
+    | '/app/targets/$targetId/maintenance-logs'
     | '/app/targets/$targetId/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -281,7 +281,7 @@ export interface FileRouteTypes {
     | '/app/groups'
     | '/app/sessions'
     | '/app/targets'
-    | '/app/targets/$targetId/sessions'
+    | '/app/targets/$targetId/maintenance-logs'
     | '/app/targets/$targetId'
   id:
     | '__root__'
@@ -308,7 +308,7 @@ export interface FileRouteTypes {
     | '/app/groups/'
     | '/app/sessions/'
     | '/app/targets/'
-    | '/app/targets/$targetId/sessions'
+    | '/app/targets/$targetId/maintenance-logs'
     | '/app/targets/$targetId/'
   fileRoutesById: FileRoutesById
 }
@@ -488,11 +488,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppTargetsTargetIdIndexRouteImport
       parentRoute: typeof AppTargetsTargetIdRouteRoute
     }
-    '/app/targets/$targetId/sessions': {
-      id: '/app/targets/$targetId/sessions'
-      path: '/sessions'
-      fullPath: '/app/targets/$targetId/sessions'
-      preLoaderRoute: typeof AppTargetsTargetIdSessionsRouteImport
+    '/app/targets/$targetId/maintenance-logs': {
+      id: '/app/targets/$targetId/maintenance-logs'
+      path: '/maintenance-logs'
+      fullPath: '/app/targets/$targetId/maintenance-logs'
+      preLoaderRoute: typeof AppTargetsTargetIdMaintenanceLogsRouteImport
       parentRoute: typeof AppTargetsTargetIdRouteRoute
     }
   }
@@ -557,13 +557,14 @@ const AppSessionsRouteRouteWithChildren =
   AppSessionsRouteRoute._addFileChildren(AppSessionsRouteRouteChildren)
 
 interface AppTargetsTargetIdRouteRouteChildren {
-  AppTargetsTargetIdSessionsRoute: typeof AppTargetsTargetIdSessionsRoute
+  AppTargetsTargetIdMaintenanceLogsRoute: typeof AppTargetsTargetIdMaintenanceLogsRoute
   AppTargetsTargetIdIndexRoute: typeof AppTargetsTargetIdIndexRoute
 }
 
 const AppTargetsTargetIdRouteRouteChildren: AppTargetsTargetIdRouteRouteChildren =
   {
-    AppTargetsTargetIdSessionsRoute: AppTargetsTargetIdSessionsRoute,
+    AppTargetsTargetIdMaintenanceLogsRoute:
+      AppTargetsTargetIdMaintenanceLogsRoute,
     AppTargetsTargetIdIndexRoute: AppTargetsTargetIdIndexRoute,
   }
 
