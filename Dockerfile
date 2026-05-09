@@ -8,13 +8,14 @@ RUN corepack enable
 WORKDIR /app
 
 COPY package.json pnpm-lock.yaml ./
-RUN pnpm install --frozen-lockfile
+RUN pnpm install --frozen-lockfile --ignore-scripts
+RUN pnpm rebuild @swc/core esbuild
 
 COPY . .
 
 ARG VITE_BASE_API_URL="/"
 ARG VITE_BROWSER_HISTORY=true
-ENV VITE_BROWSER_HISTORY=$VITE_BROWSER_HISTORY
+ENV VITE_BASE_API_URL=$VITE_BASE_API_URL
 ENV VITE_BROWSER_HISTORY=$VITE_BROWSER_HISTORY
 
 RUN pnpm build
