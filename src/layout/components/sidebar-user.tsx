@@ -20,7 +20,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from '@/core/components/ui/sidebar';
-import { useAuthLogoutMutation } from '@/modules/auth/hooks/auth-mutations';
+import { useAuthLogoutMutation } from '@/modules/auth/hooks/mutations';
 import { useAuth } from '@/modules/auth/hooks/use-auth';
 
 export function SidebarUser() {

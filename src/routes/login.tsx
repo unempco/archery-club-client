@@ -9,7 +9,7 @@ import {
 } from '@/core/components/ui/alert';
 import { createRouteHead } from '@/layout/lib/create-route-head';
 import { LoginForm } from '@/modules/auth/components/forms/login-form';
-import { useAuthLoginMutation } from '@/modules/auth/hooks/auth-mutations';
+import { useAuthLoginMutation } from '@/modules/auth/hooks/mutations';
 
 const fallback = '/app/dashboard' as const;
 
