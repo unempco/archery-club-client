@@ -7,12 +7,14 @@ import { cn } from '@/core/lib/utils';
 
 export function PageHeader({
   title,
+  titleVariant = 'h1',
+  itemId,
   className,
   backTo,
   afterTitleSlot,
   children,
   ...restOfProps
-}: IndexHeaderProps) {
+}: PageHeaderProps) {
   return (
     <div className={cn('flex justify-between', className)} {...restOfProps}>
       <div className="flex items-center gap-2">
@@ -29,11 +31,21 @@ export function PageHeader({
           </Button>
         )}
         <Typography
-          variant="h1"
+          variant={titleVariant}
+          as="h1"
           className="animate-in fade-in slide-in-from-left-5 duration-300"
         >
           {title}
         </Typography>
+        {itemId && (
+          <Typography
+            variant={titleVariant}
+            as="span"
+            className="font-normal text-muted-foreground"
+          >
+            {`#${itemId}`}
+          </Typography>
+        )}
         {afterTitleSlot && (
           <div className="animate-in fade-in duration-300">
             {afterTitleSlot}
@@ -55,8 +67,10 @@ export function PageHeader({
   );
 }
 
-export type IndexHeaderProps = React.ComponentProps<'div'> & {
+export type PageHeaderProps = React.ComponentProps<'div'> & {
   title: string;
+  titleVariant?: 'h1' | 'h2' | 'h3' | 'h4';
+  itemId?: string | number;
   backTo?: string;
   afterTitleSlot?: React.ReactNode;
   children?: React.ReactNode;
