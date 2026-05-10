@@ -3,10 +3,10 @@ import { createFileRoute } from '@tanstack/react-router';
 import { UnderConstruction } from '@/layout/components/under-construction';
 import { createRouteHead } from '@/layout/lib/create-route-head';
 
-export const Route = createFileRoute('/app/dashboard')({
-  component: UnderConstruction,
+export const Route = createFileRoute('/app/settings')({
   head: createRouteHead({
-    type: 'index',
-    titleI18nKey: 'layout:navigation.dashboard',
+    type: 'generic',
+    titleI18nKey: 'layout:navigation.settings',
   }),
+  component: UnderConstruction,
 });

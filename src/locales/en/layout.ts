@@ -29,7 +29,7 @@ export const layout = {
     admin: 'Admin',
     dashboard: 'Dashboard',
     settings: 'Settings',
-    getHelp: 'Get Help',
+    about: 'About',
   },
   errors: {
     notFound: 'Página no encontrada',
