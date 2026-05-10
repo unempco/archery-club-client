@@ -1,4 +1,5 @@
-import type { Control, FieldValues, Path } from 'react-hook-form';
+import type { FormField } from '@/core/types/components';
+import type { FieldValues } from 'react-hook-form';
 
 import { Controller } from 'react-hook-form';
 
@@ -12,12 +13,13 @@ import {
 } from '@/core/components/ui/select';
 
 export function FormSelect<T extends FieldValues>({
-  name,
   control,
+  name,
   label,
   options,
-  disabled,
   placeholder,
+  disabled,
+  required,
 }: FormSelectProps<T>) {
   return (
     <Controller
@@ -25,7 +27,7 @@ export function FormSelect<T extends FieldValues>({
       control={control}
       render={({ field, fieldState }) => (
         <Field data-invalid={fieldState.invalid}>
-          <FieldLabel>{label}</FieldLabel>
+          <FieldLabel required={required}>{label}</FieldLabel>
           <Select value={field.value} onValueChange={field.onChange}>
             <SelectTrigger disabled={disabled}>
               <SelectValue placeholder={placeholder} />
@@ -45,13 +47,9 @@ export function FormSelect<T extends FieldValues>({
   );
 }
 
-export type FormSelectProps<T extends FieldValues> = {
-  name: Path<T>;
-  control: Control<T>;
+export type FormSelectProps<T extends FieldValues> = FormField<T> & {
   label: string;
   options: SelectOption[];
-  disabled?: boolean;
-  placeholder?: string;
 };
 
 export type SelectOption = {

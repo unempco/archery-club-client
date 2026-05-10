@@ -1,4 +1,5 @@
-import type { Control, FieldValues, Path } from 'react-hook-form';
+import type { FormField } from '@/core/types/components';
+import type { FieldValues } from 'react-hook-form';
 
 import { Controller } from 'react-hook-form';
 
@@ -6,12 +7,13 @@ import { Field, FieldError, FieldLabel } from '@/core/components/ui/field';
 import { Input } from '@/core/components/ui/input';
 
 export function FormInput<T extends FieldValues>({
-  name,
   control,
+  name,
   label,
   type = 'text',
-  disabled,
   placeholder,
+  disabled,
+  required,
 }: FormInputProps<T>) {
   return (
     <Controller
@@ -19,7 +21,7 @@ export function FormInput<T extends FieldValues>({
       control={control}
       render={({ field, fieldState }) => (
         <Field data-invalid={fieldState.invalid}>
-          <FieldLabel>{label}</FieldLabel>
+          <FieldLabel required={required}>{label}</FieldLabel>
           <Input
             {...field}
             type={type}
@@ -38,11 +40,6 @@ export function FormInput<T extends FieldValues>({
   );
 }
 
-export type FormInputProps<T extends FieldValues> = {
-  name: Path<T>;
-  control: Control<T>;
-  label: string;
+export type FormInputProps<T extends FieldValues> = FormField<T> & {
   type?: React.HTMLInputTypeAttribute;
-  disabled?: boolean;
-  placeholder?: string;
 };

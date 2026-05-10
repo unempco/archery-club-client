@@ -1,5 +1,5 @@
-// core/components/ui/form-switch.tsx
-import type { Control, FieldValues, Path } from 'react-hook-form';
+import type { FormField } from '@/core/types/components';
+import type { FieldValues } from 'react-hook-form';
 
 import { Controller } from 'react-hook-form';
 
@@ -7,10 +7,11 @@ import { Field, FieldLabel } from '@/core/components/ui/field';
 import { Switch } from '@/core/components/ui/switch';
 
 export function FormSwitch<T extends FieldValues>({
-  name,
   control,
+  name,
   label,
   disabled,
+  required,
 }: FormSwitchProps<T>) {
   return (
     <Controller
@@ -23,16 +24,16 @@ export function FormSwitch<T extends FieldValues>({
             onCheckedChange={field.onChange}
             disabled={disabled}
           />
-          <FieldLabel className="mb-0">{label}</FieldLabel>
+          <FieldLabel className="mb-0" required={required}>
+            {label}
+          </FieldLabel>
         </Field>
       )}
     />
   );
 }
 
-export type FormSwitchProps<T extends FieldValues> = {
-  name: Path<T>;
-  control: Control<T>;
-  label: string;
-  disabled?: boolean;
-};
+export type FormSwitchProps<T extends FieldValues> = Omit<
+  FormField<T>,
+  'placeholder'
+>;

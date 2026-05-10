@@ -34,7 +34,10 @@ export function getYear(d?: Date | string): string | undefined {
   return isDateValid(d) ? new Date(d!).getFullYear().toString() : undefined;
 }
 
-export function mergeDateAndTime(date: Date, timeString: string): Date {
+export function mergeDateAndTime(
+  date: Date | string,
+  timeString: string,
+): Date {
   const timePart = dayjs(
     timeString,
     ['HH:mm', 'HH:mm:ss', 'h:mm A', 'h:mm:ss A'],

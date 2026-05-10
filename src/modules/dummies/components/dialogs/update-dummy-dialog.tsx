@@ -1,4 +1,3 @@
-// modules/dummies/components/update-dummy-dialog.tsx
 import type { Dummy } from '@/modules/dummies/types';
 
 import { useTranslation } from 'react-i18next';
@@ -10,7 +9,7 @@ import {
   DialogTitle,
 } from '@/core/components/ui/dialog';
 import { DummyForm } from '@/modules/dummies/components/forms/dummy-form';
-import { useUpdateDummyMutation } from '@/modules/dummies/hooks/dummy-mutations';
+import { useUpdateDummyMutation } from '@/modules/dummies/hooks/mutations';
 
 export function UpdateDummyDialog({
   dummy,

@@ -18,12 +18,12 @@ export async function getAllDummies(): Promise<Dummy[]> {
 }
 
 export async function getDummiesList(
-  dummiesSearchParams: DummiesSearchParams,
+  params: DummiesSearchParams,
 ): Promise<PaginatedResponse<Dummy>> {
   await sleep(150);
   const dummies = getDummiesFromLocalStorage();
 
-  const { page = 1, pageSize = 10, search, status } = dummiesSearchParams;
+  const { page = 1, pageSize = 10, search, status } = params;
 
   const cleanSearch = search?.trim().toLowerCase();
 

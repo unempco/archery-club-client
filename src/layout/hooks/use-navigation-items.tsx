@@ -102,7 +102,7 @@ export function useNavigationItems(): UseNavigationItemsReturn {
         icon: GearIcon,
       },
       {
-        title: t('layout:navigation.getHelp'),
+        title: t('layout:navigation.about'),
         url: '/app/about',
         icon: InfoIcon,
       },

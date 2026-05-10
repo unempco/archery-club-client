@@ -5,12 +5,8 @@ import { createRouteHead } from '@/layout/lib/create-route-head';
 
 export const Route = createFileRoute('/app/about')({
   head: createRouteHead({
-    type: 'index',
-    titleI18nKey: 'layout:navigation.getHelp',
+    type: 'generic',
+    titleI18nKey: 'layout:navigation.about',
   }),
   component: UnderConstruction,
 });
-
-// function RouteComponent() {
-//   return <div>Hello "/app/about"!</div>
-// }

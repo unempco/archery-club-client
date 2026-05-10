@@ -3,7 +3,7 @@ import { z } from 'zod';
 
 import { createRouteHead } from '@/layout/lib/create-route-head';
 import { LoginForm } from '@/modules/auth/components/forms/login-form';
-import { useAuthLoginMutation } from '@/modules/auth/hooks/auth-mutations';
+import { useAuthLoginMutation } from '@/modules/auth/hooks/mutations';
 
 const fallback = '/app/dashboard' as const;
 
@@ -27,7 +27,7 @@ function LoginComponent() {
   const loginMutation = useAuthLoginMutation();
 
   return (
-    <main className="bg-muted h-screen w-screen flex flex-col justify-center items-center">
+    <main className="bg-muted h-[100dvh] w-screen flex flex-col justify-center items-center">
       <LoginForm
         className="w-full max-w-[24rem] animate-in fade-in slide-in-from-top-5 duration-500"
         onSubmit={(data) => loginMutation.mutate(data)}
