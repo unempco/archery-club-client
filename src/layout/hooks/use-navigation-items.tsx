@@ -84,11 +84,13 @@ export function useNavigationItems(): UseNavigationItemsReturn {
             title: t('users:name'),
             url: '/app/users',
             icon: UsersIcon,
+            permissions: [ApiPermissions.Users.READ],
           },
           {
             title: t('roles:name'),
             url: '/app/roles',
             icon: SealCheckIcon,
+            permissions: [ApiPermissions.Roles.READ],
           },
         ],
       },
