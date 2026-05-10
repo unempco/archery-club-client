@@ -1,5 +1,5 @@
-// core/components/ui/form-input-unit.tsx
-import type { Control, FieldValues, Path } from 'react-hook-form';
+import type { FormField } from '@/core/types/components';
+import type { FieldValues } from 'react-hook-form';
 
 import { MinusIcon, PlusIcon } from '@phosphor-icons/react';
 import { Controller } from 'react-hook-form';
@@ -15,15 +15,16 @@ import {
 import { round } from '@/core/lib/utils';
 
 export function FormInputNumber<T extends FieldValues>({
-  name,
   control,
+  name,
   label,
+  placeholder,
+  disabled,
+  required,
   unit,
   step = 1,
   min,
   max,
-  disabled,
-  placeholder,
 }: FormInputUnitProps<T>) {
   return (
     <Controller
@@ -44,7 +45,7 @@ export function FormInputNumber<T extends FieldValues>({
 
         return (
           <Field data-invalid={fieldState.invalid}>
-            <FieldLabel>{label}</FieldLabel>
+            <FieldLabel required={required}>{label}</FieldLabel>
             <InputGroup>
               <InputGroupAddon>
                 <Button
@@ -99,14 +100,9 @@ export function FormInputNumber<T extends FieldValues>({
   );
 }
 
-export type FormInputUnitProps<T extends FieldValues> = {
-  name: Path<T>;
-  control: Control<T>;
-  label: string;
+export type FormInputUnitProps<T extends FieldValues> = FormField<T> & {
   unit?: string;
   step?: number;
   min?: number;
   max?: number;
-  disabled?: boolean;
-  placeholder?: string;
 };

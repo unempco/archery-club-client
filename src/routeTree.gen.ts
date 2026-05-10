@@ -13,7 +13,9 @@ import { Route as LoginRouteImport } from './routes/login'
 import { Route as AppRouteRouteImport } from './routes/app/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppIndexRouteImport } from './routes/app/index'
+import { Route as AppSettingsRouteImport } from './routes/app/settings'
 import { Route as AppDashboardRouteImport } from './routes/app/dashboard'
+import { Route as AppAboutRouteImport } from './routes/app/about'
 import { Route as AppDummiesRouteRouteImport } from './routes/app/dummies/route'
 import { Route as AppDummiesIndexRouteImport } from './routes/app/dummies/index'
 
@@ -37,9 +39,19 @@ const AppIndexRoute = AppIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AppRouteRoute,
 } as any)
+const AppSettingsRoute = AppSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => AppRouteRoute,
+} as any)
 const AppDashboardRoute = AppDashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppAboutRoute = AppAboutRouteImport.update({
+  id: '/about',
+  path: '/about',
   getParentRoute: () => AppRouteRoute,
 } as any)
 const AppDummiesRouteRoute = AppDummiesRouteRouteImport.update({
@@ -58,14 +70,18 @@ export interface FileRoutesByFullPath {
   '/app': typeof AppRouteRouteWithChildren
   '/login': typeof LoginRoute
   '/app/dummies': typeof AppDummiesRouteRouteWithChildren
+  '/app/about': typeof AppAboutRoute
   '/app/dashboard': typeof AppDashboardRoute
+  '/app/settings': typeof AppSettingsRoute
   '/app/': typeof AppIndexRoute
   '/app/dummies/': typeof AppDummiesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
+  '/app/about': typeof AppAboutRoute
   '/app/dashboard': typeof AppDashboardRoute
+  '/app/settings': typeof AppSettingsRoute
   '/app': typeof AppIndexRoute
   '/app/dummies': typeof AppDummiesIndexRoute
 }
@@ -75,7 +91,9 @@ export interface FileRoutesById {
   '/app': typeof AppRouteRouteWithChildren
   '/login': typeof LoginRoute
   '/app/dummies': typeof AppDummiesRouteRouteWithChildren
+  '/app/about': typeof AppAboutRoute
   '/app/dashboard': typeof AppDashboardRoute
+  '/app/settings': typeof AppSettingsRoute
   '/app/': typeof AppIndexRoute
   '/app/dummies/': typeof AppDummiesIndexRoute
 }
@@ -86,18 +104,29 @@ export interface FileRouteTypes {
     | '/app'
     | '/login'
     | '/app/dummies'
+    | '/app/about'
     | '/app/dashboard'
+    | '/app/settings'
     | '/app/'
     | '/app/dummies/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/login' | '/app/dashboard' | '/app' | '/app/dummies'
+  to:
+    | '/'
+    | '/login'
+    | '/app/about'
+    | '/app/dashboard'
+    | '/app/settings'
+    | '/app'
+    | '/app/dummies'
   id:
     | '__root__'
     | '/'
     | '/app'
     | '/login'
     | '/app/dummies'
+    | '/app/about'
     | '/app/dashboard'
+    | '/app/settings'
     | '/app/'
     | '/app/dummies/'
   fileRoutesById: FileRoutesById
@@ -138,11 +167,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppIndexRouteImport
       parentRoute: typeof AppRouteRoute
     }
+    '/app/settings': {
+      id: '/app/settings'
+      path: '/settings'
+      fullPath: '/app/settings'
+      preLoaderRoute: typeof AppSettingsRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
     '/app/dashboard': {
       id: '/app/dashboard'
       path: '/dashboard'
       fullPath: '/app/dashboard'
       preLoaderRoute: typeof AppDashboardRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/app/about': {
+      id: '/app/about'
+      path: '/about'
+      fullPath: '/app/about'
+      preLoaderRoute: typeof AppAboutRouteImport
       parentRoute: typeof AppRouteRoute
     }
     '/app/dummies': {
@@ -176,13 +219,17 @@ const AppDummiesRouteRouteWithChildren = AppDummiesRouteRoute._addFileChildren(
 
 interface AppRouteRouteChildren {
   AppDummiesRouteRoute: typeof AppDummiesRouteRouteWithChildren
+  AppAboutRoute: typeof AppAboutRoute
   AppDashboardRoute: typeof AppDashboardRoute
+  AppSettingsRoute: typeof AppSettingsRoute
   AppIndexRoute: typeof AppIndexRoute
 }
 
 const AppRouteRouteChildren: AppRouteRouteChildren = {
   AppDummiesRouteRoute: AppDummiesRouteRouteWithChildren,
+  AppAboutRoute: AppAboutRoute,
   AppDashboardRoute: AppDashboardRoute,
+  AppSettingsRoute: AppSettingsRoute,
   AppIndexRoute: AppIndexRoute,
 }
 

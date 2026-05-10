@@ -9,7 +9,7 @@ import {
 } from '@/core/components/ui/alert';
 import { createRouteHead } from '@/layout/lib/create-route-head';
 import { LoginForm } from '@/modules/auth/components/forms/login-form';
-import { useAuthLoginMutation } from '@/modules/auth/hooks/auth-mutations';
+import { useAuthLoginMutation } from '@/modules/auth/hooks/mutations';
 
 const fallback = '/app/dashboard' as const;
 
@@ -33,7 +33,7 @@ function LoginComponent() {
   const loginMutation = useAuthLoginMutation();
 
   return (
-    <main className="bg-muted h-screen w-screen flex flex-col justify-center items-center">
+    <main className="bg-muted h-[100dvh] w-screen flex flex-col justify-center items-center">
       <Alert className="max-w-[24rem] mb-3 bg-blue-950/50 border-blue-500 text-blue-100 animate-in fade-in duration-1000">
         <InfoIcon />
         <AlertTitle>Example credentials:</AlertTitle>
