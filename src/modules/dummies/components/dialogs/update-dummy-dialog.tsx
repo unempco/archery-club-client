@@ -9,7 +9,7 @@ import {
   DialogTitle,
 } from '@/core/components/ui/dialog';
 import { DummyForm } from '@/modules/dummies/components/forms/dummy-form';
-import { useUpdateDummyMutation } from '@/modules/dummies/hooks/dummy-mutations';
+import { useUpdateDummyMutation } from '@/modules/dummies/hooks/mutations';
 
 export function UpdateDummyDialog({
   dummy,

@@ -1,5 +1,4 @@
 import type { Dummy } from '@/modules/dummies/types';
-import type { CellContext } from '@tanstack/react-table';
 
 import { useState } from 'react';
 import { DotsThreeIcon, PencilIcon, TrashIcon } from '@phosphor-icons/react';
@@ -15,16 +14,15 @@ import {
 } from '@/core/components/ui/dropdown-menu';
 import { PermissionGuard } from '@/modules/auth/components/permissions-guard';
 import { UpdateDummyDialog } from '@/modules/dummies/components/dialogs/update-dummy-dialog';
-import { useDeleteDummyMutation } from '@/modules/dummies/hooks/dummy-mutations';
+import { useDeleteDummyMutation } from '@/modules/dummies/hooks/mutations';
 import { ApiPermissions } from '@/modules/shared/constants/permissions';
 
-export function DummyActions({ row }: DataActionsProps) {
+export function DummyActions({ dummy }: DataActionsProps) {
   const { t } = useTranslation();
 
   const [confirmOpen, setConfirmOpen] = useState(false);
   const [editOpen, setEditOpen] = useState(false);
 
-  const dummy = row.original;
   const deleteMutation = useDeleteDummyMutation({ dummyId: dummy.id });
 
   return (
@@ -77,4 +75,6 @@ export function DummyActions({ row }: DataActionsProps) {
   );
 }
 
-export type DataActionsProps = CellContext<Dummy, unknown> & {};
+export type DataActionsProps = {
+  dummy: Dummy;
+};
