@@ -1,4 +1,3 @@
-// core/components/ui/form-input-unit.tsx
 import type { Control, FieldValues, Path } from 'react-hook-form';
 
 import { MinusIcon, PlusIcon } from '@phosphor-icons/react';

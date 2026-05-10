@@ -1,4 +1,3 @@
-// modules/dummies/components/update-dummy-dialog.tsx
 import type { Dummy } from '@/modules/dummies/types';
 
 import { useTranslation } from 'react-i18next';

@@ -1,4 +1,3 @@
-// modules/dummies/components/create-dummy-dialog.tsx
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
