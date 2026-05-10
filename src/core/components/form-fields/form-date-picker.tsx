@@ -1,5 +1,6 @@
 import type { DateFormat } from '@/core/constants/dates';
-import type { Control, FieldValues, Path } from 'react-hook-form';
+import type { FormField } from '@/core/types/components';
+import type { FieldValues } from 'react-hook-form';
 
 import { Controller } from 'react-hook-form';
 
@@ -7,11 +8,12 @@ import { DatePicker } from '@/core/components/ui/date-picker';
 import { Field, FieldError, FieldLabel } from '@/core/components/ui/field';
 
 export function FormDatePicker<T extends FieldValues>({
-  name,
   control,
+  name,
   label,
-  disabled,
   placeholder,
+  disabled,
+  required,
   dateFormat,
 }: FormDatePickerProps<T>) {
   return (
@@ -20,7 +22,7 @@ export function FormDatePicker<T extends FieldValues>({
       control={control}
       render={({ field, fieldState }) => (
         <Field data-invalid={fieldState.invalid}>
-          <FieldLabel>{label}</FieldLabel>
+          <FieldLabel required={required}>{label}</FieldLabel>
           <DatePicker
             value={field.value}
             onChange={field.onChange}
@@ -35,11 +37,6 @@ export function FormDatePicker<T extends FieldValues>({
   );
 }
 
-export type FormDatePickerProps<T extends FieldValues> = {
-  name: Path<T>;
-  control: Control<T>;
-  label: string;
-  disabled?: boolean;
-  placeholder?: string;
+export type FormDatePickerProps<T extends FieldValues> = FormField<T> & {
   dateFormat?: DateFormat;
 };
