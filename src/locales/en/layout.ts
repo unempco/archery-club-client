@@ -40,4 +40,9 @@ export const layout = {
     goBack: 'Regresar',
     tryAgain: 'Intentar de nuevo',
   },
+  underConstruction: {
+    badge: 'Work in progress',
+    title: 'Coming Soon',
+    detail: 'This section is still being built. Check back later.',
+  },
 };

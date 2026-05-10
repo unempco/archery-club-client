@@ -41,4 +41,9 @@ export const layout = {
       description: 'La página que buscas no existe o ha sido movida.',
     },
   },
+  underConstruction: {
+    badge: 'Trabajo en progreso',
+    title: 'Muy pronto',
+    detail: 'Esta sección aún está en construcción. ',
+  },
 };
