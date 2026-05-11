@@ -37,7 +37,7 @@ export const maintenanceLogsTableColumns: ColumnDef<MaintenanceLog>[] = [
   {
     accessorKey: 'performedAt',
     meta: {
-      headerI18nKey: 'maintenanceLogs:fields.scheduledAt',
+      headerI18nKey: 'maintenanceLogs:fields.performedAt',
       columnType: DataTableColumnType.DATETIME,
     },
     header: DataTableHeader,

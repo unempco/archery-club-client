@@ -5,7 +5,7 @@ import { TargetIcon } from '@phosphor-icons/react';
 import { Card, CardContent, CardHeader } from '@/core/components/ui/card';
 import { cn } from '@/core/lib/utils';
 import { TargetActions } from '@/modules/targets/components/target-actions';
-import { TargetDetail } from '@/modules/targets/components/target-detail';
+import { TargetDetails } from '@/modules/targets/components/target-details';
 
 export function TargetCard({ target, className }: TargetCardProps) {
   return (
@@ -36,7 +36,7 @@ export function TargetCard({ target, className }: TargetCardProps) {
       </CardHeader>
 
       <CardContent className="flex flex-col gap-2 pb-4">
-        <TargetDetail target={target} />
+        <TargetDetails target={target} />
       </CardContent>
     </Card>
   );

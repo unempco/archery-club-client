@@ -14,12 +14,7 @@ import { cn } from '@/core/lib/utils';
 import { DetailFieldItem } from '@/modules/shared/components/detail-field-item';
 import { TargetStatusBadge } from '@/modules/targets/components/target-status';
 
-interface TargetDetailProps {
-  target: Target;
-  className?: string;
-}
-
-export function TargetDetail({ target, className }: TargetDetailProps) {
+export function TargetDetails({ target, className }: TargetDetailsProps) {
   const { t } = useTranslation();
 
   return (
@@ -62,3 +57,8 @@ export function TargetDetail({ target, className }: TargetDetailProps) {
     </div>
   );
 }
+
+export type TargetDetailsProps = {
+  target: Target;
+  className?: string;
+};

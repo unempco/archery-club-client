@@ -4,7 +4,7 @@ import { createFileRoute, Outlet } from '@tanstack/react-router';
 import { Separator } from '@/core/components/ui/separator';
 import { createRouteHead } from '@/layout/lib/create-route-head';
 import { targetQueryOptions } from '@/modules/targets/api/query-options';
-import { TargetDetail } from '@/modules/targets/components/target-detail';
+import { TargetDetails } from '@/modules/targets/components/target-details';
 import { TargetHeader } from '@/modules/targets/components/target-header';
 
 export const Route = createFileRoute('/app/targets/$targetId')({
@@ -27,7 +27,7 @@ function RouteComponent() {
   return (
     <div className="min-h-full flex flex-col gap-4">
       <TargetHeader target={target} />
-      <TargetDetail target={target} />
+      <TargetDetails target={target} />
       <Separator />
       <Outlet />
     </div>
