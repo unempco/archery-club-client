@@ -66,7 +66,7 @@ export function CreateGroupForm({
           label={t('groups:fields.cycle')}
           placeholder={t('groups:forms.placeholders.cycle')}
           options={cyclesOptions}
-          disabled={isSubmitting || !cyclesSuccess}
+          disabled={isSubmitting || !cyclesSuccess || !!defaultValues?.cycleId}
           required
         />
 

@@ -55,7 +55,13 @@ export function useUpdateCycleMutation({
   });
 }
 
-export function useDeleteCycleMutation({ cycleId }: { cycleId: number }) {
+export function useDeleteCycleMutation({
+  cycleId,
+  onSuccess,
+}: {
+  cycleId: number;
+  onSuccess?: () => void;
+}) {
   const queryClient = useQueryClient();
   const { t } = useTranslation();
 
@@ -64,6 +70,7 @@ export function useDeleteCycleMutation({ cycleId }: { cycleId: number }) {
     mutationFn: () => deleteCycle(cycleId),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['cycles'] });
+      onSuccess?.();
       toast.message(t('cycles:messages.wasDeleted'));
     },
     onError: onMutationError(t),

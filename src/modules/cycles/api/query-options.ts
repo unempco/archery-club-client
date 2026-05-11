@@ -26,10 +26,10 @@ export const cyclesLookupQueryOptions = () => {
   });
 };
 
-export const cycleQueryOptions = (itemId: number) =>
+export const cycleQueryOptions = (id: number) =>
   queryOptions({
-    queryKey: ['cycleById', itemId],
-    queryFn: () => getCycleById(itemId),
+    queryKey: ['cycleById', id],
+    queryFn: () => getCycleById(id),
   });
 
 //=======================>By Branch<========================//

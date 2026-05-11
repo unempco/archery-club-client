@@ -1,4 +1,5 @@
 import type {
+  BranchCyclesSearchParams,
   CreateCycleFormData,
   Cycle,
   CyclesSearchParams,
@@ -39,7 +40,7 @@ export async function deleteCycle(id: number) {
 
 export async function getBranchCyclesList(
   branchId: number,
-  params: CyclesSearchParams,
+  params: BranchCyclesSearchParams,
 ) {
   return await api.getList<Cycle>(
     `/${BRANCHES_MODULE_NAME}/${branchId}/${CYCLES_MODULE_NAME}`,

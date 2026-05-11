@@ -34,9 +34,16 @@ export const updateGroupFormSchema = groupSchema.pick({
 });
 
 export const groupsFiltersSchema = z.object({
+  cycleId: z.string().optional().catch(''),
   search: z.string().optional().catch(''),
   includeDeleted: z.boolean().optional().catch(false),
 });
 export const groupsSearchSchema = paginationSearchSchema.extend(
   groupsFiltersSchema.shape,
 );
+
+//====================>ByCycle<===================//
+
+export const cycleGroupsSearchSchema = groupsSearchSchema.omit({
+  cycleId: true,
+});
