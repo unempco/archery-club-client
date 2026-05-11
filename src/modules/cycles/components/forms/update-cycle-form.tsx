@@ -47,6 +47,7 @@ export function UpdateCycleForm({
           label={t('cycles:fields.name')}
           placeholder={t('cycles:forms.placeholders.name')}
           disabled={isSubmitting}
+          required
         />
         <FormSelect
           control={form.control}
@@ -54,6 +55,7 @@ export function UpdateCycleForm({
           label={t('cycles:fields.status')}
           placeholder={t('cycles:forms.placeholders.status')}
           options={statusOptions}
+          required
         />
 
         <div className="flex justify-end gap-2 pt-2">

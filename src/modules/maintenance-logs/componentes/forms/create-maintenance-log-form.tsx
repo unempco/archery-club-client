@@ -50,6 +50,7 @@ export function CreateMaintenanceLogForm({
             name="performedAt"
             label={t('maintenanceLogs:fields.performedAt')}
             disabled={isSubmitting}
+            required
           />
           <Input id={timeInputId} type="time" defaultValue="14:00" />
         </div>

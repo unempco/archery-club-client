@@ -47,6 +47,7 @@ export function UpdateSessionForm({
           label={t('sessions:fields.status')}
           placeholder={t('sessions:forms.placeholders.status')}
           options={statusOptions}
+          required
         />
         <FormTextarea
           control={form.control}

@@ -50,6 +50,7 @@ export function UpdateBranchForm({
           label={t('branches:fields.name')}
           placeholder={t('branches:forms.placeholders.name')}
           disabled={isSubmitting}
+          required
         />
 
         <FormSelect
@@ -59,6 +60,7 @@ export function UpdateBranchForm({
           placeholder={t('branches:forms.placeholders.status')}
           options={statusOptions}
           disabled={isSubmitting}
+          required
         />
 
         <FormInputNumber
@@ -68,6 +70,7 @@ export function UpdateBranchForm({
           disabled={isSubmitting}
           min={0}
           step={1}
+          required
         />
         <FormInputNumber
           control={form.control}
@@ -77,6 +80,7 @@ export function UpdateBranchForm({
           min={0}
           max={maintenanceThreshold}
           step={1}
+          required
         />
 
         <div className="flex justify-end gap-2 pt-2">

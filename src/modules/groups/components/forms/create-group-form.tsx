@@ -58,6 +58,7 @@ export function CreateGroupForm({
           label={t('groups:fields.name')}
           placeholder={t('groups:forms.placeholders.name')}
           disabled={isSubmitting}
+          required
         />
         <FormSelect
           control={form.control}
@@ -66,6 +67,7 @@ export function CreateGroupForm({
           placeholder={t('groups:forms.placeholders.cycle')}
           options={cyclesOptions}
           disabled={isSubmitting || !cyclesSuccess}
+          required
         />
 
         <div className="grid grid-cols-2 gap-4">
@@ -76,12 +78,14 @@ export function CreateGroupForm({
             placeholder={t('groups:forms.placeholders.weekday')}
             options={weekdayOptions}
             disabled={isSubmitting}
+            required
           />
           <FormInput
             control={form.control}
             name="startTime"
             label={t('groups:fields.startTime')}
             type="time"
+            required
           />
         </div>
 
@@ -93,6 +97,7 @@ export function CreateGroupForm({
           max={24 * 60}
           step={15}
           unit="min"
+          required
         />
 
         <div className="flex justify-end gap-2 pt-2">

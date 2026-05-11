@@ -48,6 +48,7 @@ export function UpdateGroupForm({
           label={t('groups:fields.name')}
           placeholder={t('groups:forms.placeholders.name')}
           disabled={isSubmitting}
+          required
         />
         <FormSelect
           control={form.control}
@@ -55,12 +56,14 @@ export function UpdateGroupForm({
           label={t('groups:fields.status')}
           placeholder={t('groups:forms.placeholders.status')}
           options={statusOptions}
+          required
         />
         <FormInput
           control={form.control}
           name="startTime"
           label={t('groups:fields.startTime')}
           type="time"
+          required
         />
         <FormInputNumber
           control={form.control}
@@ -70,6 +73,7 @@ export function UpdateGroupForm({
           max={24 * 60}
           step={15}
           unit="min"
+          required
         />
 
         <div className="flex justify-end gap-2 pt-2">
