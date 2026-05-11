@@ -29,9 +29,17 @@ export const updateCycleFormSchema = cycleSchema.pick({
 });
 
 export const cyclesFiltersSchema = z.object({
+  branchId: z.string().optional().catch(''),
   search: z.string().optional().catch(''),
   includeDeleted: z.boolean().optional().catch(false),
 });
 export const cyclesSearchSchema = paginationSearchSchema.extend(
   cyclesFiltersSchema.shape,
 );
+
+//==================>By Branch<======================//
+
+export const branchCyclesSearchSchema = cyclesSearchSchema.omit({
+  // Branch ID already goes in path params
+  branchId: true,
+});

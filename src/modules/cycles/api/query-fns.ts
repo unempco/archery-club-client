@@ -25,15 +25,6 @@ export async function getCycleById(id: number) {
   return await api.getById<Cycle>(CYCLES_MODULE_NAME, id);
 }
 
-export async function createCycle(cycle: CreateCycleFormData) {
-  return await api.post<Cycle>(
-    `/${BRANCHES_MODULE_NAME}/${cycle.branchId}/${CYCLES_MODULE_NAME}`,
-    {
-      body: cycle,
-    },
-  );
-}
-
 export async function updateCycle(id: number, cycle: UpdateCycleFormData) {
   return await api.patchById<Cycle>(CYCLES_MODULE_NAME, id, {
     body: cycle,
@@ -42,4 +33,25 @@ export async function updateCycle(id: number, cycle: UpdateCycleFormData) {
 
 export async function deleteCycle(id: number) {
   return await api.deleteById(CYCLES_MODULE_NAME, id);
+}
+
+//======================>By Branch<===========================//
+
+export async function getBranchCyclesList(
+  branchId: number,
+  params: CyclesSearchParams,
+) {
+  return await api.getList<Cycle>(
+    `/${BRANCHES_MODULE_NAME}/${branchId}/${CYCLES_MODULE_NAME}`,
+    { query: params },
+  );
+}
+
+export async function createCycle(cycle: CreateCycleFormData) {
+  return await api.post<Cycle>(
+    `/${BRANCHES_MODULE_NAME}/${cycle.branchId}/${CYCLES_MODULE_NAME}`,
+    {
+      body: cycle,
+    },
+  );
 }

@@ -55,7 +55,13 @@ export function useUpdateBranchMutation({
   });
 }
 
-export function useDeleteBranchMutation({ branchId }: { branchId: number }) {
+export function useDeleteBranchMutation({
+  branchId,
+  onSuccess,
+}: {
+  branchId: number;
+  onSuccess?: () => void;
+}) {
   const queryClient = useQueryClient();
   const { t } = useTranslation();
 
@@ -64,6 +70,7 @@ export function useDeleteBranchMutation({ branchId }: { branchId: number }) {
     mutationFn: () => deleteBranch(branchId),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['branches'] });
+      onSuccess?.();
       toast.message(t('branches:messages.wasDeleted'));
     },
     onError: onMutationError(t),

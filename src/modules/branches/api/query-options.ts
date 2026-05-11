@@ -22,8 +22,8 @@ export const branchesLookupQueryOptions = () => {
   });
 };
 
-export const branchQueryOptions = (itemId: number) =>
+export const branchQueryOptions = (id: number) =>
   queryOptions({
-    queryKey: ['branchById', itemId],
-    queryFn: () => getBranchById(itemId),
+    queryKey: ['branchById', id],
+    queryFn: () => getBranchById(id),
   });

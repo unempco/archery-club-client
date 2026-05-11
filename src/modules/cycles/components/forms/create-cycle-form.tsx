@@ -62,7 +62,9 @@ export function CreateCycleForm({
           label={t('cycles:fields.branch')}
           placeholder={t('cycles:forms.placeholders.branch')}
           options={branchesOptions}
-          disabled={isSubmitting || !branchesSuccess}
+          disabled={
+            isSubmitting || !branchesSuccess || !!defaultValues?.branchId
+          }
           required
         />
         <FormDatePicker

@@ -7,7 +7,9 @@ export const branches = {
     maintenanceThreshold: 'Uso máximo de las dianas (sesiones)',
     maintenanceWarningOffset: 'Sesiones de advertencia',
   },
-  actions: {},
+  actions: {
+    viewCycles: 'Ver ciclos',
+  },
   messages: {},
   filters: {},
   dialogs: {

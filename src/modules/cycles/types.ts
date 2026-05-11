@@ -12,3 +12,7 @@ export type CreateCycleFormData = z.infer<typeof createCycleFormSchema>;
 export type UpdateCycleFormData = z.infer<typeof updateCycleFormSchema>;
 
 export type CyclesSearchParams = z.infer<typeof cyclesSearchSchema>;
+
+//================>By Branch<=====================//
+
+export type BranchCyclesSearchParams = z.infer<typeof cyclesSearchSchema>;

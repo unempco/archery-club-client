@@ -1,9 +1,13 @@
-import type { CyclesSearchParams } from '@/modules/cycles/types';
+import type {
+  BranchCyclesSearchParams,
+  CyclesSearchParams,
+} from '@/modules/cycles/types';
 
 import { queryOptions } from '@tanstack/react-query';
 
 import {
   getAllCycles,
+  getBranchCyclesList,
   getCycleById,
   getCyclesList,
 } from '@/modules/cycles/api/query-fns';
@@ -26,4 +30,15 @@ export const cycleQueryOptions = (itemId: number) =>
   queryOptions({
     queryKey: ['cycleById', itemId],
     queryFn: () => getCycleById(itemId),
+  });
+
+//=======================>By Branch<========================//
+
+export const branchCyclesQueryOptions = (
+  branchId: number,
+  params: BranchCyclesSearchParams,
+) =>
+  queryOptions({
+    queryKey: ['cycles', branchId, params],
+    queryFn: () => getBranchCyclesList(branchId, params),
   });

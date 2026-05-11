@@ -7,7 +7,9 @@ export const branches = {
     maintenanceThreshold: 'Maximum Target Usage (sessions)',
     maintenanceWarningOffset: 'Warning Sessions',
   },
-  actions: {},
+  actions: {
+    viewCycles: 'View Cycles',
+  },
   messages: {},
   filters: {},
   dialogs: {
