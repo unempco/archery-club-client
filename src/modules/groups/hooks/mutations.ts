@@ -55,7 +55,13 @@ export function useUpdateGroupMutation({
   });
 }
 
-export function useDeleteGroupMutation({ groupId }: { groupId: number }) {
+export function useDeleteGroupMutation({
+  groupId,
+  onSuccess,
+}: {
+  groupId: number;
+  onSuccess?: () => void;
+}) {
   const queryClient = useQueryClient();
   const { t } = useTranslation();
 
@@ -64,6 +70,7 @@ export function useDeleteGroupMutation({ groupId }: { groupId: number }) {
     mutationFn: () => deleteGroup(groupId),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['groups'] });
+      onSuccess?.();
       toast.message(t('groups:messages.wasDeleted'));
     },
     onError: onMutationError(t),
