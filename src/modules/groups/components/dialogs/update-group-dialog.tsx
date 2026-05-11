@@ -1,4 +1,3 @@
-// modules/groups/components/update-group-dialog.tsx
 import type { Group } from '@/modules/groups/types';
 
 import { useTranslation } from 'react-i18next';

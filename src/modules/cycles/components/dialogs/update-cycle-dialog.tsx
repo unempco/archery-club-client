@@ -1,4 +1,3 @@
-// modules/cycles/components/update-cycle-dialog.tsx
 import type { Cycle } from '@/modules/cycles/types';
 
 import { useTranslation } from 'react-i18next';

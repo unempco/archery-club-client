@@ -7,7 +7,3 @@ export const Route = createFileRoute('/app/users')({
   head: createRouteHead({ type: 'index', titleI18nKey: 'users:name' }),
   component: UnderConstruction,
 });
-
-// function RouteComponent() {
-//   return <div>Hello "/app/users"!</div>
-// }
