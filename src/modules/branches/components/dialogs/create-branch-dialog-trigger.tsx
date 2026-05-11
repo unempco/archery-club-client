@@ -26,7 +26,7 @@ export function CreateBranchDialogTrigger({
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent className="sm:max-w-lg">
         <DialogHeader>
-          <DialogTitle>{t('branches:forms.add.title')}</DialogTitle>
+          <DialogTitle>{t('branches:dialogs.create.title')}</DialogTitle>
         </DialogHeader>
         <CreateBranchForm
           onSubmit={(data) => mutation.mutate(data)}

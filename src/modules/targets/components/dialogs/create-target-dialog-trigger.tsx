@@ -26,7 +26,7 @@ export function CreateTargetDialogTrigger({
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent className="sm:max-w-lg">
         <DialogHeader>
-          <DialogTitle>{t('targets:forms.add.title')}</DialogTitle>
+          <DialogTitle>{t('targets:dialogs.create.title')}</DialogTitle>
         </DialogHeader>
         <CreateTargetForm
           onSubmit={(data) => mutation.mutate(data)}

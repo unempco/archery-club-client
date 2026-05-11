@@ -24,7 +24,7 @@ export function CreateCycleDialogTrigger({ children }: CreateCycleDialogProps) {
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent className="sm:max-w-lg">
         <DialogHeader>
-          <DialogTitle>{t('cycles:forms.add.title')}</DialogTitle>
+          <DialogTitle>{t('cycles:dialogs.create.title')}</DialogTitle>
         </DialogHeader>
         <CreateCycleForm
           onSubmit={(data) => mutation.mutate(data)}

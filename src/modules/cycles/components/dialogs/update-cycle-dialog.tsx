@@ -27,7 +27,7 @@ export function UpdateCycleDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-lg">
         <DialogHeader>
-          <DialogTitle>{t('cycles:forms.edit.title')}</DialogTitle>
+          <DialogTitle>{t('cycles:dialogs.update.title')}</DialogTitle>
         </DialogHeader>
         <UpdateCycleForm
           defaultValues={cycle}

@@ -24,7 +24,7 @@ export function CreateGroupDialogTrigger({ children }: CreateGroupDialogProps) {
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent className="sm:max-w-lg">
         <DialogHeader>
-          <DialogTitle>{t('groups:forms.add.title')}</DialogTitle>
+          <DialogTitle>{t('groups:dialogs.create.title')}</DialogTitle>
         </DialogHeader>
         <CreateGroupForm
           onSubmit={(data) => mutation.mutate(data)}

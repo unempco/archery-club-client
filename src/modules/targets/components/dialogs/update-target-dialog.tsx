@@ -27,7 +27,7 @@ export function UpdateTargetDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-lg">
         <DialogHeader>
-          <DialogTitle>{t('targets:forms.edit.title')}</DialogTitle>
+          <DialogTitle>{t('targets:dialogs.update.title')}</DialogTitle>
         </DialogHeader>
         <UpdateTargetForm
           defaultValues={target}

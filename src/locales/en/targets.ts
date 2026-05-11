@@ -18,13 +18,15 @@ export const targets = {
   },
   messages: {},
   filters: {},
-  forms: {
-    add: {
+  dialogs: {
+    create: {
       title: 'Add Target',
     },
-    edit: {
+    update: {
       title: 'Edit Target',
     },
+  },
+  forms: {
     placeholders: {
       name: 'e.g. "DIA-001"',
       branch: 'Select a branch',

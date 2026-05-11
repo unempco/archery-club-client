@@ -10,13 +10,15 @@ export const branches = {
   actions: {},
   messages: {},
   filters: {},
-  forms: {
-    add: {
+  dialogs: {
+    create: {
       title: 'Crear locación',
     },
-    edit: {
+    update: {
       title: 'Editar locación',
     },
+  },
+  forms: {
     placeholders: {
       name: 'Ej. "San Felipe"',
     },

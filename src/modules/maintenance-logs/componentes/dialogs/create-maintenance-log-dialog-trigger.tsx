@@ -31,7 +31,7 @@ export function CreateMaintenanceLogDialogTrigger({
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent className="sm:max-w-lg">
         <DialogHeader>
-          <DialogTitle>{t('maintenanceLogs:dialogs.add.title')}</DialogTitle>
+          <DialogTitle>{t('maintenanceLogs:dialogs.create.title')}</DialogTitle>
         </DialogHeader>
         <CreateMaintenanceLogForm
           defaultValues={{ targetId }}

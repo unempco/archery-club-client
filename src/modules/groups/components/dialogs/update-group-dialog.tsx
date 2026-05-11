@@ -27,7 +27,7 @@ export function UpdateGroupDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-lg">
         <DialogHeader>
-          <DialogTitle>{t('groups:forms.edit.title')}</DialogTitle>
+          <DialogTitle>{t('groups:dialogs.update.title')}</DialogTitle>
         </DialogHeader>
         <UpdateGroupForm
           defaultValues={group}

@@ -10,13 +10,15 @@ export const cycles = {
   actions: {},
   messages: {},
   filters: {},
-  forms: {
-    add: {
+  dialogs: {
+    create: {
       title: 'Create Cycle',
     },
-    edit: {
+    update: {
       title: 'Edit Cycle',
     },
+  },
+  forms: {
     placeholders: {
       name: 'e.g. "2026-4"',
       branch: 'Select a branch',
