@@ -9,7 +9,7 @@ import {
   DialogTitle,
 } from '@/core/components/ui/dialog';
 import { UpdateCycleForm } from '@/modules/cycles/components/forms/update-cycle-form';
-import { useUpdateCycleMutation } from '@/modules/cycles/hooks/cycle-mutations';
+import { useUpdateCycleMutation } from '@/modules/cycles/hooks/mutations';
 
 export function UpdateCycleDialog({
   cycle,

@@ -1,4 +1,3 @@
-// modules/targets/components/create-target-dialog.tsx
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -10,7 +9,7 @@ import {
   DialogTrigger,
 } from '@/core/components/ui/dialog';
 import { CreateTargetForm } from '@/modules/targets/components/forms/create-target-form';
-import { useCreateTargetMutation } from '@/modules/targets/hooks/target-mutations';
+import { useCreateTargetMutation } from '@/modules/targets/hooks/mutations';
 
 export function CreateTargetDialogTrigger({
   children,

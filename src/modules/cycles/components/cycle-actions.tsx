@@ -15,7 +15,7 @@ import {
 } from '@/core/components/ui/dropdown-menu';
 import { PermissionGuard } from '@/modules/auth/components/permissions-guard';
 import { UpdateCycleDialog } from '@/modules/cycles/components/dialogs/update-cycle-dialog';
-import { useDeleteCycleMutation } from '@/modules/cycles/hooks/cycle-mutations';
+import { useDeleteCycleMutation } from '@/modules/cycles/hooks/mutations';
 import { ApiPermissions } from '@/modules/shared/constants/permissions';
 
 export function CycleActions({ row }: DataActionsProps) {

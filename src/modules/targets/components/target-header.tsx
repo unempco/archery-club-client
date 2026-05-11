@@ -11,7 +11,7 @@ import { PermissionGuard } from '@/modules/auth/components/permissions-guard';
 import { PageHeader } from '@/modules/shared/components/page-header';
 import { ApiPermissions } from '@/modules/shared/constants/permissions';
 import { UpdateTargetDialog } from '@/modules/targets/components/dialogs/update-target-dialog';
-import { useDeleteTargetMutation } from '@/modules/targets/hooks/target-mutations';
+import { useDeleteTargetMutation } from '@/modules/targets/hooks/mutations';
 
 export function TargetHeader({ target }: TargetHeaderProps) {
   const { t } = useTranslation();

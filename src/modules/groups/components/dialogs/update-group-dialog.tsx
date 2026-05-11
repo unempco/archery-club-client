@@ -9,7 +9,7 @@ import {
   DialogTitle,
 } from '@/core/components/ui/dialog';
 import { UpdateGroupForm } from '@/modules/groups/components/forms/update-group-form';
-import { useUpdateGroupMutation } from '@/modules/groups/hooks/group-mutations';
+import { useUpdateGroupMutation } from '@/modules/groups/hooks/mutations';
 
 export function UpdateGroupDialog({
   group,

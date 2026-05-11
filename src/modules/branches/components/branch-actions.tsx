@@ -15,7 +15,7 @@ import {
 } from '@/core/components/ui/dropdown-menu';
 import { PermissionGuard } from '@/modules/auth/components/permissions-guard';
 import { UpdateBranchDialog } from '@/modules/branches/components/dialogs/update-branch-dialog';
-import { useDeleteBranchMutation } from '@/modules/branches/hooks/branch-mutations';
+import { useDeleteBranchMutation } from '@/modules/branches/hooks/mutations';
 import { ApiPermissions } from '@/modules/shared/constants/permissions';
 
 export function BranchActions({ row }: DataActionsProps) {

@@ -15,7 +15,7 @@ import {
 } from '@/core/components/ui/dropdown-menu';
 import { PermissionGuard } from '@/modules/auth/components/permissions-guard';
 import { UpdateGroupDialog } from '@/modules/groups/components/dialogs/update-group-dialog';
-import { useDeleteGroupMutation } from '@/modules/groups/hooks/group-mutations';
+import { useDeleteGroupMutation } from '@/modules/groups/hooks/mutations';
 import { ApiPermissions } from '@/modules/shared/constants/permissions';
 
 export function GroupActions({ row }: DataActionsProps) {

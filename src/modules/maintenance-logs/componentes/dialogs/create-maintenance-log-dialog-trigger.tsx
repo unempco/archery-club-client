@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from '@/core/components/ui/dialog';
 import { CreateMaintenanceLogForm } from '@/modules/maintenance-logs/componentes/forms/create-maintenance-log-form';
-import { useCreateMaintenanceLogMutation } from '@/modules/maintenance-logs/hooks/maintenance-log-mutations';
+import { useCreateMaintenanceLogMutation } from '@/modules/maintenance-logs/hooks/mutations';
 
 export function CreateMaintenanceLogDialogTrigger({
   children,

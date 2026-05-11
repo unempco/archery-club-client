@@ -9,7 +9,7 @@ import {
   DialogTrigger,
 } from '@/core/components/ui/dialog';
 import { CreateGroupForm } from '@/modules/groups/components/forms/create-group-form';
-import { useCreateGroupMutation } from '@/modules/groups/hooks/group-mutations';
+import { useCreateGroupMutation } from '@/modules/groups/hooks/mutations';
 
 export function CreateGroupDialogTrigger({ children }: CreateGroupDialogProps) {
   const { t } = useTranslation();

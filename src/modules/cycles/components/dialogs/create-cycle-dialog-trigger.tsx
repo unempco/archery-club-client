@@ -9,7 +9,7 @@ import {
   DialogTrigger,
 } from '@/core/components/ui/dialog';
 import { CreateCycleForm } from '@/modules/cycles/components/forms/create-cycle-form';
-import { useCreateCycleMutation } from '@/modules/cycles/hooks/cycle-mutations';
+import { useCreateCycleMutation } from '@/modules/cycles/hooks/mutations';
 
 export function CreateCycleDialogTrigger({ children }: CreateCycleDialogProps) {
   const { t } = useTranslation();

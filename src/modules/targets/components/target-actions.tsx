@@ -22,7 +22,7 @@ import {
 import { PermissionGuard } from '@/modules/auth/components/permissions-guard';
 import { ApiPermissions } from '@/modules/shared/constants/permissions';
 import { UpdateTargetDialog } from '@/modules/targets/components/dialogs/update-target-dialog';
-import { useDeleteTargetMutation } from '@/modules/targets/hooks/target-mutations';
+import { useDeleteTargetMutation } from '@/modules/targets/hooks/mutations';
 
 export function TargetActions({ target }: TargetActionsProps) {
   const { t } = useTranslation();
