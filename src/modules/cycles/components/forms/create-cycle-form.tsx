@@ -103,9 +103,9 @@ export function CreateCycleForm({
 }
 
 export type CycleFormProps = {
-  defaultValues?: Partial<CreateCycleFormData>; // undefined = create, populated = update
+  defaultValues?: Partial<CreateCycleFormData>;
   onSubmit: (data: CreateCycleFormData) => void;
-  onCancel?: () => void; // optional — useful in modals
+  onCancel?: () => void;
   isLoading?: boolean;
-  submitLabel?: string; // override "Save" if needed
+  submitLabel?: string;
 };

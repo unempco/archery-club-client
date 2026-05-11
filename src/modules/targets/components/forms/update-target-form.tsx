@@ -81,9 +81,9 @@ export function UpdateTargetForm({
 }
 
 export type TargetFormProps = {
-  defaultValues: UpdateTargetFormData; // undefined = create, populated = update
+  defaultValues: UpdateTargetFormData;
   onSubmit: (data: UpdateTargetFormData) => void;
-  onCancel?: () => void; // optional — useful in modals
+  onCancel?: () => void;
   isLoading?: boolean;
-  submitLabel?: string; // override "Save" if needed
+  submitLabel?: string;
 };

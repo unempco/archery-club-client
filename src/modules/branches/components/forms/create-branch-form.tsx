@@ -88,9 +88,9 @@ export function CreateBranchForm({
 }
 
 export type BranchFormProps = {
-  defaultValues?: Partial<CreateBranchFormData>; // undefined = create, populated = update
+  defaultValues?: Partial<CreateBranchFormData>;
   onSubmit: (data: CreateBranchFormData) => void;
-  onCancel?: () => void; // optional — useful in modals
+  onCancel?: () => void;
   isLoading?: boolean;
-  submitLabel?: string; // override "Save" if needed
+  submitLabel?: string;
 };

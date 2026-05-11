@@ -11,7 +11,7 @@ import { Button } from '@/core/components/ui/button';
 import { FieldGroup } from '@/core/components/ui/field';
 import { Spinner } from '@/core/components/ui/spinner';
 import { convertCase } from '@/core/lib/utils';
-import { GroupStatus, groupStatuses } from '@/modules/groups/constants';
+import { groupStatuses } from '@/modules/groups/constants';
 import { updateGroupFormSchema } from '@/modules/groups/schemas';
 
 export function UpdateGroupForm({
@@ -28,7 +28,7 @@ export function UpdateGroupForm({
     defaultValues: {
       ...defaultValues,
       status: convertCase(
-        defaultValues?.status ?? GroupStatus.ACTIVE,
+        defaultValues?.status ?? groupStatuses[0],
       ) as UpdateGroupFormData['status'],
     },
   });
@@ -101,9 +101,9 @@ export function UpdateGroupForm({
 }
 
 export type GroupFormProps = {
-  defaultValues: UpdateGroupFormData; // undefined = create, populated = update
+  defaultValues: UpdateGroupFormData;
   onSubmit: (data: UpdateGroupFormData) => void;
-  onCancel?: () => void; // optional — useful in modals
+  onCancel?: () => void;
   isLoading?: boolean;
-  submitLabel?: string; // override "Save" if needed
+  submitLabel?: string;
 };

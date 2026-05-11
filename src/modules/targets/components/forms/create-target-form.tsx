@@ -84,9 +84,9 @@ export function CreateTargetForm({
 }
 
 export type TargetFormProps = {
-  defaultValues?: Partial<CreateTargetFormData>; // undefined = create, populated = update
+  defaultValues?: Partial<CreateTargetFormData>;
   onSubmit: (data: CreateTargetFormData) => void;
-  onCancel?: () => void; // optional — useful in modals
+  onCancel?: () => void;
   isLoading?: boolean;
-  submitLabel?: string; // override "Save" if needed
+  submitLabel?: string;
 };

@@ -9,7 +9,7 @@ export const sessionSchema = z.object({
   scheduledAt: z.string(),
   groupId: z.string(),
   // Form fields
-  notes: z.string(),
+  notes: z.string().optional(),
   durationMinutes: z.number(),
   status: z.enum(sessionStatuses),
   targetIds: z.array(z.number()),

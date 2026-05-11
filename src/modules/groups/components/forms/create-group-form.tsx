@@ -122,9 +122,9 @@ export function CreateGroupForm({
 }
 
 export type GroupFormProps = {
-  defaultValues?: Partial<CreateGroupFormData>; // undefined = create, populated = update
+  defaultValues?: Partial<CreateGroupFormData>;
   onSubmit: (data: CreateGroupFormData) => void;
-  onCancel?: () => void; // optional — useful in modals
+  onCancel?: () => void;
   isLoading?: boolean;
-  submitLabel?: string; // override "Save" if needed
+  submitLabel?: string;
 };
