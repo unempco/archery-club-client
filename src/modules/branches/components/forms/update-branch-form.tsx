@@ -11,7 +11,7 @@ import { Button } from '@/core/components/ui/button';
 import { FieldGroup } from '@/core/components/ui/field';
 import { Spinner } from '@/core/components/ui/spinner';
 import { convertCase } from '@/core/lib/utils';
-import { BranchStatus, branchStatuses } from '@/modules/branches/constants';
+import { branchStatuses } from '@/modules/branches/constants';
 import { updateBranchFormSchema } from '@/modules/branches/schemas';
 
 export function UpdateBranchForm({
@@ -28,7 +28,7 @@ export function UpdateBranchForm({
     defaultValues: {
       ...defaultValues,
       status: convertCase(
-        defaultValues?.status ?? BranchStatus.ACTIVE,
+        defaultValues?.status ?? branchStatuses[0],
       ) as UpdateBranchFormData['status'],
     },
   });
@@ -50,6 +50,7 @@ export function UpdateBranchForm({
           label={t('branches:fields.name')}
           placeholder={t('branches:forms.placeholders.name')}
           disabled={isSubmitting}
+          required
         />
 
         <FormSelect
@@ -59,6 +60,7 @@ export function UpdateBranchForm({
           placeholder={t('branches:forms.placeholders.status')}
           options={statusOptions}
           disabled={isSubmitting}
+          required
         />
 
         <FormInputNumber
@@ -68,6 +70,7 @@ export function UpdateBranchForm({
           disabled={isSubmitting}
           min={0}
           step={1}
+          required
         />
         <FormInputNumber
           control={form.control}
@@ -77,6 +80,7 @@ export function UpdateBranchForm({
           min={0}
           max={maintenanceThreshold}
           step={1}
+          required
         />
 
         <div className="flex justify-end gap-2 pt-2">
@@ -104,9 +108,9 @@ export function UpdateBranchForm({
 }
 
 export type BranchFormProps = {
-  defaultValues: UpdateBranchFormData; // undefined = create, populated = update
+  defaultValues: UpdateBranchFormData;
   onSubmit: (data: UpdateBranchFormData) => void;
-  onCancel?: () => void; // optional — useful in modals
+  onCancel?: () => void;
   isLoading?: boolean;
-  submitLabel?: string; // override "Save" if needed
+  submitLabel?: string;
 };

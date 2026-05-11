@@ -13,11 +13,9 @@ export async function getAllSessions() {
   return await api.get<Lookup[]>(`/${SESSIONS_MODULE_NAME}/lookup`);
 }
 
-export async function getSessionsList(
-  sessionsSearchParams: SessionsSearchParams,
-) {
+export async function getSessionsList(params: SessionsSearchParams) {
   return await api.getList<Session>(SESSIONS_MODULE_NAME, {
-    query: sessionsSearchParams,
+    query: params,
   });
 }
 

@@ -1,4 +1,3 @@
-// modules/groups/components/update-group-dialog.tsx
 import type { Group } from '@/modules/groups/types';
 
 import { useTranslation } from 'react-i18next';
@@ -10,7 +9,7 @@ import {
   DialogTitle,
 } from '@/core/components/ui/dialog';
 import { UpdateGroupForm } from '@/modules/groups/components/forms/update-group-form';
-import { useUpdateGroupMutation } from '@/modules/groups/hooks/group-mutations';
+import { useUpdateGroupMutation } from '@/modules/groups/hooks/mutations';
 
 export function UpdateGroupDialog({
   group,
@@ -28,7 +27,7 @@ export function UpdateGroupDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-lg">
         <DialogHeader>
-          <DialogTitle>{t('groups:forms.edit.title')}</DialogTitle>
+          <DialogTitle>{t('groups:dialogs.update.title')}</DialogTitle>
         </DialogHeader>
         <UpdateGroupForm
           defaultValues={group}

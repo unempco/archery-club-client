@@ -18,13 +18,15 @@ export const targets = {
   },
   messages: {},
   filters: {},
-  forms: {
-    add: {
+  dialogs: {
+    create: {
       title: 'Añadir diana',
     },
-    edit: {
+    update: {
       title: 'Editar diana',
     },
+  },
+  forms: {
     placeholders: {
       name: 'Ej. "DIA-001"',
       branch: 'Seleccionan una locación',

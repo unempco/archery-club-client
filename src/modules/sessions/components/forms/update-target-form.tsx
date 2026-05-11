@@ -47,6 +47,7 @@ export function UpdateSessionForm({
           label={t('sessions:fields.status')}
           placeholder={t('sessions:forms.placeholders.status')}
           options={statusOptions}
+          required
         />
         <FormTextarea
           control={form.control}
@@ -79,9 +80,9 @@ export function UpdateSessionForm({
 }
 
 export type SessionFormProps = {
-  defaultValues: UpdateSessionFormData; // undefined = create, populated = update
+  defaultValues: UpdateSessionFormData;
   onSubmit: (data: UpdateSessionFormData) => void;
-  onCancel?: () => void; // optional — useful in modals
+  onCancel?: () => void;
   isLoading?: boolean;
-  submitLabel?: string; // override "Save" if needed
+  submitLabel?: string;
 };

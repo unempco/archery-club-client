@@ -1,4 +1,3 @@
-// modules/targets/components/create-target-dialog.tsx
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -10,7 +9,7 @@ import {
   DialogTrigger,
 } from '@/core/components/ui/dialog';
 import { CreateTargetForm } from '@/modules/targets/components/forms/create-target-form';
-import { useCreateTargetMutation } from '@/modules/targets/hooks/target-mutations';
+import { useCreateTargetMutation } from '@/modules/targets/hooks/mutations';
 
 export function CreateTargetDialogTrigger({
   children,
@@ -27,7 +26,7 @@ export function CreateTargetDialogTrigger({
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent className="sm:max-w-lg">
         <DialogHeader>
-          <DialogTitle>{t('targets:forms.add.title')}</DialogTitle>
+          <DialogTitle>{t('targets:dialogs.create.title')}</DialogTitle>
         </DialogHeader>
         <CreateTargetForm
           onSubmit={(data) => mutation.mutate(data)}

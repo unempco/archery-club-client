@@ -1,5 +1,4 @@
 import type { Session } from '@/modules/sessions/types';
-import type { CellContext } from '@tanstack/react-table';
 
 import { useState } from 'react';
 import { DotsThreeIcon, PencilIcon } from '@phosphor-icons/react';
@@ -16,12 +15,10 @@ import { PermissionGuard } from '@/modules/auth/components/permissions-guard';
 import { UpdateSessionDialog } from '@/modules/sessions/components/dialogs/update-session-dialog';
 import { ApiPermissions } from '@/modules/shared/constants/permissions';
 
-export function SessionActions({ row }: DataActionsProps) {
+export function SessionActions({ session }: SessionsActionsProps) {
   const { t } = useTranslation();
 
   const [editOpen, setEditOpen] = useState(false);
-
-  const session = row.original;
 
   return (
     <PermissionGuard
@@ -55,4 +52,4 @@ export function SessionActions({ row }: DataActionsProps) {
   );
 }
 
-export type DataActionsProps = CellContext<Session, unknown> & {};
+export type SessionsActionsProps = { session: Session };

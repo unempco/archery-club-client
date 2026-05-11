@@ -50,6 +50,7 @@ export function CreateMaintenanceLogForm({
             name="performedAt"
             label={t('maintenanceLogs:fields.performedAt')}
             disabled={isSubmitting}
+            required
           />
           <Input id={timeInputId} type="time" defaultValue="14:00" />
         </div>
@@ -81,9 +82,9 @@ export function CreateMaintenanceLogForm({
 }
 
 export type maintenanceLogFormProps = {
-  defaultValues?: Partial<CreateMaintenanceLogFormData>; // undefined = create, populated = update
+  defaultValues?: Partial<CreateMaintenanceLogFormData>;
   onSubmit: (data: CreateMaintenanceLogFormData) => void;
-  onCancel?: () => void; // optional — useful in modals
+  onCancel?: () => void;
   isLoading?: boolean;
-  submitLabel?: string; // override "Save" if needed
+  submitLabel?: string;
 };

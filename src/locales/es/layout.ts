@@ -29,7 +29,7 @@ export const layout = {
     admin: 'Administrador',
     dashboard: 'Panel de control',
     settings: 'Configuración',
-    getHelp: 'Obtener ayuda',
+    about: 'Acerca de',
     business: 'Negocio',
     equipment: 'Equipamiento',
   },

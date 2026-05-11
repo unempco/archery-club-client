@@ -1,4 +1,3 @@
-// modules/dummies/components/create-dummy-dialog.tsx
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -10,7 +9,7 @@ import {
   DialogTrigger,
 } from '@/core/components/ui/dialog';
 import { DummyForm } from '@/modules/dummies/components/forms/dummy-form';
-import { useCreateDummyMutation } from '@/modules/dummies/hooks/dummy-mutations';
+import { useCreateDummyMutation } from '@/modules/dummies/hooks/mutations';
 
 export function CreateDummyDialogTrigger({ children }: CreateDummyDialogProps) {
   const { t } = useTranslation();

@@ -1,4 +1,3 @@
-// modules/branches/components/create-branch-dialog.tsx
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -10,7 +9,7 @@ import {
   DialogTrigger,
 } from '@/core/components/ui/dialog';
 import { CreateBranchForm } from '@/modules/branches/components/forms/create-branch-form';
-import { useCreateBranchMutation } from '@/modules/branches/hooks/branch-mutations';
+import { useCreateBranchMutation } from '@/modules/branches/hooks/mutations';
 
 export function CreateBranchDialogTrigger({
   children,
@@ -27,7 +26,7 @@ export function CreateBranchDialogTrigger({
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent className="sm:max-w-lg">
         <DialogHeader>
-          <DialogTitle>{t('branches:forms.add.title')}</DialogTitle>
+          <DialogTitle>{t('branches:dialogs.create.title')}</DialogTitle>
         </DialogHeader>
         <CreateBranchForm
           onSubmit={(data) => mutation.mutate(data)}

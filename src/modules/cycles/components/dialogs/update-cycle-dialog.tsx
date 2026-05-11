@@ -1,4 +1,3 @@
-// modules/cycles/components/update-cycle-dialog.tsx
 import type { Cycle } from '@/modules/cycles/types';
 
 import { useTranslation } from 'react-i18next';
@@ -10,7 +9,7 @@ import {
   DialogTitle,
 } from '@/core/components/ui/dialog';
 import { UpdateCycleForm } from '@/modules/cycles/components/forms/update-cycle-form';
-import { useUpdateCycleMutation } from '@/modules/cycles/hooks/cycle-mutations';
+import { useUpdateCycleMutation } from '@/modules/cycles/hooks/mutations';
 
 export function UpdateCycleDialog({
   cycle,
@@ -28,7 +27,7 @@ export function UpdateCycleDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-lg">
         <DialogHeader>
-          <DialogTitle>{t('cycles:forms.edit.title')}</DialogTitle>
+          <DialogTitle>{t('cycles:dialogs.update.title')}</DialogTitle>
         </DialogHeader>
         <UpdateCycleForm
           defaultValues={cycle}

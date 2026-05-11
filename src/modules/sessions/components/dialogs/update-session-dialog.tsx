@@ -9,7 +9,7 @@ import {
   DialogTitle,
 } from '@/core/components/ui/dialog';
 import { UpdateSessionForm } from '@/modules/sessions/components/forms/update-target-form';
-import { useUpdateSessionMutation } from '@/modules/sessions/hooks/session-mutations';
+import { useUpdateSessionMutation } from '@/modules/sessions/hooks/mutations';
 
 export function UpdateSessionDialog({
   session,

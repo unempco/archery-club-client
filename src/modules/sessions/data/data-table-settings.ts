@@ -4,7 +4,7 @@ import type { ColumnDef, VisibilityState } from '@tanstack/react-table';
 import { DataTableCell } from '@/core/components/data/data-table-cell';
 import { DataTableHeader } from '@/core/components/data/data-table-header';
 import { DataTableColumnType } from '@/core/constants/data-table';
-import { SessionActions } from '@/modules/sessions/components/session-actions';
+import { DataTableSessionActionsCell } from '@/modules/sessions/components/data/data-table-session-actions-cell';
 
 export const sessionsTableColumns: ColumnDef<Session>[] = [
   {
@@ -64,7 +64,7 @@ export const sessionsTableColumns: ColumnDef<Session>[] = [
   },
   {
     id: 'actions',
-    cell: SessionActions,
+    cell: DataTableSessionActionsCell,
     enableHiding: false,
   },
 ];

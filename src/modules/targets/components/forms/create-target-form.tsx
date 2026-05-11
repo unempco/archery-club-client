@@ -50,6 +50,7 @@ export function CreateTargetForm({
           label={t('targets:fields.name')}
           placeholder={t('targets:forms.placeholders.name')}
           disabled={isSubmitting}
+          required
         />
         <FormSelect
           control={form.control}
@@ -58,6 +59,7 @@ export function CreateTargetForm({
           placeholder={t('targets:forms.placeholders.branch')}
           options={branchesOptions}
           disabled={isSubmitting || !branchesSuccess}
+          required
         />
 
         <div className="flex justify-end gap-2 pt-2">
@@ -82,9 +84,9 @@ export function CreateTargetForm({
 }
 
 export type TargetFormProps = {
-  defaultValues?: Partial<CreateTargetFormData>; // undefined = create, populated = update
+  defaultValues?: Partial<CreateTargetFormData>;
   onSubmit: (data: CreateTargetFormData) => void;
-  onCancel?: () => void; // optional — useful in modals
+  onCancel?: () => void;
   isLoading?: boolean;
-  submitLabel?: string; // override "Save" if needed
+  submitLabel?: string;
 };

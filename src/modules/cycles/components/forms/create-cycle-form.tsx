@@ -54,6 +54,7 @@ export function CreateCycleForm({
           label={t('cycles:fields.name')}
           placeholder={t('cycles:forms.placeholders.name')}
           disabled={isSubmitting}
+          required
         />
         <FormSelect
           control={form.control}
@@ -62,11 +63,13 @@ export function CreateCycleForm({
           placeholder={t('cycles:forms.placeholders.branch')}
           options={branchesOptions}
           disabled={isSubmitting || !branchesSuccess}
+          required
         />
         <FormDatePicker
           control={form.control}
           name="startDate"
           label={t('cycles:fields.startDate')}
+          required
         />
         <FormInputNumber
           control={form.control}
@@ -75,6 +78,7 @@ export function CreateCycleForm({
           disabled={isSubmitting}
           min={0}
           step={1}
+          required
         />
 
         <div className="flex justify-end gap-2 pt-2">
@@ -99,9 +103,9 @@ export function CreateCycleForm({
 }
 
 export type CycleFormProps = {
-  defaultValues?: Partial<CreateCycleFormData>; // undefined = create, populated = update
+  defaultValues?: Partial<CreateCycleFormData>;
   onSubmit: (data: CreateCycleFormData) => void;
-  onCancel?: () => void; // optional — useful in modals
+  onCancel?: () => void;
   isLoading?: boolean;
-  submitLabel?: string; // override "Save" if needed
+  submitLabel?: string;
 };

@@ -43,6 +43,7 @@ export function CreateBranchForm({
           label={t('branches:fields.name')}
           placeholder={t('branches:forms.placeholders.name')}
           disabled={isSubmitting}
+          required
         />
 
         <FormInputNumber
@@ -52,6 +53,7 @@ export function CreateBranchForm({
           disabled={isSubmitting}
           min={0}
           step={1}
+          required
         />
         <FormInputNumber
           control={form.control}
@@ -61,6 +63,7 @@ export function CreateBranchForm({
           min={0}
           max={maintenanceThreshold}
           step={1}
+          required
         />
 
         <div className="flex justify-end gap-2 pt-2">
@@ -85,9 +88,9 @@ export function CreateBranchForm({
 }
 
 export type BranchFormProps = {
-  defaultValues?: Partial<CreateBranchFormData>; // undefined = create, populated = update
+  defaultValues?: Partial<CreateBranchFormData>;
   onSubmit: (data: CreateBranchFormData) => void;
-  onCancel?: () => void; // optional — useful in modals
+  onCancel?: () => void;
   isLoading?: boolean;
-  submitLabel?: string; // override "Save" if needed
+  submitLabel?: string;
 };

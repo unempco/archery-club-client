@@ -1,10 +1,20 @@
-export function DetailFieldItem({ icon: Icon, label, value }: FieldItemProps) {
+import { cn } from '@/core/lib/utils';
+
+export function DetailFieldItem({
+  icon: Icon,
+  label,
+  value,
+  className,
+  ...restOfProps
+}: DetailFieldItemProps) {
   return (
-    <div className="flex items-center gap-2 text-sm">
+    <div
+      className={cn('flex items-center gap-1 text-sm', className)}
+      {...restOfProps}
+    >
       <Icon
-        size={14}
         weight="duotone"
-        className="shrink-0 text-muted-foreground"
+        className="shrink-0 text-muted-foreground size-3.5"
       />
       <span className="text-muted-foreground">{label}</span>
       <span className="ml-auto font-medium tabular-nums text-foreground">
@@ -14,7 +24,7 @@ export function DetailFieldItem({ icon: Icon, label, value }: FieldItemProps) {
   );
 }
 
-export type FieldItemProps = {
+export type DetailFieldItemProps = React.ComponentProps<'div'> & {
   icon: React.ElementType;
   label: string;
   value: React.ReactNode;

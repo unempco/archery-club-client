@@ -10,7 +10,7 @@ import { Button } from '@/core/components/ui/button';
 import { FieldGroup } from '@/core/components/ui/field';
 import { Spinner } from '@/core/components/ui/spinner';
 import { convertCase } from '@/core/lib/utils';
-import { CycleStatus, cycleStatuses } from '@/modules/cycles/constants';
+import { cycleStatuses } from '@/modules/cycles/constants';
 import { updateCycleFormSchema } from '@/modules/cycles/schemas';
 
 export function UpdateCycleForm({
@@ -27,7 +27,7 @@ export function UpdateCycleForm({
     defaultValues: {
       ...defaultValues,
       status: convertCase(
-        defaultValues?.status ?? CycleStatus.ACTIVE,
+        defaultValues?.status ?? cycleStatuses[0],
       ) as UpdateCycleFormData['status'],
     },
   });
@@ -47,6 +47,7 @@ export function UpdateCycleForm({
           label={t('cycles:fields.name')}
           placeholder={t('cycles:forms.placeholders.name')}
           disabled={isSubmitting}
+          required
         />
         <FormSelect
           control={form.control}
@@ -54,6 +55,7 @@ export function UpdateCycleForm({
           label={t('cycles:fields.status')}
           placeholder={t('cycles:forms.placeholders.status')}
           options={statusOptions}
+          required
         />
 
         <div className="flex justify-end gap-2 pt-2">
@@ -81,9 +83,9 @@ export function UpdateCycleForm({
 }
 
 export type CycleFormProps = {
-  defaultValues: UpdateCycleFormData; // undefined = create, populated = update
+  defaultValues: UpdateCycleFormData;
   onSubmit: (data: UpdateCycleFormData) => void;
-  onCancel?: () => void; // optional — useful in modals
+  onCancel?: () => void;
   isLoading?: boolean;
-  submitLabel?: string; // override "Save" if needed
+  submitLabel?: string;
 };

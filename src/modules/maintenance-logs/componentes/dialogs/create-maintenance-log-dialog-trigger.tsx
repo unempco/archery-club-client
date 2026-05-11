@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from '@/core/components/ui/dialog';
 import { CreateMaintenanceLogForm } from '@/modules/maintenance-logs/componentes/forms/create-maintenance-log-form';
-import { useCreateMaintenanceLogMutation } from '@/modules/maintenance-logs/hooks/maintenance-log-mutations';
+import { useCreateMaintenanceLogMutation } from '@/modules/maintenance-logs/hooks/mutations';
 
 export function CreateMaintenanceLogDialogTrigger({
   children,
@@ -31,7 +31,7 @@ export function CreateMaintenanceLogDialogTrigger({
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent className="sm:max-w-lg">
         <DialogHeader>
-          <DialogTitle>{t('maintenanceLogs:dialogs.add.title')}</DialogTitle>
+          <DialogTitle>{t('maintenanceLogs:dialogs.create.title')}</DialogTitle>
         </DialogHeader>
         <CreateMaintenanceLogForm
           defaultValues={{ targetId }}

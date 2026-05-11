@@ -54,12 +54,14 @@ export function DummyForm({
             name="name"
             label={t('dummies:fields.name')}
             disabled={isSubmitting}
+            required
           />
           <FormInput
             control={form.control}
             name="key"
             label={t('dummies:fields.key')}
             disabled={isSubmitting}
+            required
           />
         </div>
 
@@ -94,6 +96,7 @@ export function DummyForm({
             label={t('dummies:fields.email')}
             type="email"
             disabled={isSubmitting}
+            required
           />
           <FormInput
             control={form.control}
@@ -111,6 +114,7 @@ export function DummyForm({
             label={t('dummies:fields.website')}
             type="url"
             disabled={isSubmitting}
+            required
           />
           <FormInput
             control={form.control}
@@ -118,6 +122,7 @@ export function DummyForm({
             label={t('dummies:fields.image')}
             type="url"
             disabled={isSubmitting}
+            required
           />
         </div>
 
@@ -150,9 +155,9 @@ export function DummyForm({
 }
 
 export type DummyFormProps = {
-  defaultValues?: Partial<DummyFormData>; // undefined = create, populated = update
+  defaultValues?: Partial<DummyFormData>;
   onSubmit: (data: DummyFormData) => void;
-  onCancel?: () => void; // optional — useful in modals
+  onCancel?: () => void;
   isLoading?: boolean;
-  submitLabel?: string; // override "Save" if needed
+  submitLabel?: string;
 };

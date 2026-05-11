@@ -6,9 +6,4 @@ export const Route = createFileRoute('/')({
       to: '/app',
     });
   },
-  component: RouteComponent,
 });
-
-function RouteComponent() {
-  return null;
-}

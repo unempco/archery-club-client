@@ -10,8 +10,8 @@ export const cycleSchema = z.object({
   deletedAt: z.string().nullable(),
   createdAt: z.string(),
   // Form fields
-  name: z.string(),
-  branchId: z.coerce.number(),
+  name: z.string().min(1, 'Name is required'),
+  branchId: z.coerce.number('Branch is required'),
   startDate: z.coerce.date(),
   sessionCount: z.number(),
   status: z.enum(cycleStatuses),

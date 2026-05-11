@@ -24,7 +24,7 @@ export function useCreateDummyMutation({
     mutationFn: createDummy,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['dummies'] });
-      toast.success('actions.wasCreated');
+      toast.success('messages.wasCreated');
       onSuccess();
     },
     onError: onMutationError(t),

@@ -11,10 +11,10 @@ export const groupSchema = z.object({
   createdAt: z.string(),
   status: z.enum(groupStatuses),
   // Form fields
-  name: z.string(),
-  cycleId: z.coerce.number(),
+  name: z.string().min(1, 'Name is required'),
+  cycleId: z.coerce.number('Cycle is required'),
   weekday: z.coerce.number().min(0).max(6),
-  startTime: z.string(), // HH:mm format
+  startTime: z.string().min(1, 'Start time is required'), // HH:mm format
   durationMinutes: z.coerce.number().min(0),
 });
 

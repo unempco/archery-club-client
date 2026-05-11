@@ -15,9 +15,9 @@ export async function getAllTargets() {
   return await api.get<Lookup[]>(`/${TARGETS_MODULE_NAME}/lookup`);
 }
 
-export async function getTargetsList(targetsSearchParams: TargetsSearchParams) {
+export async function getTargetsList(params: TargetsSearchParams) {
   return await api.getList<Target>(TARGETS_MODULE_NAME, {
-    query: targetsSearchParams,
+    query: params,
   });
 }
 

@@ -1,4 +1,3 @@
-// modules/branches/components/update-branch-dialog.tsx
 import type { Branch } from '@/modules/branches/types';
 
 import { useTranslation } from 'react-i18next';
@@ -10,7 +9,7 @@ import {
   DialogTitle,
 } from '@/core/components/ui/dialog';
 import { UpdateBranchForm } from '@/modules/branches/components/forms/update-branch-form';
-import { useUpdateBranchMutation } from '@/modules/branches/hooks/branch-mutations';
+import { useUpdateBranchMutation } from '@/modules/branches/hooks/mutations';
 
 export function UpdateBranchDialog({
   branch,
@@ -28,7 +27,7 @@ export function UpdateBranchDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-lg">
         <DialogHeader>
-          <DialogTitle>{t('branches:forms.edit.title')}</DialogTitle>
+          <DialogTitle>{t('branches:dialogs.update.title')}</DialogTitle>
         </DialogHeader>
         <UpdateBranchForm
           defaultValues={branch}

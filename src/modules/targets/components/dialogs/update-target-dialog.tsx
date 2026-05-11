@@ -1,4 +1,3 @@
-// modules/targets/components/update-target-dialog.tsx
 import type { Target } from '@/modules/targets/types';
 
 import { useTranslation } from 'react-i18next';
@@ -10,7 +9,7 @@ import {
   DialogTitle,
 } from '@/core/components/ui/dialog';
 import { UpdateTargetForm } from '@/modules/targets/components/forms/update-target-form';
-import { useUpdateTargetMutation } from '@/modules/targets/hooks/target-mutations';
+import { useUpdateTargetMutation } from '@/modules/targets/hooks/mutations';
 
 export function UpdateTargetDialog({
   target,
@@ -28,7 +27,7 @@ export function UpdateTargetDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-lg">
         <DialogHeader>
-          <DialogTitle>{t('targets:forms.edit.title')}</DialogTitle>
+          <DialogTitle>{t('targets:dialogs.update.title')}</DialogTitle>
         </DialogHeader>
         <UpdateTargetForm
           defaultValues={target}

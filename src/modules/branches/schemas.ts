@@ -12,13 +12,13 @@ export const branchSchema = z.object({
   isDeleted: z.boolean(),
   // Form field
   name: z.string().min(1, 'Name is required'),
-  status: z.enum(branchStatuses),
+  status: z.enum(branchStatuses).default(branchStatuses[0]),
   maintenanceThreshold: z
     .int()
-    .min(0, 'Maintenance threshold must be non-negative'),
+    .min(1, 'Maintenance threshold must be non-negative'),
   maintenanceWarningOffset: z
     .int()
-    .min(0, 'Maintenance warning offset must be non-negative'),
+    .min(1, 'Maintenance warning offset must be non-negative'),
 });
 
 export const createBranchFormSchema = branchSchema.pick({

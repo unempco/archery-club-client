@@ -3,7 +3,7 @@ import type { VisibilityState } from '@tanstack/react-table';
 
 import { useState } from 'react';
 import { useSuspenseQuery } from '@tanstack/react-query';
-import { createFileRoute, useSearch } from '@tanstack/react-router';
+import { createFileRoute } from '@tanstack/react-router';
 
 import { DataPaginator } from '@/core/components/data/data-paginator';
 import { DataSearch } from '@/core/components/data/data-search';
@@ -42,7 +42,7 @@ export const Route = createFileRoute('/app/dummies/')({
 });
 
 function RouteComponent() {
-  const search = useSearch({ from: '/app/dummies/' });
+  const search = Route.useSearch();
   const { data } = useSuspenseQuery(dummiesIndexQueryOptions(search));
 
   // Should be part of columns settings schema

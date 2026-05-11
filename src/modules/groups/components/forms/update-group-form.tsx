@@ -11,7 +11,7 @@ import { Button } from '@/core/components/ui/button';
 import { FieldGroup } from '@/core/components/ui/field';
 import { Spinner } from '@/core/components/ui/spinner';
 import { convertCase } from '@/core/lib/utils';
-import { GroupStatus, groupStatuses } from '@/modules/groups/constants';
+import { groupStatuses } from '@/modules/groups/constants';
 import { updateGroupFormSchema } from '@/modules/groups/schemas';
 
 export function UpdateGroupForm({
@@ -28,7 +28,7 @@ export function UpdateGroupForm({
     defaultValues: {
       ...defaultValues,
       status: convertCase(
-        defaultValues?.status ?? GroupStatus.ACTIVE,
+        defaultValues?.status ?? groupStatuses[0],
       ) as UpdateGroupFormData['status'],
     },
   });
@@ -48,6 +48,7 @@ export function UpdateGroupForm({
           label={t('groups:fields.name')}
           placeholder={t('groups:forms.placeholders.name')}
           disabled={isSubmitting}
+          required
         />
         <FormSelect
           control={form.control}
@@ -55,12 +56,14 @@ export function UpdateGroupForm({
           label={t('groups:fields.status')}
           placeholder={t('groups:forms.placeholders.status')}
           options={statusOptions}
+          required
         />
         <FormInput
           control={form.control}
           name="startTime"
           label={t('groups:fields.startTime')}
           type="time"
+          required
         />
         <FormInputNumber
           control={form.control}
@@ -70,6 +73,7 @@ export function UpdateGroupForm({
           max={24 * 60}
           step={15}
           unit="min"
+          required
         />
 
         <div className="flex justify-end gap-2 pt-2">
@@ -97,9 +101,9 @@ export function UpdateGroupForm({
 }
 
 export type GroupFormProps = {
-  defaultValues: UpdateGroupFormData; // undefined = create, populated = update
+  defaultValues: UpdateGroupFormData;
   onSubmit: (data: UpdateGroupFormData) => void;
-  onCancel?: () => void; // optional — useful in modals
+  onCancel?: () => void;
   isLoading?: boolean;
-  submitLabel?: string; // override "Save" if needed
+  submitLabel?: string;
 };

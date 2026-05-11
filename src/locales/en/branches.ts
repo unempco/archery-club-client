@@ -10,13 +10,15 @@ export const branches = {
   actions: {},
   messages: {},
   filters: {},
-  forms: {
-    add: {
+  dialogs: {
+    create: {
       title: 'Create Branch',
     },
-    edit: {
+    update: {
       title: 'Edit Branch',
     },
+  },
+  forms: {
     placeholders: {
       name: 'e.g. "San Felipe"',
     },

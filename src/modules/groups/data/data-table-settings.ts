@@ -4,8 +4,8 @@ import type { ColumnDef, VisibilityState } from '@tanstack/react-table';
 import { DataTableCell } from '@/core/components/data/data-table-cell';
 import { DataTableHeader } from '@/core/components/data/data-table-header';
 import { DataTableColumnType } from '@/core/constants/data-table';
+import { DataTableGroupActionsCell } from '@/modules/groups/components/data/data-table-group-actions-cell';
 import { DateTableWeekdayCell } from '@/modules/groups/components/data/date-table-weekday-cell';
-import { GroupActions } from '@/modules/groups/components/group-actions';
 
 export const groupsTableColumns: ColumnDef<Group>[] = [
   {
@@ -92,7 +92,7 @@ export const groupsTableColumns: ColumnDef<Group>[] = [
   },
   {
     id: 'actions',
-    cell: GroupActions,
+    cell: DataTableGroupActionsCell,
     enableHiding: false,
   },
 ];

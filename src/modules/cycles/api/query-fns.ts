@@ -15,9 +15,9 @@ export async function getAllCycles() {
   return await api.get<Lookup[]>(`/${CYCLES_MODULE_NAME}/lookup`);
 }
 
-export async function getCyclesList(cyclesSearchParams: CyclesSearchParams) {
+export async function getCyclesList(params: CyclesSearchParams) {
   return await api.getList<Cycle>(CYCLES_MODULE_NAME, {
-    query: cyclesSearchParams,
+    query: params,
   });
 }
 

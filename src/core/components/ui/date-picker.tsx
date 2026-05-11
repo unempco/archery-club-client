@@ -20,12 +20,10 @@ import { toSentenceCase } from '@/core/lib/utils';
  * */
 export function DatePicker({
   value,
-  name,
   placeholder,
   dateFormat = DateFormat.INT_LONG,
   disabled,
   onChange,
-  className,
   ...props
 }: DatePickerProps) {
   const { t, i18n } = useTranslation();

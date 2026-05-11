@@ -22,13 +22,15 @@ export const groups = {
   },
   messages: {},
   filters: {},
+  dialogs: {
+    create: {
+      title: 'Crear grupo',
+    },
+    update: {
+      title: 'Editar grupo',
+    },
+  },
   forms: {
-    add: {
-      title: 'Crear Grupo',
-    },
-    edit: {
-      title: 'Editar Grupo',
-    },
     placeholders: {
       name: 'Ej. "Grupo A"',
       cycle: 'Selecciona un ciclo',

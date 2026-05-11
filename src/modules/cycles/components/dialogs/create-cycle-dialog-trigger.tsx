@@ -1,4 +1,3 @@
-// modules/cycles/components/create-cycle-dialog.tsx
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -10,7 +9,7 @@ import {
   DialogTrigger,
 } from '@/core/components/ui/dialog';
 import { CreateCycleForm } from '@/modules/cycles/components/forms/create-cycle-form';
-import { useCreateCycleMutation } from '@/modules/cycles/hooks/cycle-mutations';
+import { useCreateCycleMutation } from '@/modules/cycles/hooks/mutations';
 
 export function CreateCycleDialogTrigger({ children }: CreateCycleDialogProps) {
   const { t } = useTranslation();
@@ -25,7 +24,7 @@ export function CreateCycleDialogTrigger({ children }: CreateCycleDialogProps) {
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent className="sm:max-w-lg">
         <DialogHeader>
-          <DialogTitle>{t('cycles:forms.add.title')}</DialogTitle>
+          <DialogTitle>{t('cycles:dialogs.create.title')}</DialogTitle>
         </DialogHeader>
         <CreateCycleForm
           onSubmit={(data) => mutation.mutate(data)}
