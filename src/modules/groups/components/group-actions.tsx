@@ -1,5 +1,4 @@
 import type { Group } from '@/modules/groups/types';
-import type { CellContext } from '@tanstack/react-table';
 
 import { useState } from 'react';
 import { DotsThreeIcon, PencilIcon, TrashIcon } from '@phosphor-icons/react';
@@ -18,13 +17,11 @@ import { UpdateGroupDialog } from '@/modules/groups/components/dialogs/update-gr
 import { useDeleteGroupMutation } from '@/modules/groups/hooks/mutations';
 import { ApiPermissions } from '@/modules/shared/constants/permissions';
 
-export function GroupActions({ row }: DataActionsProps) {
+export function GroupActions({ group }: GroupActionsProps) {
   const { t } = useTranslation();
 
   const [confirmOpen, setConfirmOpen] = useState(false);
   const [editOpen, setEditOpen] = useState(false);
-
-  const group = row.original;
 
   const deleteMutation = useDeleteGroupMutation({ groupId: group.id });
 
@@ -74,4 +71,4 @@ export function GroupActions({ row }: DataActionsProps) {
   );
 }
 
-export type DataActionsProps = CellContext<Group, unknown> & {};
+export type GroupActionsProps = { group: Group };

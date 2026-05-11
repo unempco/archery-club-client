@@ -1,5 +1,4 @@
 import type { Cycle } from '@/modules/cycles/types';
-import type { CellContext } from '@tanstack/react-table';
 
 import { useState } from 'react';
 import { DotsThreeIcon, PencilIcon, TrashIcon } from '@phosphor-icons/react';
@@ -18,13 +17,11 @@ import { UpdateCycleDialog } from '@/modules/cycles/components/dialogs/update-cy
 import { useDeleteCycleMutation } from '@/modules/cycles/hooks/mutations';
 import { ApiPermissions } from '@/modules/shared/constants/permissions';
 
-export function CycleActions({ row }: DataActionsProps) {
+export function CycleActions({ cycle }: CycleActionsProps) {
   const { t } = useTranslation();
 
   const [confirmOpen, setConfirmOpen] = useState(false);
   const [editOpen, setEditOpen] = useState(false);
-
-  const cycle = row.original;
 
   const deleteMutation = useDeleteCycleMutation({ cycleId: cycle.id });
 
@@ -74,4 +71,4 @@ export function CycleActions({ row }: DataActionsProps) {
   );
 }
 
-export type DataActionsProps = CellContext<Cycle, unknown> & {};
+export type CycleActionsProps = { cycle: Cycle };

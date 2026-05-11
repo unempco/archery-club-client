@@ -4,7 +4,7 @@ import type { ColumnDef, VisibilityState } from '@tanstack/react-table';
 import { DataTableCell } from '@/core/components/data/data-table-cell';
 import { DataTableHeader } from '@/core/components/data/data-table-header';
 import { DataTableColumnType } from '@/core/constants/data-table';
-import { BranchActions } from '@/modules/branches/components/branch-actions';
+import { DataTableBranchActionsCell } from '@/modules/branches/components/data/data-table-branch-actions-cell';
 
 export const branchesTableColumns: ColumnDef<Branch>[] = [
   {
@@ -74,7 +74,7 @@ export const branchesTableColumns: ColumnDef<Branch>[] = [
   },
   {
     id: 'actions',
-    cell: BranchActions,
+    cell: DataTableBranchActionsCell,
     enableHiding: false,
   },
 ];

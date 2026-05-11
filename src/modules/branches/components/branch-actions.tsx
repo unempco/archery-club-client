@@ -1,5 +1,4 @@
 import type { Branch } from '@/modules/branches/types';
-import type { CellContext } from '@tanstack/react-table';
 
 import { useState } from 'react';
 import { DotsThreeIcon, PencilIcon, TrashIcon } from '@phosphor-icons/react';
@@ -18,13 +17,11 @@ import { UpdateBranchDialog } from '@/modules/branches/components/dialogs/update
 import { useDeleteBranchMutation } from '@/modules/branches/hooks/mutations';
 import { ApiPermissions } from '@/modules/shared/constants/permissions';
 
-export function BranchActions({ row }: DataActionsProps) {
+export function BranchActions({ branch }: BranchActionsProps) {
   const { t } = useTranslation();
 
   const [confirmOpen, setConfirmOpen] = useState(false);
   const [editOpen, setEditOpen] = useState(false);
-
-  const branch = row.original;
 
   const deleteMutation = useDeleteBranchMutation({ branchId: branch.id });
 
@@ -77,4 +74,4 @@ export function BranchActions({ row }: DataActionsProps) {
   );
 }
 
-export type DataActionsProps = CellContext<Branch, unknown> & {};
+export type BranchActionsProps = { branch: Branch };

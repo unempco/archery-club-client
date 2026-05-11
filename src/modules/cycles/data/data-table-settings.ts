@@ -4,7 +4,7 @@ import type { ColumnDef, VisibilityState } from '@tanstack/react-table';
 import { DataTableCell } from '@/core/components/data/data-table-cell';
 import { DataTableHeader } from '@/core/components/data/data-table-header';
 import { DataTableColumnType } from '@/core/constants/data-table';
-import { CycleActions } from '@/modules/cycles/components/cycle-actions';
+import { DataTableCycleActionsCell } from '@/modules/cycles/components/data/data-table-cycle-actions-cell';
 
 export const cyclesTableColumns: ColumnDef<Cycle>[] = [
   {
@@ -83,7 +83,7 @@ export const cyclesTableColumns: ColumnDef<Cycle>[] = [
   },
   {
     id: 'actions',
-    cell: CycleActions,
+    cell: DataTableCycleActionsCell,
     enableHiding: false,
   },
 ];
