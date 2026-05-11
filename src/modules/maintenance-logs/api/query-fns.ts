@@ -24,10 +24,10 @@ export function createMaintenanceLog(
 
 export function getTargetMaintenanceLogs(
   targetId: number,
-  maintenanceLogsSearchParams: MaintenanceLogsSearchParams,
+  params: MaintenanceLogsSearchParams,
 ) {
   return api.getList<MaintenanceLog>(
     `/${TARGETS_MODULE_NAME}/${targetId}/${MAINTENANCE_LOGS_MODULE_NAME}`,
-    { query: maintenanceLogsSearchParams },
+    { query: params },
   );
 }

@@ -15,9 +15,9 @@ export async function getAllGroups() {
   return await api.get<Lookup[]>(`/${GROUPS_MODULE_NAME}/lookup`);
 }
 
-export async function getGroupsList(groupsSearchParams: GroupsSearchParams) {
+export async function getGroupsList(params: GroupsSearchParams) {
   return await api.getList<Group>(GROUPS_MODULE_NAME, {
-    query: groupsSearchParams,
+    query: params,
   });
 }
 

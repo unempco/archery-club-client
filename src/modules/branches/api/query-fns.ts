@@ -14,11 +14,9 @@ export async function getAllBranches() {
   return await api.get<Lookup[]>(`/${BRANCHES_MODULE_NAME}/lookup`);
 }
 
-export async function getBranchesList(
-  branchesSearchParams: BranchesSearchParams,
-) {
+export async function getBranchesList(params: BranchesSearchParams) {
   return await api.getList<Branch>(BRANCHES_MODULE_NAME, {
-    query: branchesSearchParams,
+    query: params,
   });
 }
 
