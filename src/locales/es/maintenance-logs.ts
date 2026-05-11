@@ -8,7 +8,7 @@ export const maintenanceLogs = {
   },
   actions: {},
   dialogs: {
-    add: {
+    create: {
       title: 'Crear nuevo registro de mantenimiento',
     },
   },
