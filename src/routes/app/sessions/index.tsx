@@ -3,7 +3,7 @@ import type { VisibilityState } from '@tanstack/react-table';
 
 import { useState } from 'react';
 import { useSuspenseQuery } from '@tanstack/react-query';
-import { createFileRoute, useSearch } from '@tanstack/react-router';
+import { createFileRoute } from '@tanstack/react-router';
 
 import { DataPaginator } from '@/core/components/data/data-paginator';
 import { DataTable } from '@/core/components/data/data-table';
@@ -29,7 +29,7 @@ export const Route = createFileRoute('/app/sessions/')({
 });
 
 function RouteComponent() {
-  const search = useSearch({ from: '/app/sessions' });
+  const search = Route.useSearch();
   const { data } = useSuspenseQuery(sessionsIndexQueryOptions(search));
 
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>(
