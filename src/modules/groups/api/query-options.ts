@@ -1,8 +1,15 @@
-import type { GroupsSearchParams } from '@/modules/groups/types';
+import type {
+  CycleGroupsSearchParams,
+  GroupsSearchParams,
+} from '@/modules/groups/types';
 
 import { queryOptions } from '@tanstack/react-query';
 
-import { getGroupById, getGroupsList } from '@/modules/groups/api/query-fns';
+import {
+  getCycleGroupsList,
+  getGroupById,
+  getGroupsList,
+} from '@/modules/groups/api/query-fns';
 
 export const groupsIndexQueryOptions = (params: GroupsSearchParams) =>
   queryOptions({
@@ -10,8 +17,19 @@ export const groupsIndexQueryOptions = (params: GroupsSearchParams) =>
     queryFn: () => getGroupsList(params),
   });
 
-export const groupQueryOptions = (itemId: number) =>
+export const groupQueryOptions = (id: number) =>
   queryOptions({
-    queryKey: ['groupById', itemId],
-    queryFn: () => getGroupById(itemId),
+    queryKey: ['groupById', id],
+    queryFn: () => getGroupById(id),
+  });
+
+//===============>By cycle<=================//
+
+export const cycleGroupsQueryOptions = (
+  cycleId: number,
+  params: CycleGroupsSearchParams,
+) =>
+  queryOptions({
+    queryKey: ['groups', cycleId, params],
+    queryFn: () => getCycleGroupsList(cycleId, params),
   });

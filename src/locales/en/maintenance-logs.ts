@@ -8,7 +8,7 @@ export const maintenanceLogs = {
   },
   actions: {},
   dialogs: {
-    add: {
+    crate: {
       title: 'Add New Maintenance Log',
     },
   },

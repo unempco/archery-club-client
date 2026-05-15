@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useParams } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 
 import {
@@ -13,6 +14,8 @@ import { useCreateGroupMutation } from '@/modules/groups/hooks/mutations';
 
 export function CreateGroupDialogTrigger({ children }: CreateGroupDialogProps) {
   const { t } = useTranslation();
+  const { cycleId } = useParams({ strict: false });
+
   const [open, onOpenChange] = useState(false);
 
   const mutation = useCreateGroupMutation({
@@ -30,6 +33,7 @@ export function CreateGroupDialogTrigger({ children }: CreateGroupDialogProps) {
           onSubmit={(data) => mutation.mutate(data)}
           onCancel={() => onOpenChange(false)}
           isLoading={mutation.isPending}
+          defaultValues={{ cycleId }}
         />
       </DialogContent>
     </Dialog>

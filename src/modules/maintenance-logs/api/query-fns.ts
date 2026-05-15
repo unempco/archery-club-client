@@ -13,14 +13,7 @@ export function getTargetsList() {
   return api.getList<MaintenanceLog>(MAINTENANCE_LOGS_MODULE_NAME);
 }
 
-export function createMaintenanceLog(
-  maintenanceLog: CreateMaintenanceLogFormData,
-) {
-  return api.post<MaintenanceLog>(
-    `/${TARGETS_MODULE_NAME}/${maintenanceLog.targetId}/${MAINTENANCE_LOGS_MODULE_NAME}`,
-    { body: maintenanceLog },
-  );
-}
+//====================>By target<========================//
 
 export function getTargetMaintenanceLogs(
   targetId: number,
@@ -29,5 +22,14 @@ export function getTargetMaintenanceLogs(
   return api.getList<MaintenanceLog>(
     `/${TARGETS_MODULE_NAME}/${targetId}/${MAINTENANCE_LOGS_MODULE_NAME}`,
     { query: params },
+  );
+}
+
+export function createMaintenanceLog(
+  maintenanceLog: CreateMaintenanceLogFormData,
+) {
+  return api.post<MaintenanceLog>(
+    `/${TARGETS_MODULE_NAME}/${maintenanceLog.targetId}/${MAINTENANCE_LOGS_MODULE_NAME}`,
+    { body: maintenanceLog },
   );
 }

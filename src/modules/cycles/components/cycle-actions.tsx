@@ -1,7 +1,13 @@
 import type { Cycle } from '@/modules/cycles/types';
 
 import { useState } from 'react';
-import { DotsThreeIcon, PencilIcon, TrashIcon } from '@phosphor-icons/react';
+import {
+  DotsThreeIcon,
+  EyeIcon,
+  PencilIcon,
+  TrashIcon,
+} from '@phosphor-icons/react';
+import { useNavigate } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 
 import { DeleteConfirmationDialog } from '@/core/components/delete-confirmation-dialog';
@@ -10,6 +16,7 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/core/components/ui/dropdown-menu';
 import { PermissionGuard } from '@/modules/auth/components/permissions-guard';
@@ -19,6 +26,7 @@ import { ApiPermissions } from '@/modules/shared/constants/permissions';
 
 export function CycleActions({ cycle }: CycleActionsProps) {
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   const [confirmOpen, setConfirmOpen] = useState(false);
   const [editOpen, setEditOpen] = useState(false);
@@ -36,6 +44,20 @@ export function CycleActions({ cycle }: CycleActionsProps) {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
+          <PermissionGuard permissions={ApiPermissions.Groups.UPDATE}>
+            <DropdownMenuItem
+              onClick={() =>
+                navigate({
+                  to: '/app/cycles/$cycleId/groups',
+                  params: { cycleId: String(cycle.id) },
+                })
+              }
+            >
+              <EyeIcon />
+              {t('actions.view')}
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
+          </PermissionGuard>
           <PermissionGuard permissions={ApiPermissions.Cycles.UPDATE}>
             <DropdownMenuItem onClick={() => setEditOpen(true)}>
               <PencilIcon />

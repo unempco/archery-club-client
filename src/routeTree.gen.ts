@@ -32,8 +32,17 @@ import { Route as AppDummiesIndexRouteImport } from './routes/app/dummies/index'
 import { Route as AppCyclesIndexRouteImport } from './routes/app/cycles/index'
 import { Route as AppBranchesIndexRouteImport } from './routes/app/branches/index'
 import { Route as AppTargetsTargetIdRouteRouteImport } from './routes/app/targets/$targetId/route'
+import { Route as AppGroupsGroupIdRouteRouteImport } from './routes/app/groups/$groupId/route'
+import { Route as AppCyclesCycleIdRouteRouteImport } from './routes/app/cycles/$cycleId/route'
+import { Route as AppBranchesBranchIdRouteRouteImport } from './routes/app/branches/$branchId/route'
 import { Route as AppTargetsTargetIdIndexRouteImport } from './routes/app/targets/$targetId/index'
+import { Route as AppGroupsGroupIdIndexRouteImport } from './routes/app/groups/$groupId/index'
+import { Route as AppCyclesCycleIdIndexRouteImport } from './routes/app/cycles/$cycleId/index'
+import { Route as AppBranchesBranchIdIndexRouteImport } from './routes/app/branches/$branchId/index'
 import { Route as AppTargetsTargetIdMaintenanceLogsRouteImport } from './routes/app/targets/$targetId/maintenance-logs'
+import { Route as AppGroupsGroupIdSessionsRouteImport } from './routes/app/groups/$groupId/sessions'
+import { Route as AppCyclesCycleIdGroupsRouteImport } from './routes/app/cycles/$cycleId/groups'
+import { Route as AppBranchesBranchIdCyclesRouteImport } from './routes/app/branches/$branchId/cycles'
 
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
@@ -150,16 +159,65 @@ const AppTargetsTargetIdRouteRoute = AppTargetsTargetIdRouteRouteImport.update({
   path: '/$targetId',
   getParentRoute: () => AppTargetsRouteRoute,
 } as any)
+const AppGroupsGroupIdRouteRoute = AppGroupsGroupIdRouteRouteImport.update({
+  id: '/$groupId',
+  path: '/$groupId',
+  getParentRoute: () => AppGroupsRouteRoute,
+} as any)
+const AppCyclesCycleIdRouteRoute = AppCyclesCycleIdRouteRouteImport.update({
+  id: '/$cycleId',
+  path: '/$cycleId',
+  getParentRoute: () => AppCyclesRouteRoute,
+} as any)
+const AppBranchesBranchIdRouteRoute =
+  AppBranchesBranchIdRouteRouteImport.update({
+    id: '/$branchId',
+    path: '/$branchId',
+    getParentRoute: () => AppBranchesRouteRoute,
+  } as any)
 const AppTargetsTargetIdIndexRoute = AppTargetsTargetIdIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => AppTargetsTargetIdRouteRoute,
 } as any)
+const AppGroupsGroupIdIndexRoute = AppGroupsGroupIdIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AppGroupsGroupIdRouteRoute,
+} as any)
+const AppCyclesCycleIdIndexRoute = AppCyclesCycleIdIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AppCyclesCycleIdRouteRoute,
+} as any)
+const AppBranchesBranchIdIndexRoute =
+  AppBranchesBranchIdIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => AppBranchesBranchIdRouteRoute,
+  } as any)
 const AppTargetsTargetIdMaintenanceLogsRoute =
   AppTargetsTargetIdMaintenanceLogsRouteImport.update({
     id: '/maintenance-logs',
     path: '/maintenance-logs',
     getParentRoute: () => AppTargetsTargetIdRouteRoute,
+  } as any)
+const AppGroupsGroupIdSessionsRoute =
+  AppGroupsGroupIdSessionsRouteImport.update({
+    id: '/sessions',
+    path: '/sessions',
+    getParentRoute: () => AppGroupsGroupIdRouteRoute,
+  } as any)
+const AppCyclesCycleIdGroupsRoute = AppCyclesCycleIdGroupsRouteImport.update({
+  id: '/groups',
+  path: '/groups',
+  getParentRoute: () => AppCyclesCycleIdRouteRoute,
+} as any)
+const AppBranchesBranchIdCyclesRoute =
+  AppBranchesBranchIdCyclesRouteImport.update({
+    id: '/cycles',
+    path: '/cycles',
+    getParentRoute: () => AppBranchesBranchIdRouteRoute,
   } as any)
 
 export interface FileRoutesByFullPath {
@@ -179,6 +237,9 @@ export interface FileRoutesByFullPath {
   '/app/dashboard': typeof AppDashboardRoute
   '/app/settings': typeof AppSettingsRoute
   '/app/': typeof AppIndexRoute
+  '/app/branches/$branchId': typeof AppBranchesBranchIdRouteRouteWithChildren
+  '/app/cycles/$cycleId': typeof AppCyclesCycleIdRouteRouteWithChildren
+  '/app/groups/$groupId': typeof AppGroupsGroupIdRouteRouteWithChildren
   '/app/targets/$targetId': typeof AppTargetsTargetIdRouteRouteWithChildren
   '/app/branches/': typeof AppBranchesIndexRoute
   '/app/cycles/': typeof AppCyclesIndexRoute
@@ -186,7 +247,13 @@ export interface FileRoutesByFullPath {
   '/app/groups/': typeof AppGroupsIndexRoute
   '/app/sessions/': typeof AppSessionsIndexRoute
   '/app/targets/': typeof AppTargetsIndexRoute
+  '/app/branches/$branchId/cycles': typeof AppBranchesBranchIdCyclesRoute
+  '/app/cycles/$cycleId/groups': typeof AppCyclesCycleIdGroupsRoute
+  '/app/groups/$groupId/sessions': typeof AppGroupsGroupIdSessionsRoute
   '/app/targets/$targetId/maintenance-logs': typeof AppTargetsTargetIdMaintenanceLogsRoute
+  '/app/branches/$branchId/': typeof AppBranchesBranchIdIndexRoute
+  '/app/cycles/$cycleId/': typeof AppCyclesCycleIdIndexRoute
+  '/app/groups/$groupId/': typeof AppGroupsGroupIdIndexRoute
   '/app/targets/$targetId/': typeof AppTargetsTargetIdIndexRoute
 }
 export interface FileRoutesByTo {
@@ -205,7 +272,13 @@ export interface FileRoutesByTo {
   '/app/groups': typeof AppGroupsIndexRoute
   '/app/sessions': typeof AppSessionsIndexRoute
   '/app/targets': typeof AppTargetsIndexRoute
+  '/app/branches/$branchId/cycles': typeof AppBranchesBranchIdCyclesRoute
+  '/app/cycles/$cycleId/groups': typeof AppCyclesCycleIdGroupsRoute
+  '/app/groups/$groupId/sessions': typeof AppGroupsGroupIdSessionsRoute
   '/app/targets/$targetId/maintenance-logs': typeof AppTargetsTargetIdMaintenanceLogsRoute
+  '/app/branches/$branchId': typeof AppBranchesBranchIdIndexRoute
+  '/app/cycles/$cycleId': typeof AppCyclesCycleIdIndexRoute
+  '/app/groups/$groupId': typeof AppGroupsGroupIdIndexRoute
   '/app/targets/$targetId': typeof AppTargetsTargetIdIndexRoute
 }
 export interface FileRoutesById {
@@ -226,6 +299,9 @@ export interface FileRoutesById {
   '/app/dashboard': typeof AppDashboardRoute
   '/app/settings': typeof AppSettingsRoute
   '/app/': typeof AppIndexRoute
+  '/app/branches/$branchId': typeof AppBranchesBranchIdRouteRouteWithChildren
+  '/app/cycles/$cycleId': typeof AppCyclesCycleIdRouteRouteWithChildren
+  '/app/groups/$groupId': typeof AppGroupsGroupIdRouteRouteWithChildren
   '/app/targets/$targetId': typeof AppTargetsTargetIdRouteRouteWithChildren
   '/app/branches/': typeof AppBranchesIndexRoute
   '/app/cycles/': typeof AppCyclesIndexRoute
@@ -233,7 +309,13 @@ export interface FileRoutesById {
   '/app/groups/': typeof AppGroupsIndexRoute
   '/app/sessions/': typeof AppSessionsIndexRoute
   '/app/targets/': typeof AppTargetsIndexRoute
+  '/app/branches/$branchId/cycles': typeof AppBranchesBranchIdCyclesRoute
+  '/app/cycles/$cycleId/groups': typeof AppCyclesCycleIdGroupsRoute
+  '/app/groups/$groupId/sessions': typeof AppGroupsGroupIdSessionsRoute
   '/app/targets/$targetId/maintenance-logs': typeof AppTargetsTargetIdMaintenanceLogsRoute
+  '/app/branches/$branchId/': typeof AppBranchesBranchIdIndexRoute
+  '/app/cycles/$cycleId/': typeof AppCyclesCycleIdIndexRoute
+  '/app/groups/$groupId/': typeof AppGroupsGroupIdIndexRoute
   '/app/targets/$targetId/': typeof AppTargetsTargetIdIndexRoute
 }
 export interface FileRouteTypes {
@@ -255,6 +337,9 @@ export interface FileRouteTypes {
     | '/app/dashboard'
     | '/app/settings'
     | '/app/'
+    | '/app/branches/$branchId'
+    | '/app/cycles/$cycleId'
+    | '/app/groups/$groupId'
     | '/app/targets/$targetId'
     | '/app/branches/'
     | '/app/cycles/'
@@ -262,7 +347,13 @@ export interface FileRouteTypes {
     | '/app/groups/'
     | '/app/sessions/'
     | '/app/targets/'
+    | '/app/branches/$branchId/cycles'
+    | '/app/cycles/$cycleId/groups'
+    | '/app/groups/$groupId/sessions'
     | '/app/targets/$targetId/maintenance-logs'
+    | '/app/branches/$branchId/'
+    | '/app/cycles/$cycleId/'
+    | '/app/groups/$groupId/'
     | '/app/targets/$targetId/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -281,7 +372,13 @@ export interface FileRouteTypes {
     | '/app/groups'
     | '/app/sessions'
     | '/app/targets'
+    | '/app/branches/$branchId/cycles'
+    | '/app/cycles/$cycleId/groups'
+    | '/app/groups/$groupId/sessions'
     | '/app/targets/$targetId/maintenance-logs'
+    | '/app/branches/$branchId'
+    | '/app/cycles/$cycleId'
+    | '/app/groups/$groupId'
     | '/app/targets/$targetId'
   id:
     | '__root__'
@@ -301,6 +398,9 @@ export interface FileRouteTypes {
     | '/app/dashboard'
     | '/app/settings'
     | '/app/'
+    | '/app/branches/$branchId'
+    | '/app/cycles/$cycleId'
+    | '/app/groups/$groupId'
     | '/app/targets/$targetId'
     | '/app/branches/'
     | '/app/cycles/'
@@ -308,7 +408,13 @@ export interface FileRouteTypes {
     | '/app/groups/'
     | '/app/sessions/'
     | '/app/targets/'
+    | '/app/branches/$branchId/cycles'
+    | '/app/cycles/$cycleId/groups'
+    | '/app/groups/$groupId/sessions'
     | '/app/targets/$targetId/maintenance-logs'
+    | '/app/branches/$branchId/'
+    | '/app/cycles/$cycleId/'
+    | '/app/groups/$groupId/'
     | '/app/targets/$targetId/'
   fileRoutesById: FileRoutesById
 }
@@ -481,12 +587,54 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppTargetsTargetIdRouteRouteImport
       parentRoute: typeof AppTargetsRouteRoute
     }
+    '/app/groups/$groupId': {
+      id: '/app/groups/$groupId'
+      path: '/$groupId'
+      fullPath: '/app/groups/$groupId'
+      preLoaderRoute: typeof AppGroupsGroupIdRouteRouteImport
+      parentRoute: typeof AppGroupsRouteRoute
+    }
+    '/app/cycles/$cycleId': {
+      id: '/app/cycles/$cycleId'
+      path: '/$cycleId'
+      fullPath: '/app/cycles/$cycleId'
+      preLoaderRoute: typeof AppCyclesCycleIdRouteRouteImport
+      parentRoute: typeof AppCyclesRouteRoute
+    }
+    '/app/branches/$branchId': {
+      id: '/app/branches/$branchId'
+      path: '/$branchId'
+      fullPath: '/app/branches/$branchId'
+      preLoaderRoute: typeof AppBranchesBranchIdRouteRouteImport
+      parentRoute: typeof AppBranchesRouteRoute
+    }
     '/app/targets/$targetId/': {
       id: '/app/targets/$targetId/'
       path: '/'
       fullPath: '/app/targets/$targetId/'
       preLoaderRoute: typeof AppTargetsTargetIdIndexRouteImport
       parentRoute: typeof AppTargetsTargetIdRouteRoute
+    }
+    '/app/groups/$groupId/': {
+      id: '/app/groups/$groupId/'
+      path: '/'
+      fullPath: '/app/groups/$groupId/'
+      preLoaderRoute: typeof AppGroupsGroupIdIndexRouteImport
+      parentRoute: typeof AppGroupsGroupIdRouteRoute
+    }
+    '/app/cycles/$cycleId/': {
+      id: '/app/cycles/$cycleId/'
+      path: '/'
+      fullPath: '/app/cycles/$cycleId/'
+      preLoaderRoute: typeof AppCyclesCycleIdIndexRouteImport
+      parentRoute: typeof AppCyclesCycleIdRouteRoute
+    }
+    '/app/branches/$branchId/': {
+      id: '/app/branches/$branchId/'
+      path: '/'
+      fullPath: '/app/branches/$branchId/'
+      preLoaderRoute: typeof AppBranchesBranchIdIndexRouteImport
+      parentRoute: typeof AppBranchesBranchIdRouteRoute
     }
     '/app/targets/$targetId/maintenance-logs': {
       id: '/app/targets/$targetId/maintenance-logs'
@@ -495,25 +643,81 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppTargetsTargetIdMaintenanceLogsRouteImport
       parentRoute: typeof AppTargetsTargetIdRouteRoute
     }
+    '/app/groups/$groupId/sessions': {
+      id: '/app/groups/$groupId/sessions'
+      path: '/sessions'
+      fullPath: '/app/groups/$groupId/sessions'
+      preLoaderRoute: typeof AppGroupsGroupIdSessionsRouteImport
+      parentRoute: typeof AppGroupsGroupIdRouteRoute
+    }
+    '/app/cycles/$cycleId/groups': {
+      id: '/app/cycles/$cycleId/groups'
+      path: '/groups'
+      fullPath: '/app/cycles/$cycleId/groups'
+      preLoaderRoute: typeof AppCyclesCycleIdGroupsRouteImport
+      parentRoute: typeof AppCyclesCycleIdRouteRoute
+    }
+    '/app/branches/$branchId/cycles': {
+      id: '/app/branches/$branchId/cycles'
+      path: '/cycles'
+      fullPath: '/app/branches/$branchId/cycles'
+      preLoaderRoute: typeof AppBranchesBranchIdCyclesRouteImport
+      parentRoute: typeof AppBranchesBranchIdRouteRoute
+    }
   }
 }
 
+interface AppBranchesBranchIdRouteRouteChildren {
+  AppBranchesBranchIdCyclesRoute: typeof AppBranchesBranchIdCyclesRoute
+  AppBranchesBranchIdIndexRoute: typeof AppBranchesBranchIdIndexRoute
+}
+
+const AppBranchesBranchIdRouteRouteChildren: AppBranchesBranchIdRouteRouteChildren =
+  {
+    AppBranchesBranchIdCyclesRoute: AppBranchesBranchIdCyclesRoute,
+    AppBranchesBranchIdIndexRoute: AppBranchesBranchIdIndexRoute,
+  }
+
+const AppBranchesBranchIdRouteRouteWithChildren =
+  AppBranchesBranchIdRouteRoute._addFileChildren(
+    AppBranchesBranchIdRouteRouteChildren,
+  )
+
 interface AppBranchesRouteRouteChildren {
+  AppBranchesBranchIdRouteRoute: typeof AppBranchesBranchIdRouteRouteWithChildren
   AppBranchesIndexRoute: typeof AppBranchesIndexRoute
 }
 
 const AppBranchesRouteRouteChildren: AppBranchesRouteRouteChildren = {
+  AppBranchesBranchIdRouteRoute: AppBranchesBranchIdRouteRouteWithChildren,
   AppBranchesIndexRoute: AppBranchesIndexRoute,
 }
 
 const AppBranchesRouteRouteWithChildren =
   AppBranchesRouteRoute._addFileChildren(AppBranchesRouteRouteChildren)
 
+interface AppCyclesCycleIdRouteRouteChildren {
+  AppCyclesCycleIdGroupsRoute: typeof AppCyclesCycleIdGroupsRoute
+  AppCyclesCycleIdIndexRoute: typeof AppCyclesCycleIdIndexRoute
+}
+
+const AppCyclesCycleIdRouteRouteChildren: AppCyclesCycleIdRouteRouteChildren = {
+  AppCyclesCycleIdGroupsRoute: AppCyclesCycleIdGroupsRoute,
+  AppCyclesCycleIdIndexRoute: AppCyclesCycleIdIndexRoute,
+}
+
+const AppCyclesCycleIdRouteRouteWithChildren =
+  AppCyclesCycleIdRouteRoute._addFileChildren(
+    AppCyclesCycleIdRouteRouteChildren,
+  )
+
 interface AppCyclesRouteRouteChildren {
+  AppCyclesCycleIdRouteRoute: typeof AppCyclesCycleIdRouteRouteWithChildren
   AppCyclesIndexRoute: typeof AppCyclesIndexRoute
 }
 
 const AppCyclesRouteRouteChildren: AppCyclesRouteRouteChildren = {
+  AppCyclesCycleIdRouteRoute: AppCyclesCycleIdRouteRouteWithChildren,
   AppCyclesIndexRoute: AppCyclesIndexRoute,
 }
 
@@ -533,11 +737,28 @@ const AppDummiesRouteRouteWithChildren = AppDummiesRouteRoute._addFileChildren(
   AppDummiesRouteRouteChildren,
 )
 
+interface AppGroupsGroupIdRouteRouteChildren {
+  AppGroupsGroupIdSessionsRoute: typeof AppGroupsGroupIdSessionsRoute
+  AppGroupsGroupIdIndexRoute: typeof AppGroupsGroupIdIndexRoute
+}
+
+const AppGroupsGroupIdRouteRouteChildren: AppGroupsGroupIdRouteRouteChildren = {
+  AppGroupsGroupIdSessionsRoute: AppGroupsGroupIdSessionsRoute,
+  AppGroupsGroupIdIndexRoute: AppGroupsGroupIdIndexRoute,
+}
+
+const AppGroupsGroupIdRouteRouteWithChildren =
+  AppGroupsGroupIdRouteRoute._addFileChildren(
+    AppGroupsGroupIdRouteRouteChildren,
+  )
+
 interface AppGroupsRouteRouteChildren {
+  AppGroupsGroupIdRouteRoute: typeof AppGroupsGroupIdRouteRouteWithChildren
   AppGroupsIndexRoute: typeof AppGroupsIndexRoute
 }
 
 const AppGroupsRouteRouteChildren: AppGroupsRouteRouteChildren = {
+  AppGroupsGroupIdRouteRoute: AppGroupsGroupIdRouteRouteWithChildren,
   AppGroupsIndexRoute: AppGroupsIndexRoute,
 }
 

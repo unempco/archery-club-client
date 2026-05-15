@@ -21,8 +21,15 @@ export const updateSessionFormSchema = sessionSchema.pick({
 });
 
 export const sessionsFiltersSchema = z.object({
+  groupId: z.string().optional().catch(''),
   includeDeleted: z.boolean().optional().catch(false),
 });
 export const sessionsSearchSchema = paginationSearchSchema.extend(
   sessionsFiltersSchema.shape,
 );
+
+//=================>By Group<==================//
+
+export const groupSessionsSearchSchema = sessionsSearchSchema.omit({
+  groupId: true,
+});

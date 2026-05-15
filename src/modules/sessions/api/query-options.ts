@@ -1,9 +1,13 @@
-import type { SessionsSearchParams } from '@/modules/sessions/types';
+import type {
+  GroupSessionsSearchParams,
+  SessionsSearchParams,
+} from '@/modules/sessions/types';
 
 import { queryOptions } from '@tanstack/react-query';
 
 import {
   getAllSessions,
+  getGroupSessionsList,
   getSessionById,
   getSessionsList,
 } from '@/modules/sessions/api/query-fns';
@@ -22,8 +26,19 @@ export const sessionsLookupQueryOptions = () => {
   });
 };
 
-export const sessionQueryOptions = (itemId: number) =>
+export const sessionQueryOptions = (id: number) =>
   queryOptions({
-    queryKey: ['sessionById', itemId],
-    queryFn: () => getSessionById(itemId),
+    queryKey: ['sessionById', id],
+    queryFn: () => getSessionById(id),
+  });
+
+//=================>By Group<==================//
+
+export const groupSessionsQueryOptions = (
+  groupId: number,
+  params: GroupSessionsSearchParams,
+) =>
+  queryOptions({
+    queryKey: ['sessions', groupId, params],
+    queryFn: () => getGroupSessionsList(groupId, params),
   });
